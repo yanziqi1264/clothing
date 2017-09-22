@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function(options) {
+  	console.log("getUserInfo1")
   	this.globalData.shareOpenId =options.shareOpenId
   },
 
