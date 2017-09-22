@@ -1,0 +1,54 @@
+{
+  "pages":[
+    "pages/wholesale/wholesale",
+    "pages/retail/retail",
+    "pages/order-list/index",
+  	"pages/shopcart/shopcart",
+    "pages/mine/mine",
+ 	  "pages/logs/logs",
+    "pages/goods-detail/index",
+  	"pages/order-details/index",
+  	"pages/classify/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "时尚大衣",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#404040",
+    "selectedColor": "#ff3d4b",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/wholesale/wholesale",
+      "text": "批发",
+      "iconPath": "images/un_wholesale.png",
+      "selectedIconPath": "images/on_wholesale.png"
+    },{
+      "pagePath": "pages/retail/retail",
+      "text": "零售",
+      "iconPath": "images/un_retail.png",
+      "selectedIconPath": "images/on_retail.png"
+    },
+    {
+      "pagePath": "pages/shopcart/shopcart",
+      "text": "购物车",
+      "iconPath": "images/un_shopcar.png",
+      "selectedIconPath": "images/on_shopcar.png"
+    },{
+      "pagePath": "pages/mine/mine",
+      "text": "我",
+      "iconPath": "images/un_mine.png",
+      "selectedIconPath": "images/on_mine.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}
