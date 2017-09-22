@@ -1,0 +1,63 @@
+<!--pages/goods-detail/index.wxml-->
+<view class="container">
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+      <view wx:for="{{detailPics}}">
+        <swiper-item>
+          <image src="{{item.image}}" mode="aspectFill" />
+        </swiper-item>
+      </view>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{detailPics}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+  <!-- 商品名字价格分享 -->
+  <view class="goods-info">
+    <view class="row1">
+      <view class="goods-name">
+        <view class="goods-name-view">
+          {{productInfo.productName}}
+        </view>
+
+      </view>
+      	<!--
+      <view class="goods-share">
+        <view class="goods-share-relative">
+          <image src="/images/goods_detail_share.png"></image>
+          <view class="sharelabel">分享</view>
+        </view>
+      </view>
+      -->
+    </view>
+    <view class="row2">
+      <view class="goods-price"> {{productInfo.attributes.commodityoriginalprice}}</view>
+    </view>
+  </view>
+  <!-- 月销售量 
+  <view class="month-sales">
+    <view class="month-num">月销售量296</view>
+    <view class="goods-place"></view>
+  </view>
+-->
+  <!-- 详情介绍 -->
+  <view class="goods-des-info">
+    <view class="des-title" >
+      文字说明
+    </view>
+
+    <view class="goods-text">
+     {{productInfo.attributes.commoditydesc}}
+    </view>
+  </view>
+
+  <!-- 底部操作选项 -->
+
+  <view class="footer-box">
+ 	<view class="join-shop-cart"  bindtap="toAddShopCar" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">联系客服</view>
+    <view class="join-shop-cart"  bindtap="toAddShopCar" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">加入购物车</view>
+    <view class="now-buy" bindtap="gotoshoppingcart" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">立即购买</view>
+  </view>
+</view>

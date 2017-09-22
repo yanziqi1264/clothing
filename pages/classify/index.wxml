@@ -1,0 +1,49 @@
+<view class="classify-container">
+  <view class="nav_left">
+    <block wx:for="{{typelist}}">
+      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</view>
+    </block>
+  </view>
+  <view   class="nav_right">
+    <view>
+     
+        <view class="nav_right_items">
+            <view class="goods-container">
+             <block wx:for="{{productlist}}" wx:key=" {{index}}" >
+             <view class="goods-big-box">
+              <view  class="goods-box" bindtap="toDetailsTap" data-id="{{item.id}}">
+                <view class="goods-img ">
+                  <image src="{{item.attributes.commoditycoverpic}}" class="goods-img " mode="aspectFill " />
+                </view>
+                <view class="goods-info ">
+                  <view class="goods-info-brand ">
+                    {{item.productName}}
+                  </view>
+                  <view class="goods-info-view ">
+                    <view class="goods-info-price ">
+                      <text>{{item.attributes.commodityoriginalprice}}</text>
+                    </view>
+                            
+                    <view class="goods-info-addview ">
+                    </view>
+                  </view>
+                  
+                </view>
+                     
+              </view>
+              <view class="buy-num">
+                            <view class="jian-btn " data-index="{{index}}" catchtap="reduceToShoppingCart"   data-goodid="{{item.id}}" data-goodname="{{item.productName}}" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">-</view>
+                            <input  type="number" value="{{item.count}}" disabled/>
+                            <view class="jia-btn " data-index="{{index}}" catchtap="addToShoppingCart"   data-goodid="{{item.id}}" data-goodname="{{item.productName}}" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">+</view>
+                        </view>
+                        
+                        </view>
+               </block>
+            </view>
+        </view>
+     
+    </view>
+    <!-- 
+    <view wx:else>暂无数据</view> -->
+  </view>
+</view>

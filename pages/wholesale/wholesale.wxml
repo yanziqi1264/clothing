@@ -1,0 +1,55 @@
+<view class="page">
+  <scroll-view scroll-y="true" class="scroll-area">
+    <view class="swiper-container">
+      <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for-items="{{toplist}}" wx:key="{{index}}">
+          <swiper-item>
+            <image bindtap="tapBanner" data-id="{{item.id}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{toplist}}" wx:key="unique">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+      </view>
+    </view>
+    <view class="big-logo">
+      <block wx:for-items="{{typelist}}" wx:key="{{index}}">	
+        <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
+          <text class="season-text">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+ 	<view class="big-Title">
+      <text>热品推荐</text>
+    </view>
+    <view class="goods-container">
+      <view class="goods-box" wx:for="{{productlist}}"  wx:key="{{index}}" >
+          <view class="goods-img ">
+            <image src="{{item.attributes.commoditycoverpic}} " class="goods-img" mode="aspectFill" bindtap="toDetailsTap" data-goodid="{{item.id}}"/>
+          </view>
+          <view class="goods-info">
+            <view class="goods-info-brand" bindtap="toDetailsTap" data-goodid="{{item.id}}">
+                  {{item.productName}}
+            </view>
+            <view class="goods-info-view">
+              <view class="goods-info-price">
+                <text>{{item.attributes.commodityoriginalprice}}</text>
+               </view>
+                 <view class="goods-info-reduceView" bindtap="reduceToShoppingCart"  data-goodid="{{item.id}}" data-goodname="{{item.productName}}" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">
+                </view>
+                <view class="count" style=""><text>  {{item.count}}</text></view> 
+               <view class="goods-info-addview" data-goodid="{{item.id}}" data-goodname="{{item.productName}}"  bindtap="addToShoppingCart" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">
+               </view>
+            </view>
+          
+  
+          </view>
+       </view>
+    
+    </view>
+    <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+  </scroll-view>
+</view>

@@ -1,0 +1,235 @@
+<view class="order-detail-container">
+  <!-- 订单完成 -->
+  <view wx:if="{{orderInfo.status ==3||orderInfo.status ==8||orderInfo.status ==9}}" style="display:block">
+    <!-- 订单状态 -->
+    <view class="order-status-block">
+      <view class="order-status-margin">
+        <view class="order-status-txt">
+          交易成功
+        </view>
+        <!-- 订单编号 -->
+        <view class="order-span" style="margin-top:24rpx;">
+          <view class="order-number-lable">订单编号:</view>
+          <view class="order-number">{{orderInfo.orderId}}</view>
+        </view>
+        <!-- 收展 -->
+        <view class="order-span">
+          <view class="order-down">
+          </view>
+        </view>
+        <!-- 创建时间 -->
+        <view class="order-span">
+          <view class="order-number-lable">创建时间:</view>
+          <view class="order-number">2017-08-31 14:59</view>
+        </view>
+      </view>
+    </view>
+    <!-- 买家信息-->
+    <view class="order-buyer-block">
+      <view class="order-buyer">
+        <view class="order-buyer-lable">买家:</view>
+        <view class="order-number">{{orderInfo.payUserName}}</view>
+      </view>
+      <!-- 备注 -->
+      <view class="order-buyer" style="margin-top:10rpx;">
+        <view class="order-buyer-remarks">备注:</view>
+        <view class="order-number">{{orderInfo.remark}}</view>
+      </view>
+
+    </view>
+
+    <!-- 联系买家 
+    <view class="order-linked-buyer">
+      联系买家
+    </view>-->
+    <!-- 商品信息 -->
+    <view class="order-detail-goods">
+    	<block  wx:for="{{proudctlist}}"  wx:key="index" wx:for-index="idx" wx:for-item="product1">
+ 
+      <view class="order-detail-goods-div"  wx:if="{{product1.count > 0}}">
+        <view class="goods-box">
+          <view class="goods-img">
+            <image src="{{product1.pic}}" class="goods-img " mode="aspectFill" />
+          </view>
+          <view class="goods-info">
+            <view class="goods-info-brand">
+            {{product1.name}}
+            </view>
+            <view class="goods-info-view">
+
+              <view class="goods-info-price">
+                <text> {{product1.price}}</text>
+              </view>
+              <view class="goods-info-addview">
+                X {{product1.count}}
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+      </view>
+</block>
+    </view>
+    
+    <!-- 运费 -->
+    <view class="order-freight">
+      <view class="order-freight-div ">
+        <view>运费</view>
+        <view class="order-freight-txt">0.00</view>
+      </view>
+    </view>
+    <!-- 实际付款 -->
+    <view class="order-freight">
+      <view class="order-freight-div ">
+        <view>实付款(含运费)</view>
+        <view class="order-payment-txt">{{(orderInfo.money)/100}}</view>
+      </view>
+    </view>
+
+    <!-- 收货人地址 -->
+    <view class="buyer-address">
+      <view class="buyer-address-div">
+        <view class="buyer-address-receiver">
+          <view class="receiver-label">收货人:{{orderInfo.payUserName}}</view>
+          <view class="receiver-mobile">{{orderInfo.contact}}</view>
+        </view>
+        <view class="address-detail">
+          收货地址：{{orderInfo.address}}
+        </view>
+
+      </view>
+      <view class="seller-block">
+        卖家标记:{{orderInfo.storeReMark ==null ?"":orderInfo.storeReMark }}
+      </view>
+
+    </view>
+    
+  </view>
+  <!-- 订单未完成 -->
+    <form bindsubmit="formSubmit" bindreset="formReset"  data-orderid="{{orderInfo.orderId}}">
+  <view  wx:if="{{orderInfo.id ==null ||orderInfo.status == 0||orderInfo.status == 1||orderInfo.status == 2||orderInfo.status == 4}}"  class="order-unfinished" >
+    <!-- 填写收货人信息 -->
+  
+    <view class="form-box">
+      <!-- 收货人 -->
+      <view class="row-wrap">
+        <view class="label">收货人:</view>
+        <view wx:if="{{orderInfo.payUserName !=null}}" class="label-right">
+          <input class="input" name="name" type="text" disabled="true" placeholder="请收入收货人姓名" value="{{orderInfo.payUserName}}"/>
+        </view>
+        <view wx:if="{{orderInfo.payUserName ==null}}" class="label-right">
+          <input class="input" name="name"  type="text" placeholder="请收入收货人姓名" />
+        </view>
+      </view>
+      <!-- 电话 -->
+      <view class="row-wrap">
+        <view class="label">电话:</view>
+        <view wx:if="{{orderInfo.contact !=null}}" class="label-right">
+          <input class="input" name="contact"  disabled="true" maxlength="11" type="number"  placeholder="请收入收货人手机" value="{{orderInfo.contact	}}" />
+        </view>
+        <view  wx:if="{{orderInfo.contact ==null}}"  class="label-right">
+          <input class="input" name="contact"  maxlength="11" type="number" placeholder="请收入收货人手机" 	 />
+        </view>
+      </view>
+      <!--地址 -->
+      <view class="row-wrap">
+        <view class="label" >地址:</view>
+        <view class="label-right" wx:if="{{orderInfo.address !=null}}">
+          <input class="input" name="address"  type="text" disabled="true"  placeholder="请收入收货地址" value="{{orderInfo.address}}" />
+        </view>
+          <view class="label-right" wx:if="{{orderInfo.address ==null}}">
+          <input class="input" name="address"  type="text" placeholder="请收入收货地址" value=""/>
+        </view>
+      </view>
+      <view>
+      </view>
+
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="unfinished-goods">
+	<block  wx:for="{{proudctlist}}"  wx:key="index2" wx:for-index="idx1" wx:for-item="product">
+      <!-- 商品信息 -->
+      <view class="order-detail-goods" wx:if="{{product.count > 0}}" >
+        <view class="order-detail-goods-div">
+          <view class="goods-box">
+            <view class="goods-img">
+              <image src="{{product.pic}}" class="goods-img " mode="aspectFill" />
+            </view>
+            <view class="goods-info">
+              <view class="goods-info-brand">
+              {{product.name}}
+              </view>
+              <view class="goods-info-view">
+
+                <view class="goods-info-price">
+                  <text>{{product.totalprice}}</text>
+                </view>
+                <view class="goods-info-addview">
+                  X{{product.count}}
+                </view>
+              </view>
+
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+      
+      </block>
+      <!-- 购买数量 
+      
+
+      <view class="order-freight">
+        <view class="order-freight-div ">
+          <view>购买数量</view>
+          <view class="order-num-txt">
+            <view class="buy-num">
+              <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+              <input type="number" value="{{item.number}}" disabled/>
+              <view class="jia-btn {{item.number==10? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+-->
+
+
+      <!-- 运费 -->
+      <view class="order-freight">
+        <view class="order-freight-div ">
+          <view>运费</view>
+          <view class="order-freight-txt">0.00</view>
+        </view>
+      </view>
+      <!--买家留言备注 -->
+      <view class="row-wrap1" style="background:#fff">
+        <view class="row1">
+          <view class="label">买家留言/备注:</view>
+          <view class="label-right" wx:if="{{orderInfo.remark !=null}}" >
+            <input class="input" type="text" name="remark" placeholder="选填/对本次交易说明" value="{{orderInfo.remark}}"/>
+          </view>
+            <view class="label-right" wx:if="{{orderInfo.remark ==null}}" >
+            <input class="input" type="text" name="remark" placeholder="选填/对本次交易说明" />
+          </view>
+        </view>
+      </view>
+      <!-- 实付款 -->
+      <view class="order-freight">
+        <view class="order-freight-div ">
+          <view>实付款(含运费)</view>
+          <view class="order-payment-txt">{{  (orderInfo.money)/100 }}</view>
+        </view>
+      </view>
+
+    </view>
+	<button formType="submit">
+    <view class="jiesuan-box" >
+     <view class="to-pay-btn"  >立即结算</view>
+    </view>
+	</button>
+  </view>
+  </form>
+</view>
