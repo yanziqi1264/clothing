@@ -27,7 +27,7 @@
   </view>
 
 <!-- 我的拼团 -->
-  <view class="column-block">
+  <view  bindtap="mySpell" class="column-block">
     <view class="column-block-a">
       <view class="fctlist-icon">
            <image style="width:32rpx; height:32rpx;" src="/images/fightgroups.png"></image>
@@ -41,7 +41,7 @@
     </view>
   </view>
   <!-- 我的金库 -->
-   <view class="column-block">
+   <view bindtap="myVault" class="column-block">
     <view class="column-block-a">
       <view class="fctlist-icon">
            <image style="width:33rpx; height:32rpx;" src="/images/vault.png"></image>

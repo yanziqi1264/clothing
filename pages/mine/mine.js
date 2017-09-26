@@ -33,5 +33,15 @@ Page({
   queryorderlist:function(option){
   	var typeId = option.currentTarget.dataset.typeid
   	wx.navigateTo({url:"../order-list/index?typeid="+typeId})
-  }
+  },
+  mySpell:function (e) {
+    wx.navigateTo({
+      url: "/pages/myspell/index"
+    })
+  },
+  myVault: function (e) {
+    wx.navigateTo({
+      url: "/pages/myvault/index"
+    })
+  },
 })

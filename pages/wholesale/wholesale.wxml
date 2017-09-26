@@ -38,26 +38,27 @@
     </view>
 
   <!-- 批发 -->
-  <view>
-    <view class="wholesale-title-area">
-     批发
+  <view class="paddingBottom-20">
+    <view class="weui-cell">
+     <view class="weui-cell-primary">批发</view>
+     <view class="weui-cell-ft"></view>
     </view>
-    <view style="width:100%;background:orange">
+    <view style="width:100%;background:#fff">
     <view class="wholesale-block">
       <view class="wholesale-item">
-         <view class="tset">
+         <view >
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
           <view>大衣1</view>
          </view>
       </view>
        <view class="wholesale-item">
-         <view class="tset">
+         <view>
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
            <view>大衣2</view>
          </view>
       </view>
        <view class="wholesale-item">
-         <view class="tset">
+         <view>
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
           <view>大衣2</view>
          </view>
@@ -67,26 +68,27 @@
   </view>
   <!-- 零售 -->
 
-<view>
-    <view class="wholesale-title-area">
-     零售
+<view class="paddingBottom-20">
+    <view class="weui-cell">
+     <view class="weui-cell-primary">零售</view>
+     <view class="weui-cell-ft"></view>
     </view>
-    <view style="width:100%;background:orange">
+    <view style="width:100%;background:#fff">
     <view class="wholesale-block">
       <view class="wholesale-item">
-         <view class="tset">
+         <view>
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
           <view>大衣1</view>
          </view>
       </view>
        <view class="wholesale-item">
-         <view class="tset">
+         <view>
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
            <view>大衣2</view>
          </view>
       </view>
        <view class="wholesale-item">
-         <view class="tset">
+         <view>
           <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
           <view>大衣2</view>
          </view>

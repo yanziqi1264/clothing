@@ -1,11 +1,13 @@
 {
   "pages":[
-    "pages/myvault/index",
-    "pages/aboutBusiness/index",
+    "pages/myFans/index",
     "pages/myspell/index",
+    "pages/myvault/index",
+    "pages/apply-for-cash/index",
     "pages/mine/mine",
-    "pages/limit-goods/index",
     "pages/wholesale/wholesale",
+    "pages/aboutBusiness/index",
+    "pages/limit-goods/index",
     "pages/order-list/index",
     "pages/retail/retail",
   	"pages/shopcart/shopcart",

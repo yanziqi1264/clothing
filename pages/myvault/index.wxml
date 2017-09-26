@@ -14,7 +14,7 @@
         </view>
       </view>
       <!-- 申请提现 -->
-      <view class="apply-for-cash">
+      <view bindtap="applyCrash" class="apply-for-cash">
         申请提现>
       </view>
       <!-- 预估与新增 -->
