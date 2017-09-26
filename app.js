@@ -75,7 +75,7 @@ App({
     typelistUrl:"/weixin/commodityType/clothing/selectList",
     topproductlistUrl:"/weixin/commodity/clothing/homePagePics",
     recommendproductlistUrl:"/weixin/commodity/clothing/homePageRecommend",
-    toobarIds:[28,27],
+    toobarIds:[41,42],
     sessionKey:null,
     productUrl:"/weixin/commodity/clothing/getCommodityById",
     shopUrl:"/weixin/storeMessage/clothing/getMessage",

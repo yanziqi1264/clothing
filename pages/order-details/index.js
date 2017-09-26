@@ -152,5 +152,10 @@ Page({
         // 转发失败
       }
     }
+  },
+  
+  chooseAddress:function(res){
+  	
+  	
   }
 })
