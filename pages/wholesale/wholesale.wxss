@@ -53,14 +53,16 @@ swiper-item image {
   border: 1px solid #e6e6e6;
   padding: 20rpx 0;
 }
-.big-Title{
-  width:100%;
+
+.big-Title {
+  width: 100%;
   text-align: center;
-  height:88rpx;
-  line-height:88rpx;
+  height: 88rpx;
+  line-height: 88rpx;
   background: url(https://xcx.jacars.com/media/tinyapp/images/icon-down.png) no-repeat 65% center;
-  font-size:34rpx;
+  font-size: 34rpx;
 }
+
 .season-info {
   display: flex;
   flex-direction: column;
@@ -135,19 +137,22 @@ swiper-item image {
   overflow: hidden;
   line-height: 44rpx;
 }
-.count{
-   width:60rpx;
+
+.count {
+  width: 60rpx;
   height: 44rpx;
   text-align: center;
 }
-.goods-info-reduceView{
- width:44rpx;
+
+.goods-info-reduceView {
+  width: 44rpx;
   height: 44rpx;
   background: url(https://xcx.jacars.com/media/tinyapp/images/-.png) no-repeat right center;
   background-size: 45rpx auto;
 }
+
 .goods-info-addview {
- width:44rpx;
+  width: 44rpx;
   height: 44rpx;
   background: url(https://xcx.jacars.com/media/tinyapp/images/goods_add.png) no-repeat right center;
   background-size: 45rpx auto;
@@ -158,9 +163,142 @@ swiper-item image {
   content: '¥ ';
   font-size: 34rpx;
 }
-.no-more-goods{
+
+.no-more-goods {
   text-align: center;
   font-size: 24rpx;
-  padding-bottom:48rpx; 
+  padding-bottom: 48rpx;
   color: #999;
+}
+
+.weui-search-bar {
+  height: 90rpx;
+  position: relative;
+  padding: 8rpx 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #efeff4;
+}
+
+.weui-search-bar:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1rpx;
+  border-top: 1rpx solid #d7d6dc;
+  color: #d7d6dc;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.weui-search-bar-form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  background-color: #efeff4;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.weui-search-bar-form:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  border-radius: 10rpx;
+  border: 1rpx solid #e6e6ea;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.weui-search-bar-box {
+  position: relative;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar-box .weui-search-bar-input {
+  padding: 12rpx 30rpx;
+  width: 100%;
+  height: 60rpx;
+  border: 0;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  box-sizing: content-box;
+  background: transparent;
+}
+
+.weui-search-bar-box .weui-icon-search {
+  position: absolute;
+  left: 10rpx;
+  top: 30rpx;
+  line-height: 28rpx;
+}
+
+.weui-icon-search {
+  color: #b2b2b2;
+  font-size: 14rpx;
+}
+
+[class^="weui-icon-"], [class*=" weui-icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  font: normal normal normal 14px/1 "weui";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.weui-icon-search:before {
+  content: "\EA0E";
+}
+
+[class^="weui-icon-"]:before, [class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.wholesale-title-area {
+  padding: 0rpx 24rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 55rpx;
+}
+
+.wholesale-block {
+  padding: 0 24rpx;
+  display: flex;
+  display: -webkit-flex;
+
+}
+
+.wholesale-item {
+  width: 250rpx;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  border-right: 1px solid #f3f3f3;
+  text-align: center;
+  flex: 1;
+  margin-top: 10rpx;
+}
+
+.tset {
+  text-align: center;
 }

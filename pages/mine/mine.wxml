@@ -26,6 +26,50 @@
     </view>
   </view>
 
+<!-- 我的拼团 -->
+  <view class="column-block">
+    <view class="column-block-a">
+      <view class="fctlist-icon">
+           <image style="width:32rpx; height:32rpx;" src="/images/fightgroups.png"></image>
+      </view>
+      <view class="fctlist-title">
+        <view class="fctlist-title-p">我的拼团</view>
+      </view>
+      <view class="fctlist-arrow">
+       <image style="width:12rpx; height:22rpx;" src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 我的金库 -->
+   <view class="column-block">
+    <view class="column-block-a">
+      <view class="fctlist-icon">
+           <image style="width:33rpx; height:32rpx;" src="/images/vault.png"></image>
+      </view>
+      <view class="fctlist-title">
+        <view class="fctlist-title-p">我的金库</view>
+      </view>
+      <view class="fctlist-arrow">
+       <image style="width:12rpx; height:22rpx;" src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+
+<!-- 关于商家 -->
+
+  <view class="column-block">
+    <view class="column-block-a">
+      <view class="fctlist-icon">
+           <image style="width:36rpx; height:32rpx;" src="/images/business.png"></image>
+      </view>
+      <view class="fctlist-title">
+        <view class="fctlist-title-p">关于商家</view>
+      </view>
+      <view class="fctlist-arrow">
+       <image style="width:12rpx; height:22rpx;" src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
   <!-- 商家信息 -->
   <view class="business-container">
     <view class="business-bar">

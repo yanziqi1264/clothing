@@ -1,14 +1,19 @@
 {
   "pages":[
-    "pages/wholesale/wholesale",
-    "pages/retail/retail",
-    "pages/order-list/index",
-  	"pages/shopcart/shopcart",
+    "pages/myvault/index",
+    "pages/aboutBusiness/index",
+    "pages/myspell/index",
     "pages/mine/mine",
+    "pages/limit-goods/index",
+    "pages/wholesale/wholesale",
+    "pages/order-list/index",
+    "pages/retail/retail",
+  	"pages/shopcart/shopcart",
  	  "pages/logs/logs",
     "pages/goods-detail/index",
   	"pages/order-details/index",
-  	"pages/classify/index"
+  	"pages/classify/index",
+    "pages/searchList/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -23,7 +28,7 @@
     "backgroundColor": "#fff",
     "list": [{
       "pagePath": "pages/wholesale/wholesale",
-      "text": "批发",
+      "text": "首页",
       "iconPath": "images/un_wholesale.png",
       "selectedIconPath": "images/on_wholesale.png"
     },{

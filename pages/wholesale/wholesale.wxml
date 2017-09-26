@@ -1,5 +1,19 @@
+
 <view class="page">
   <scroll-view scroll-y="true" class="scroll-area">
+    <!-- 加搜索框-->
+    <view class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar-form">
+                <view class="weui-search-bar-box">
+                    <view class="weui-icon-search"></view>
+                    <input bindtap="searchTap" type="search" class="weui-search-bar-input" id="searchInput" placeholder="搜索" required=""/>
+                </view>
+            </form>
+            <view  style="width:80rpx;margin-top:15rpx;text-align:center" id="searchCancel">
+            <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
+            </view>
+    </view>
+    <!-- 搜索框结束 -->
     <view class="swiper-container">
       <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for-items="{{toplist}}" wx:key="{{index}}">
@@ -22,6 +36,66 @@
         </view>
       </block>
     </view>
+
+  <!-- 批发 -->
+  <view>
+    <view class="wholesale-title-area">
+     批发
+    </view>
+    <view style="width:100%;background:orange">
+    <view class="wholesale-block">
+      <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣1</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+           <view>大衣2</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣2</view>
+         </view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <!-- 零售 -->
+
+<view>
+    <view class="wholesale-title-area">
+     零售
+    </view>
+    <view style="width:100%;background:orange">
+    <view class="wholesale-block">
+      <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣1</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+           <view>大衣2</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view class="tset">
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣2</view>
+         </view>
+      </view>
+    </view>
+    </view>
+  </view>
+
+
  	<view class="big-Title">
       <text>热品推荐</text>
     </view>

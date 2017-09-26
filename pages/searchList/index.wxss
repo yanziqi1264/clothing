@@ -1,0 +1,6 @@
+/* pages/searchList/index.wxss */
+@import "/wxSearch/wxSearch.wxss";
+.searchArea{
+  height: 90rpx;
+  background:#efefef;
+}

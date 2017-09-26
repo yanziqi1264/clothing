@@ -103,6 +103,12 @@ Page({
 		common.getHotProductListByType(that, app.globalData.appId, app.globalData.toobarIds[0], currentpage, pagesize,2);
 	},
 
+  searchTap: function (e) {
+      wx.navigateTo({
+        url: "/pages/searchList/index"
+      })
+  },
+
 	//进入产品列表
 	gotogoods: function(e) {
 		var typeid = e.currentTarget.dataset.typeid

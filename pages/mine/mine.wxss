@@ -132,3 +132,49 @@
   margin-left: 24rpx;
   margin-right: 24rpx;
 }
+
+.column-block{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+}
+.column-block-a{
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    border-bottom: 1px solid #eaeaea;
+    background:#fff;
+    padding-left: 24rpx;
+}
+.fctlist-icon{
+    width: 32rpx;
+    height:32rpx;
+    margin-top: 30rpx;
+}
+.fctlist-title{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    height: 94rpx;
+}
+.fctlist-title-p{
+    width: 100%;
+    font-size:28rpx;
+    color: #333;
+    line-height:94rpx;
+    margin-left: 18rpx;
+}
+.fctlist-arrow{
+    width:34rpx;
+    height:34rpx;
+    line-height:34rpx;
+    margin-right:24rpx;
+    margin-top:30rpx;
+}
