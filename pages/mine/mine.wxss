@@ -70,34 +70,6 @@
   margin-bottom: 20rpx;
 }
 
-.business-container {
-  width: 100%;
-  margin-top: 20rpx;
-  padding: 50rpx 0;
-  background-color: #fff;
-}
-
-.business-bar {
-  display: -webkit-box;
-  margin-left: 24rpx;
-  margin-right: 24rpx;
-  border-bottom: 1rpx solid #f1f1f1;
-}
-
-.business-title {
-  width: 200rpx;
-  font-size: 30rpx;
-  color: #404040;
-  margin-bottom: 30rpx;
-}
-
-.business-icon {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  width: 100%;
-  margin-left: 30rpx;
-}
-
 .wechat {
   background: url(/images/webchat.png) no-repeat 320rpx;
   background-size: 43rpx auto;

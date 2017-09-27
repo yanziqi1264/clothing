@@ -3,7 +3,12 @@ Page({
   data: {
     statusType: ["一级粉丝", "二级粉丝"],
     currentTpye: 0,
-    tabClass: ["", ""]
+    tabClass: ["", ""],
+    levelOneFans:[],
+    current1Page:1,
+    pageSize:10,
+     current2Page:1,
+    levelTwoFans:[]
   },
   statusTap: function (e) {
     var curType = e.currentTarget.dataset.index;
@@ -20,8 +25,45 @@ Page({
     })
   },
   onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  
+ 	this.getFans(1,this.data.current1Page,10)
+   this.getFans(2,this.data.current1Page,10)
 
+  },
+  getFans:function(type,currentPage,pageSize){
+  	console.log("fans")
+  	 	var that=this
+  	 var openId =wx.getStorageSync("sessionKey")
+  	 wx.request({
+		url: app.globalData.serverAddr + "/weixin/clothing/distribution/fans",
+		data: {
+			appId: app.globalData.appId,
+			openId:openId,
+			currentPage:currentPage,
+			pageSize:pageSize,
+			levelFlag:type
+			
+		},
+		success: function(res) {
+			
+			if(type == 1){
+				var levelOneFans=that.data.levelOneFans
+				for(var i=0;i<res.data.data.length;i++){
+				levelOneFans.push(res.data.data[i])
+				}
+				that.setData({levelOneFans:res.data.data,current1Page:currentPage+1})
+			}else{
+				var levelTwoFans=that.data.levelTwoFans
+				for(var i=0;i<res.data.data.length;i++){
+				levelTwoFans.push(res.data.data[i])
+				}
+				that.setData({levelTwoFans:res.data.data,current2Page:currentPage+1})
+			}
+			
+			
+		}
+	})
+  	
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成

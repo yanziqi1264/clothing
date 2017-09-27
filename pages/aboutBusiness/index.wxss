@@ -1,1 +1,152 @@
-/* pages/aboutBusiness/index.wxss */
+.bg {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 50rpx 0;
+  align-items: center;
+  background: url(https://xcx.jacars.com/media/tinyapp/images/mine_header_bg.png) no-repeat center;
+  background-size: cover;
+  width: 750rpx;
+}
+
+.userinfo-avatar {
+  width: 126rpx;
+  height: 126rpx;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-top: 15rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.myorder-manager {
+  width: 750rpx;
+  background: url(/images/arrow-right.png) no-repeat 714rpx center;
+  background-size: 12rpx auto;
+  background-color: #fff;
+  font-size: 30rpx;
+  color: #404040;
+  margin-top: 20rpx;
+}
+
+.maginleft-24 {
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.big-logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 30rpx;
+}
+
+.season-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22rpx;
+}
+
+.season-text {
+  color: #666;
+  font-size: 24rpx;
+  margin-top: 22rpx;
+  margin-bottom: 20rpx;
+}
+
+.wechat {
+  background: url(/images/webchat.png) no-repeat 320rpx;
+  background-size: 43rpx auto;
+  height: 43rpx;
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+}
+
+.business-name-tip {
+  width: 100rpx;
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 30rpx;
+}
+
+.business-name {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  width: 100%;
+  font-size: 28rpx;
+  color: #202020;
+  margin-top: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info1 {
+  display: -webkit-box;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+
+.column-block{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+}
+.column-block-a{
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    border-bottom: 1px solid #eaeaea;
+    background:#fff;
+    padding-left: 24rpx;
+}
+.fctlist-icon{
+    width: 32rpx;
+    height:32rpx;
+    margin-top: 30rpx;
+}
+.fctlist-title{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    height: 94rpx;
+}
+.fctlist-title-p{
+    width: 100%;
+    font-size:28rpx;
+    color: #333;
+    line-height:94rpx;
+    margin-left: 18rpx;
+}
+.fctlist-arrow{
+    width:34rpx;
+    height:34rpx;
+    line-height:34rpx;
+    margin-right:24rpx;
+    margin-top:30rpx;
+}

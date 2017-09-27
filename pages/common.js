@@ -722,22 +722,36 @@ function cancelOrder(e,payId,status){
 	})
 }
 
-function setIntervalTims(fun,year,month,day,interval){
-	setInterval(ShowCountDown(),1000)
+function setIntervalTims(e,stringTime,interval){
+	setInterval(function(){
+		ShowCountDown(e,stringTime) 
+		
+	},interval)
 }
 
-function ShowCountDown(year,month,day) 
+function ShowCountDown(e,stringTime) 
 { 
 var now = new Date(); 
-var endDate = new Date(year, month-1, day); 
-var leftTime=endDate.getTime()-now.getTime(); 
+console.log("stringTime:"+stringTime)
+var endDate = Date.parse(new Date(stringTime.replace(/-/g,"/")))
+console.log("endDate:"+endDate)
+var leftTime=endDate-now.getTime(); 
+console.log("leftTime:"+leftTime)
 var leftsecond = parseInt(leftTime/1000); 
 //var day1=parseInt(leftsecond/(24*60*60*6)); 
+console.log("leftsecond:"+leftsecond)
 var day1=Math.floor(leftsecond/(60*60*24)); 
+console.log("day1:"+day1)
 var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
 var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
 var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
-var nnerHTML = "脚本之家提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒"; 
+console.log(day1+":"+hour)
+e.setData({
+	endDay:day1,
+	endHour:hour,
+	endminute:minute,
+	endSeconds:second
+})
 
 
 } 
@@ -807,5 +821,7 @@ module.exports = {
 	cancelOrder:cancelOrder,
 	getListByName:getListByName,
 	getTypeChildList:getTypeChildList,
-	getProductCount:getProductCount
+	getProductCount:getProductCount,
+	ShowCountDown:ShowCountDown,
+	setIntervalTims:setIntervalTims
 }

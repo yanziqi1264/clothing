@@ -25,24 +25,24 @@
           <view class="">
             <!-- 天 -->
             <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">01</view>
+               <view class="topbannertime-timer-num topbannertime-timer-num">{{endDay}}</view>
                <view class="topbannertime-timer-symbol topbannertime-timer-symbol">天</view> 
             </view>
             <!-- 时 -->
             <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">08</view>
+               <view class="topbannertime-timer-num topbannertime-timer-num">{{endHour}}</view>
                <view class="topbannertime-timer-symbol topbannertime-timer-symbol">时</view> 
             </view>
 
             <!-- 分 -->
             <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">16</view>
+               <view class="topbannertime-timer-num topbannertime-timer-num">{{endminute}}</view>
                <view class="topbannertime-timer-symbol topbannertime-timer-symbol">分</view> 
             </view>
 
             <!-- 秒 -->
            <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">46</view>
+               <view class="topbannertime-timer-num topbannertime-timer-num">{{endSeconds}}</view>
                <view class="topbannertime-timer-symbol topbannertime-timer-symbol">秒</view> 
             </view>
           </view>
@@ -60,18 +60,18 @@
     <view class="row1">
       <view class="goods-name">
         <view class="goods-name-view">
-          17秋冬新款女宽松大码休闲双面尼羊绒大衣休闲 双面尼羊绒大衣休闲 17秋冬新款女宽松大码休闲双面尼羊绒大衣休闲 双面尼羊绒大衣休闲
+         {{productInfo.productName}}
         </view>
       </view>
       <view class="goods-share">
         <view class="goods-share-relative">
           <image src="../../images/goods_detail_share.png"></image>
-          <view class="sharelabel">分享</view>
+          <button open-type="share"  class="sharelabel"><view>分享</view></button>
         </view>
       </view>
     </view>
     <view class="row2">
-      <view class="goods-price">780</view>
+      <view class="goods-price">{{productInfo.attributes.commodityoriginalprice}}</view>
     </view>
   </view>
   <!-- 月销售量 -->

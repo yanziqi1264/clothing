@@ -1,20 +1,36 @@
 // pages/myvault/index.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+   maindata:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+  	console.log("onLoad:我的金库")
+  	var that=this
+  var openId =wx.getStorageSync("sessionKey")
+   wx.request({
+		url: app.globalData.serverAddr + "/weixin/clothing/distribution/homePageData",
+		data: {
+			appId: app.globalData.appId,
+			openId:openId
+			
+		},
+		success: function(res) {
+			that.setData({maindata:res.data.data})
+		}
+	})
   
   },
+  
+  
   applyCrash: function () {
     wx.navigateTo({
       url: "/pages/apply-for-cash/index"
@@ -25,7 +41,11 @@ Page({
       url: "/pages/searchList/index"
     })
   },
-
+tomyfans:function(e){
+	   wx.navigateTo({
+      url: "/pages/myFans/index"
+    })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

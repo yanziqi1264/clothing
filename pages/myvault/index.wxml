@@ -6,7 +6,7 @@
       <view class="weui-flex">
         <view class="weui-flex-item weui-flex-item-block">
           <view class="font-50">
-            0
+            {{maindata.money==null ?0:maindata.money}}
           </view>
           <view class="font-28 padding-top-30">
             总财富(元)
@@ -21,16 +21,16 @@
       <view class="weui-flex" style="margin-top:50rpx">
         <view class="weui-flex-item weui-flex-item-block">
           <view class="font-28">
-            0
+           {{maindata.monthMoney==null ?0:maindata.monthMoney}}
           </view>
           <view class="font-28 padding-top-15">
             本月预估收益(元)
           </view>
         </view>
 
-        <view class="weui-flex-item weui-flex-item-block">
+        <view class="weui-flex-item weui-flex-item-block" bindtap="tomyfans">
           <view class="font-28">
-            0
+              {{maindata.totalFans==null ?0:maindata.totalFans}}
           </view>
           <view class="font-28 padding-top-15">
             本月新增粉丝(个)
@@ -41,11 +41,11 @@
   </view>
 
   <view class="weui-cells">
-    <view class="weui-cell">
+    <view class="weui-cell"  bindtap="tomyfans">
       <view class="weui-cell-primary">
         我的粉丝
       </view>
-      <view class="weui-num">20</view>
+      <view class="weui-num">  {{maindata.totalFans==null ?0:maindata.totalFans}}</view>
       <view class="weui-cell-ft"></view>
     </view>
 
@@ -53,7 +53,7 @@
       <view class="weui-cell-primary">
         历史总收益
       </view>
-      <view class="weui-num">20</view>
+      <view class="weui-num">  {{maindata.totalMoney==null ?0:maindata.totalMoney}}</view>
       <view class="weui-cell-ft"></view>
     </view>
 

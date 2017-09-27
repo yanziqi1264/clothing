@@ -24,7 +24,7 @@ Page({
 	}
 	
 	 	console.log('onLoad11111:')
-	common.getShopInfo(that,app.globalData.appId)
+	
     }catch(e){
     	console.log('onLoad:'+e)
     }
@@ -44,4 +44,9 @@ Page({
       url: "/pages/myvault/index"
     })
   },
+  toshopdetail:function(e){
+  	 wx.navigateTo({
+      url: "/pages/aboutBusiness/index"
+    })
+  }
 })

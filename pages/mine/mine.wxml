@@ -57,7 +57,7 @@
 
 <!-- 关于商家 -->
 
-  <view class="column-block">
+  <view class="column-block" bindtap="toshopdetail">
     <view class="column-block-a">
       <view class="fctlist-icon">
            <image style="width:36rpx; height:32rpx;" src="/images/business.png"></image>
@@ -70,53 +70,5 @@
       </view>
     </view>
   </view>
-  <!-- 商家信息 -->
-  <view class="business-container">
-    <view class="business-bar">
-      <view class="business-title">
-        商家信息
-      </view>
-      <view class="business-icon">
-  
-        <view class="wechat">
-        <contact-button 
-  type="contact" 
-  size="20"
-  session-from="weapp"
-> 联系客服
-</contact-button>
-       </view>
-      </view>
-
-    </view>
-    <view class="info1">
-      <view class="business-name-tip">
-        名称:
-      </view>
-      <view class="business-name">
-        {{shopInfo.name}}
-      </view>
-    </view>
-
-    <view class="info1">
-      <view class="business-name-tip">
-        电话:
-      </view>
-      <view class="business-name">
-        {{shopInfo.mobile}}
-      </view>
-    </view>
-
-    <view class="info1">
-      <view class="business-name-tip">
-        地址:
-      </view>
-      <view class="business-name">
-       {{shopInfo.address}}
-      </view>
-    </view>
-    <view style="margin-left:24rpx;margin-right:24rpx;margin-top:40rpx;">
-    <map id="map" show-location="true" include-points="{{includepoints}}" longitude="{{point.longitude}}" latitude="{{point.latitude}}" scale="18" markers="{{markers}}"  style="width: 100%; height: 200px;"></map>
-    </view>
-  </view>
+ 
 </view>

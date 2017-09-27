@@ -1,3 +1,5 @@
+var app = getApp()
+var common = require('../common.js')
 // pages/aboutBusiness/index.js
 Page({
 
@@ -12,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  common.getShopInfo(this,app.globalData.appId)
   },
 
   /**
