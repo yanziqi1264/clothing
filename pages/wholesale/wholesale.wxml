@@ -18,7 +18,7 @@
       <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for-items="{{toplist}}" wx:key="{{index}}">
           <swiper-item>
-            <image bindtap="toDetailsTap" data-id="{{item.id}}"   data-selltype="{{item.sellType}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
+            <image bindtap="toDetailsTap" data-goodid="{{item.id}}"   data-selltype="{{item.sellType}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
           </swiper-item>
         </block>
       </swiper>
@@ -84,7 +84,7 @@
     
      <block wx:for="{{pifaList}}" wx:key=" {{index}}" >
         
-      <view class="wholesale-item">
+      <view class="wholesale-item" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}" >
          <view >
           <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
          </view>
@@ -104,7 +104,7 @@
     <view class="wholesale-block">
        <block wx:for="{{linshouList}}" wx:key=" {{index}}" >
         
-      <view class="wholesale-item">
+      <view class="wholesale-item" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}" >
          <view >
           <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
          </view>
@@ -121,7 +121,7 @@
     <view class="goods-container">
       <view class="goods-box" wx:for="{{productlist}}"  wx:key="{{index}}" >
           <view class="goods-img ">
-            <image src="{{item.attributes.commoditycoverpic}} " class="goods-img" mode="aspectFill" bindtap="toDetailsTap" data-goodid="{{item.id}}"/>
+            <image src="{{item.attributes.commoditycoverpic}} " class="goods-img" mode="aspectFill"bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}" />
           </view>
           <view class="goods-info">
             <view class="goods-info-brand" bindtap="toDetailsTap" data-goodid="{{item.id}}">

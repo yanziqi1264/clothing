@@ -111,7 +111,7 @@ Page({
 	toDetailsTap: function(e) {
 	
 		var sellType = e.currentTarget.dataset.selltype
-		var goodid = e.currentTarget.dataset.id
+		var goodid = e.currentTarget.dataset.goodid
 			console.log("tapBanner###########打印当前的商品详情" + sellType);
 		if(sellType==1){
 			wx.navigateTo({
@@ -145,14 +145,7 @@ Page({
 			swiperCurrent: e.detail.current
 		})
 	},
-	tapBanner: function(e) {
-		if(e.currentTarget.dataset.id != 0) {
-			console.log("tapBanner###########打印当前的商品详情" + e.currentTarget.dataset.id);
-			wx.navigateTo({
-				url: "/pages/goods-detail/index"
-			})
-		}
-	},
+	
 
 	changeIndicatorDots: function(e) {
 		this.setData({

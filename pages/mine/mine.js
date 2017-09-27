@@ -44,6 +44,13 @@ Page({
       url: "/pages/myvault/index"
     })
   },
+  myCoupon:function(e){
+  	
+  	 wx.navigateTo({
+      url: "/pages/myyouhuiquan/index"
+    })
+  },
+  
   toshopdetail:function(e){
   	 wx.navigateTo({
       url: "/pages/aboutBusiness/index"

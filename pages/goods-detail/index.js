@@ -12,21 +12,7 @@ Page({
     swiperCurrent:0,
     productInfo:{},
     detailPics:[
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      }
+     
     
     ]
   },
