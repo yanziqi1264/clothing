@@ -7,7 +7,9 @@
     "pages/myvault/index",
     "pages/apply-for-cash/index",
     "pages/mine/mine",
-
+"pages/myapply/index",
+"pages/myhistory/index",
+"pages/myincome/index",
     "pages/aboutBusiness/index",
     "pages/limit-goods/index",
     "pages/order-list/index",

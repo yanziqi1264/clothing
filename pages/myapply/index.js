@@ -9,38 +9,23 @@ Page({
     pageSize:10,
     
   },
-  statusTap: function (e) {
-    var curType = e.currentTarget.dataset.index;
-    this.data.currentTpye = curType
-    this.setData({
-      currentTpye: curType,
-      currentPage:1,
-       fanslist:[],
-    });
-    if(curType==0){
-    	this.getFans(1,this.data.currentPage,10)
-    }else{
-    	  	this.getFans(2,this.data.currentPage,10)
-    }
-    this.onShow();
-  },
+ 
   onLoad: function (options) {
   
- 	this.getFans(1,this.data.currentPage,10)
+ 	this.getRecord(this.data.current1Page,10)
 
   },
-  getFans:function(type,currentPage,pageSize){
+  getRecord:function(currentPage,pageSize){
   	console.log("fans")
   	 	var that=this
   	 var openId =wx.getStorageSync("sessionKey")
   	 wx.request({
-		url: app.globalData.serverAddr + "/weixin/clothing/distribution/fans",
+		url: app.globalData.serverAddr + "/weixin/clothing/cashwithdrawal/getList",
 		data: {
 			appId: app.globalData.appId,
 			openId:openId,
 			currentPage:currentPage,
-			pageSize:pageSize,
-			levelFlag:type
+			pageSize:pageSize
 			
 		},
 		success: function(res) {

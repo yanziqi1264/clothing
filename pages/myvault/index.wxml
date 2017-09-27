@@ -66,17 +66,17 @@
       <view class="weui-num">20</view>
       <view class="weui-cell-ft"></view>
     </view>
-     <view class="weui-cell">
+     <view class="weui-cell" bindtap="toapplyrecord">
       <view class="weui-cell-primary">
       提现记录
       </view>
       <view class="weui-num">20</view>
       <view class="weui-cell-ft"></view>
     </view>
-    <view>
-       <view class="weui-icon-info-circle">
+    <view  bindtap="daiyantips">
+       <view class="weui-icon-info-circle" >
        </view>
-       <view class="rule">代言规则</view>
+       <view class="rule"  >代言规则</view>
     </view>
   </view>
   <view class="weui-btn-area">

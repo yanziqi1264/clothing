@@ -16,23 +16,8 @@ Page({
     endHour:0,
     endminute:0,
     endSeconds:0,
+    inteverMethod:"",
     detailPics: [
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      },
-      {
-        image: "/images/goods_detail_img01.png"
-      }
-
     ]
   },
   swiperchange: function (e) {
@@ -57,6 +42,14 @@ Page({
   console.log('onLoad：goodid='+goodid)
   this.getProductInfo(that,goodid)
   },
+  onHide:function(){
+  	console.log('onHide')
+  	clearInterval(this.data.inteverMethod)
+  	
+  },
+  onShow:function(){
+  	
+  },
  getProductInfo:function(e,id){
  	
  	wx.request({
@@ -75,11 +68,14 @@ Page({
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
 				}
-				e.setData({
+				
+				var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+				console.log("method:"+method)
+					e.setData({
 					detailPics: picarrays,
-					productInfo: res.data.data
+					productInfo: res.data.data,
+					inteverMethod:method
 				});
-				common.setIntervalTims(e,res.data.data.endTime,1000)
 			}
 
 		}
@@ -92,25 +88,15 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+console.log("onUnload:")
+  	clearInterval(this.data.inteverMethod)
   },
 
   /**

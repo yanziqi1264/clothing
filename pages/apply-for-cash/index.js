@@ -1,4 +1,5 @@
 // pages/apply-for-cash/index.js
+var app = getApp()
 Page({
 
   /**
@@ -62,5 +63,48 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  formSubmit:function(e){
+  	console.log( e.detail.value)
+  	var money= e.detail.value.money
+  	if(money%100 !=0){
+  		return
+  	}
+  	var weixinid= e.detail.value.weixinid	
+  	var mobile= e.detail.value.mobile	
+  	 var openId =wx.getStorageSync("sessionKey")
+  	wx.request({
+		url: app.globalData.serverAddr + "/weixin/clothing/cashwithdrawal/forApplay",
+		data: {
+			appId: app.globalData.appId,
+			openId:openId,
+			money:money,
+			mobile:mobile,
+			weixinid:weixinid
+		},
+		success: function(res) {
+			if(res.data.success) {
+
+				var detailPicsStr = res.data.data.attributes.commodityshowpics;
+				var detailPicsArr = detailPicsStr.split(";");
+				var picarrays = new Array();
+				for(var i = 0; i < detailPicsArr.length; i++) {
+					var pic = {};
+					pic.image = detailPicsArr[i].split(",")[0];
+					picarrays.push(pic);
+				}
+				
+				var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+				console.log("method:"+method)
+					e.setData({
+					detailPics: picarrays,
+					productInfo: res.data.data,
+					inteverMethod:method
+				});
+			}
+
+		}
+	})
+  	
   }
 })

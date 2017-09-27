@@ -1,16 +1,17 @@
 <view class="container">
-    <view class="status-box">
+  <!--   <view class="status-box">
         <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
             {{item}}
             <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
         </view>
     </view>
-    <!-- -->
+     -->
+     
     <view class="no-order" hidden="{{fanslist.length >0 ? true : false}}">
         <image src="/images/no-order.png" class="no-order-img"></image>
-        <view class="text">亲~什么都没有,赶紧去圈粉吧!</view>
+        <view class="text">亲~暂无提现记录!</view>
     </view>
-    
+   
     <view class="order-list">
     <block wx:for="{{fanslist}}" wx:key="unique">
        <view class="a-order">

@@ -723,7 +723,7 @@ function cancelOrder(e,payId,status){
 }
 
 function setIntervalTims(e,stringTime,interval){
-	setInterval(function(){
+	return setInterval(function(){
 		ShowCountDown(e,stringTime) 
 		
 	},interval)
