@@ -1,7 +1,6 @@
 
 <view class="page">
-  <scroll-view scroll-y="true" class="scroll-area">
-    <!-- 加搜索框-->
+   <!-- 加搜索框-->
     <view class="weui-search-bar" id="searchBar">
             <form class="weui-search-bar-form">
                 <view class="weui-search-bar-box">
@@ -14,11 +13,13 @@
             </view>
     </view>
     <!-- 搜索框结束 -->
+  <scroll-view scroll-y="true" class="scroll-area">
+ 
     <view class="swiper-container">
       <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for-items="{{toplist}}" wx:key="{{index}}">
           <swiper-item>
-            <image bindtap="toDetailsTap" data-goodid="{{item.id}}"   data-selltype="{{item.sellType}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
+            <image bindtap="toDetailsTap" data-goodid="{{item.id}}"   data-selltype="{{item.sellType}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" width="750rpx" height="350rpx" />
           </swiper-item>
         </block>
       </swiper>
@@ -28,6 +29,16 @@
         </block>
       </view>
     </view>
+
+     <view class="big-logo-new">
+            <block wx:for-items="{{logos}}">
+                <view class="logoinfo-new">
+                    <image style="width:100rpx; height: 100rpx;" src="{{item.image}}" mode="aspectFit"/>
+                    <text class="logotext-new">{{item.title}}</text>
+                </view>
+            </block>
+      </view>
+
     <view class="big-logo">
        <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
           <image style="width:94rpx; height:90rpx;" src="/images/vault.png" mode="aspectFit" />
@@ -58,7 +69,7 @@
   <view class="paddingBottom-20">
     <view class="weui-cell">
      <view class="weui-cell-primary">拼团好货</view>
-     <view class="weui-cell-ft"></view>
+     <view class="weui-cell-ft">查看更多</view>
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">
@@ -77,7 +88,7 @@
   <view class="paddingBottom-20">
     <view class="weui-cell">
      <view class="weui-cell-primary">批发</view>
-     <view class="weui-cell-ft"></view>
+     <view class="weui-cell-ft">查看更多</view>
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">
@@ -98,7 +109,7 @@
 <view class="paddingBottom-20">
     <view class="weui-cell">
      <view class="weui-cell-primary">零售</view>
-     <view class="weui-cell-ft"></view>
+     <view class="weui-cell-ft">查看更多</view>
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">

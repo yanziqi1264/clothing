@@ -2,7 +2,6 @@
   width: 750rpx;
   position: relative;
 }
-
 .swiper_box {
   width: 100%;
   height: 348rpx;
@@ -341,4 +340,28 @@ swiper-item image {
 .paddingBottom-20{
   padding-bottom: 20rpx;
   background: #efefef;
+}
+
+
+
+.big-logo-new{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.logoinfo-new{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:150rpx; 
+	height: 150rpx; 
+  margin-top: 10rpx;
+}
+
+.logotext-new{
+	color: #aaa;
+	font-size: 24rpx;
+  margin-top: 10rpx;
 }

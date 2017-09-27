@@ -14,6 +14,41 @@ Page({
 		selectCurrent: 0,
 		scrollTop: "0",
 		loadingMoreHidden: true,
+    
+    logos: [{
+      image: "../../images/logo7.png",
+      title: "京东超市"
+    }, {
+      image: "../../images/logo8.png",
+      title: "全球购"
+    }, {
+      image: "../../images/logo9.png",
+      title: "服装城"
+    }, {
+      image: "../../images/logo10.png",
+      title: "京东生鲜"
+    }, {
+      image: "../../images/logo7.png",
+      title: "京东到家"
+    }, {
+      image: "../../images/logo8.png",
+      title: "充值中心"
+    }, {
+      image: "../../images/logo9.png",
+      title: "京东金融"
+    }, {
+      image: "../../images/logo10.png",
+      title: "物流查询"
+    }, {
+      image: "../../images/logo7.png",
+      title: "领券"
+    }, {
+      image: "../../images/logo8.png",
+      title: "我的关注"
+    }
+    ],
+    
+
 		swipers: [{
 			image: "/images/retail01.png",
 			goodsId: "1"
