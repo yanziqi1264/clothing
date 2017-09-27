@@ -62,24 +62,14 @@
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">
+        <block wx:for="{{pingtuanList}}" wx:key=" {{index}}" >
+        
       <view class="wholesale-item">
          <view >
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣1</view>
+          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commodityshowpics}}" mode="aspectFit"></image>
          </view>
       </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-           <view>大衣2</view>
-         </view>
-      </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣2</view>
-         </view>
-      </view>
+      </block>
     </view>
     </view>
   </view>
@@ -91,24 +81,15 @@
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">
+    
+     <block wx:for="{{pifaList}}" wx:key=" {{index}}" >
+        
       <view class="wholesale-item">
          <view >
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣1</view>
+          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
          </view>
       </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-           <view>大衣2</view>
-         </view>
-      </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣2</view>
-         </view>
-      </view>
+      </block>
     </view>
     </view>
   </view>
@@ -121,24 +102,14 @@
     </view>
     <view style="width:100%;background:#fff">
     <view class="wholesale-block">
+       <block wx:for="{{linshouList}}" wx:key=" {{index}}" >
+        
       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣1</view>
+         <view >
+          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
          </view>
       </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-           <view>大衣2</view>
-         </view>
-      </view>
-       <view class="wholesale-item">
-         <view>
-          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
-          <view>大衣2</view>
-         </view>
-      </view>
+      </block>
     </view>
     </view>
   </view>

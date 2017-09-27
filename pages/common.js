@@ -96,6 +96,7 @@ function getProductListByType(e, type, currentPage, pageSize,handtype) {
 				}
 				productlist.push(dataArray[i])
 			}
+			
 			e.setData({
 				currentPage: currentPage,
 				productlist: productlist,
@@ -183,14 +184,15 @@ function getTopProductListByType(e, appId, type) {
 }
 //获取热门产品列表
 
-function getHotProductListByType(e, appId, type, currentPage, pagesize) {
+function getHotProductListByType(e, appId, type, currentPage, pagesize,sellType) {
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.recommendproductlistUrl,
 		data: {
 			appId: appId,
 			rootTypeId: type,
 			currentPage: currentPage,
-			pageSize: pagesize
+			pageSize: pagesize,
+			sellType:sellType
 		},
 		success: function(res) {
 			console.log(res.data)
@@ -804,5 +806,6 @@ module.exports = {
 	submitPayOrder:submitPayOrder,
 	cancelOrder:cancelOrder,
 	getListByName:getListByName,
-	getTypeChildList:getTypeChildList
+	getTypeChildList:getTypeChildList,
+	getProductCount:getProductCount
 }

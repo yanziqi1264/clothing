@@ -33,60 +33,9 @@ Page({
 		toplist: [],
 		typelist: [],
 		productlist: [],
-		logos: [{
-			id: "1",
-			image: "/images/spring.png",
-			title: "春装"
-		}, {
-			id: "1",
-			image: "/images/summer.png",
-			title: "夏装"
-		}, {
-			id: "1",
-			image: "/images/autumn.png",
-			title: "秋装"
-		}, {
-			id: "1",
-			image: "/images/winter.png",
-			title: "冬装"
-		}],
-		goods: [{
-				image: '/images/retail_goods01.png',
-				id: "1",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			},
-			{
-				image: '/images/retail_goods02.png',
-				id: "2",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			},
-			{
-				image: '/images/retail_goods01.png',
-				id: "3",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			},
-			{
-				image: '/images/retail_goods02.png',
-				id: "4",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			},
-			{
-				image: '/images/retail_goods01.png',
-				id: "5",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			},
-			{
-				image: '/images/retail_goods02.png',
-				id: "6",
-				name: "17秋冬新款女宽松大码休闲双面尼羊 绒大衣休闲双面尼羊绒大衣休闲",
-				minPrice: "780"
-			}
-		]
+		pifaList:[],
+		linshouList:[]
+		
 
 	},
 
@@ -99,15 +48,58 @@ Page({
 		var that = this
 		common.getTopProductListByType(that, app.globalData.appId, 0);
 
-		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,2);
+		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,1)
+		this.getProductListByType(that,41,1,'pifa')
+		this.getProductListByType(that,42,1,'linshou')
+		
 	},
-
   searchTap: function (e) {
       wx.navigateTo({
         url: "/pages/searchList/index"
       })
   },
+//根据模块获取产品列表
+ getProductListByType:function(e, type,sellType,flag) {
+	
+	wx.request({
+		url: app.globalData.serverAddr + app.globalData.recommendproductlistUrl,
+		data: {
+			appId:  app.globalData.appId,
+			rootTypeId: type,
+			currentPage: 1,
+			pageSize: 3,
+			sellType:sellType
+		},
+		success: function(res) {
+			console.log(res.data)
+			if(res.data.success) {
+				var productlist=[]
+				var dataArray = res.data.data
+				for(var i = 0; i < dataArray.length; i++) {
+					dataArray[i].count = common.getProductCount(dataArray[i].id)
+					var commoditycoverpic = dataArray[i].attributes.commoditycoverpic;
+					if(commoditycoverpic) {
+						commoditycoverpic = commoditycoverpic.split(",")[0]
+						dataArray[i].attributes.commoditycoverpic = commoditycoverpic
+					}
+					productlist.push(dataArray[i])
+				}
+				if(flag=='pifa'){
+					e.setData({
+					pifaList: productlist,
+				})
+				}else{
+						e.setData({
+					linshouList: productlist,
+				})
+				}
+				
 
+			}
+
+		}
+	})
+},
 	//进入产品列表
 	gotogoods: function(e) {
 		var typeid = e.currentTarget.dataset.typeid
@@ -194,7 +186,7 @@ Page({
         mask: true,
         complete:function(option){
         	console.log("获取产品"+that.data.currentPage)
-        	common.getHotProductListByType(that, app.globalData.appId, app.globalData.toobarIds[0], currentpage+1, pagesize);
+        	common.getHotProductListByType(that, app.globalData.appId, 0, currentpage+1, pagesize,1);
         					setTimeout(function() {
 				wx.hideLoading();
 			}, 1000);
