@@ -1,7 +1,7 @@
 var app = getApp()
 
 //获取模块列表
-function getTypeList(e, appId, typeId, currentPage, pageSize, type) {
+function getTypeList(e, appId, typeId, currentPage, pageSize, type,callback) {
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.typelistUrl,
 		data: {
@@ -17,7 +17,6 @@ function getTypeList(e, appId, typeId, currentPage, pageSize, type) {
 				e.setData({
 					typelist: res.data.data
 				});
-				if(type == 1) {
 					//查询分类，并且查询第一个分类下的商品
 					for(var i = 0; i < e.data.typelist.length; i++) {
 						if(i == 0) {
@@ -26,13 +25,40 @@ function getTypeList(e, appId, typeId, currentPage, pageSize, type) {
 							})
 							break
 						}
-
 					}
 					if( e.data.typelist.length ==0){
 						e.data.curNav =typeId
 					}
-					getProductListByType(e, e.data.curNav, currentPage, 10)
-				}
+					//getProductListByType(e, e.data.curNav, currentPage, 10)
+					if(typeof(callback)=="function"){
+						callback(e, appId, typeId, currentPage, pageSize, type)
+					}
+					
+
+			}
+
+		}
+	})
+}
+
+//获取模块列表
+function getTypeChildList(e, appId, typeId, currentPage, pageSize) {
+	wx.request({
+		url: app.globalData.serverAddr + app.globalData.typelistUrl,
+		data: {
+			appId: appId,
+			parentId: typeId,
+			currentPage: currentPage,
+			pageSize: pageSize
+		},
+		success: function(res) {
+			console.log(res.data)
+			if(res.data.success) {
+
+				e.setData({
+					typechildlist: res.data.data
+				});
+				
 
 			}
 
@@ -777,5 +803,6 @@ module.exports = {
 	getOrderInfo:getOrderInfo,
 	submitPayOrder:submitPayOrder,
 	cancelOrder:cancelOrder,
-	getListByName:getListByName
+	getListByName:getListByName,
+	getTypeChildList:getTypeChildList
 }

@@ -30,6 +30,7 @@ Page({
     currentPage:1,
     pageSize:10,
     typelist:[],
+    typechildlist:[],
 	productlist:[],
 	open:false,
 	topload:false,
@@ -76,7 +77,16 @@ Page({
   onLoad: function (e) {
  	console.log('onLoad'+e.typeid)
  	 var that = this
-	common.getTypeList(that,app.globalData.appId,e.typeid,1,10,1)
+ 	 var typeId= e.typeid
+ 	 if(typeId ==null){
+ 	 	typeId=0
+ 	 	
+ 	 }
+	common.getTypeList(that,app.globalData.appId,typeId,1,10,1,function(e,e1){
+		common.getTypeChildList(that,app.globalData.appId,e.data.curNav,1,10)
+	})
+	
+	
   },
  onShow:function(e){
  		
