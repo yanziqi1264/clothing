@@ -776,5 +776,6 @@ module.exports = {
 	getOrderListByType:getOrderListByType,
 	getOrderInfo:getOrderInfo,
 	submitPayOrder:submitPayOrder,
-	cancelOrder:cancelOrder
+	cancelOrder:cancelOrder,
+	getListByName:getListByName
 }

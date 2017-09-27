@@ -7,7 +7,7 @@
     "pages/myvault/index",
     "pages/apply-for-cash/index",
     "pages/mine/mine",
-    
+
     "pages/aboutBusiness/index",
     "pages/limit-goods/index",
     "pages/order-list/index",
@@ -36,7 +36,7 @@
       "iconPath": "images/un_wholesale.png",
       "selectedIconPath": "images/on_wholesale.png"
     },{
-      "pagePath": "pages/retail/retail",
+      "pagePath": "pages/classify/index",
       "text": "分类",
       "iconPath": "images/un_retail.png",
       "selectedIconPath": "images/on_retail.png"

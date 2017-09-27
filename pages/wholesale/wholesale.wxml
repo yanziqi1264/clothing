@@ -18,7 +18,7 @@
       <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for-items="{{toplist}}" wx:key="{{index}}">
           <swiper-item>
-            <image bindtap="tapBanner" data-id="{{item.id}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
+            <image bindtap="toDetailsTap" data-id="{{item.id}}"   data-selltype="{{item.sellType}}" class="swiper-item" src="{{item.attributes.commoditycoverpic}}" mode="aspectFill" width="750rpx" height="350rpx" />
           </swiper-item>
         </block>
       </swiper>

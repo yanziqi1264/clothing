@@ -97,10 +97,9 @@ Page({
 })
 		console.log('onLoad')
 		var that = this
-		common.getTopProductListByType(that, app.globalData.appId, app.globalData.toobarIds[0]);
+		common.getTopProductListByType(that, app.globalData.appId, 0);
 
-		common.getTypeList(that, app.globalData.appId, app.globalData.toobarIds[0], 1, 4)
-		common.getHotProductListByType(that, app.globalData.appId, app.globalData.toobarIds[0], currentpage, pagesize,2);
+		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,2);
 	},
 
   searchTap: function (e) {
@@ -118,10 +117,25 @@ Page({
 	},
 
 	toDetailsTap: function(e) {
-		var goodid = e.currentTarget.dataset.goodid
-		wx.navigateTo({
-			url: "../goods-detail/index?goodid=" + goodid
-		})
+	
+		var sellType = e.currentTarget.dataset.selltype
+		var goodid = e.currentTarget.dataset.id
+			console.log("tapBanner###########打印当前的商品详情" + sellType);
+		if(sellType==1){
+			wx.navigateTo({
+				url: "../goods-detail/index?goodid=" + goodid
+			})
+		}else if(sellType==2){
+				wx.navigateTo({
+				url: "../goods-detail/index?goodid=" + goodid
+			})
+		}else if(sellType==3){
+				wx.navigateTo({
+				url: "../limit-goods/index?goodid=" + goodid
+			})
+		}
+		
+	
 	},
 	addToShoppingCart: function(e) {
 		var that = this
