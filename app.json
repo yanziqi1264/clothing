@@ -1,12 +1,13 @@
 {
   "pages":[
+  "pages/wholesale/wholesale",
   "pages/retail/retail",
     "pages/myFans/index",
     "pages/myspell/index",
     "pages/myvault/index",
     "pages/apply-for-cash/index",
     "pages/mine/mine",
-    "pages/wholesale/wholesale",
+    
     "pages/aboutBusiness/index",
     "pages/limit-goods/index",
     "pages/order-list/index",
@@ -30,7 +31,7 @@
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [{
-      "pagePath": "pages/retail/retail",
+      "pagePath": "pages/wholesale/wholesale",
       "text": "首页",
       "iconPath": "images/un_wholesale.png",
       "selectedIconPath": "images/on_wholesale.png"

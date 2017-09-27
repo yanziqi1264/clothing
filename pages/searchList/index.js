@@ -1,12 +1,14 @@
 // pages/searchList/index.js
 var WxSearch = require('../../wxSearch/wxSearch.js')
+var common = require('../common.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+  currentPage:1,
+  pageSize:10
   },
 
   /**
@@ -16,13 +18,14 @@ Page({
     console.log('onLoad')
     var that = this
     //初始化的时候渲染wxSearchdata
-    WxSearch.init(that,60, ['手机壳', '眉笔', '牛仔裤', '小白鞋']);
-    WxSearch.initMindKeys(['手机壳']);
+    WxSearch.init(that,60, ['上衣', '外套', '羊绒', '棉衣']);
+    WxSearch.initMindKeys(['上衣']);
   },
   wxSearchFn: function (e) {
     var that = this
     WxSearch.wxSearchAddHisKey(that);
-
+     
+  common.getListByName(that,that.data.wxSearchData.value,that.data.currentPage+1,that.data.pageSize)
   },
   wxSearchInput: function (e) {
     var that = this

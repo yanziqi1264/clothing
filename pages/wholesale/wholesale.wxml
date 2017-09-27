@@ -29,14 +29,60 @@
       </view>
     </view>
     <view class="big-logo">
-      <block wx:for-items="{{typelist}}" wx:key="{{index}}">	
-        <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
-          <text class="season-text">{{item.name}}</text>
+       <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="/images/vault.png" mode="aspectFit" />
+          <text class="season-text">我的金库</text>
         </view>
-      </block>
+         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="/images/fightgroups.png" mode="aspectFit" />
+          <text class="season-text">我的拼团</text>
+        </view>
+         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
+          <text class="season-text">我的订单</text>
+        </view>
+         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
+          <text class="season-text">分享赚钱</text>
+        </view>
+         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="/images/un_wholesale.png" mode="aspectFit" />
+          <text class="season-text">批发</text>
+        </view>
+         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
+          <image style="width:94rpx; height:90rpx;" src="/images/un_retail.png" mode="aspectFit" />
+          <text class="season-text">零售</text>
+        </view>
     </view>
-
+ <!-- 批发 -->
+  <view class="paddingBottom-20">
+    <view class="weui-cell">
+     <view class="weui-cell-primary">拼团好货</view>
+     <view class="weui-cell-ft"></view>
+    </view>
+    <view style="width:100%;background:#fff">
+    <view class="wholesale-block">
+      <view class="wholesale-item">
+         <view >
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣1</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view>
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+           <view>大衣2</view>
+         </view>
+      </view>
+       <view class="wholesale-item">
+         <view>
+          <image style="height:182rpx;width:182rpx" src="../../images/order_list01.png" mode="aspectFit"></image>
+          <view>大衣2</view>
+         </view>
+      </view>
+    </view>
+    </view>
+  </view>
   <!-- 批发 -->
   <view class="paddingBottom-20">
     <view class="weui-cell">

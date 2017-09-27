@@ -79,6 +79,54 @@ function getProductListByType(e, type, currentPage, pageSize,handtype) {
 
 	})
 }
+
+/**
+ * 根据销售类型
+ * @param {Object} e
+ * @param {Object} type
+ * @param {Object} currentPage
+ * @param {Object} pageSize
+ * @param {Object} handtype
+ */
+function getProductListByClassify(e, classify, currentPage, pageSize,handtype) {
+	
+	wx.request({
+		url: app.globalData.serverAddr + app.globalData.productlistUrl,
+		data: {
+			appId: app.globalData.appId,
+			typeId: type,
+			currentPage: currentPage,
+			pageSize: pageSize
+		},
+		success: function(res) {
+ 			
+			if(handtype ==1){
+ 				currentPage=1
+ 			}
+			var productlist = e.data.productlist
+			if(type == 1){
+				productlist=[]
+			}
+			
+			var dataArray = res.data.data
+			for(var i = 0; i < dataArray.length; i++) {
+				dataArray[i].count = getProductCount(dataArray[i].id)
+				var commoditycoverpic = dataArray[i].attributes.commoditycoverpic;
+				if(commoditycoverpic) {
+					commoditycoverpic = commoditycoverpic.split(",")[0]
+					dataArray[i].attributes.commoditycoverpic = commoditycoverpic
+				}
+				productlist.push(dataArray[i])
+			}
+			e.setData({
+				currentPage: currentPage,
+				productlist: productlist,
+				open: false
+			});
+		}
+
+	})
+}
 //获取顶部产品列表
 
 function getTopProductListByType(e, appId, type) {
@@ -665,6 +713,55 @@ var nnerHTML = "脚本之家提示距离"+year+"年"+month+"月"+day+"日还有�
 
 
 } 
+
+
+function getSearchHistory(){
+	
+	
+	return wx.getStorageSync("seachrList")
+}
+
+function addSearchHistory(name){
+	var seachrList =getSearchHistory()
+	if(null==seachrList){
+		seachrList =[]
+	}
+	var isExists=false
+	for(var i =0;i<seachrList.length;i++){
+		if(name == seachrListp[i].name){
+			seachrListp[i].time = new Date()
+			isExists = true
+		}
+		
+		
+	}
+	if(!isExists){
+		var hist = {name:name,time:new Date()}
+		seachrListp.push(hist)
+	}else{
+		 seachrListp.sort(function(a,b){
+            return a.time-b.time});
+	}
+	
+}
+
+function getListByName(e,name,currentPage,pageSize){
+	wx.request({
+		url: app.globalData.serverAddr + app.globalData.getListByName,
+		data: {
+			appId:app.globalData.appId,
+			name:name,
+			currentPage:currentPage,
+			pageSize:pageSize
+
+		},
+		success: function(res) {
+			
+			}
+		
+	})
+	
+}
 module.exports = {
 	getTopProductListByType: getTopProductListByType,
 	getHotProductListByType: getHotProductListByType,

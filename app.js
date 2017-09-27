@@ -80,12 +80,13 @@ App({
     toobarIds:[41,42],
     sessionKey:null,
     productUrl:"/weixin/commodity/clothing/getCommodityById",
-    shopUrl:"/weixin/storeMessage/clothing/getMessage",
+    shopUrl:"/weixin/storeMessage/getMessage",
     saveOrder:"/weixin/pay/order/clothing/placeOrder",
 	productlistUrl:"/weixin/commodityType/clothing/getCommodityList",
 	orderlistUrl:"/weixin/pay/order/clothing/getOrderList",
 	orderinfoUrl:"/weixin/pay/order/clothing/getOrderById",
 	cancelorderUrl:"/weixin/pay/order/clothing/cancelOrder",
+	getListByName:"/weixin/commodityType/clothing/getList",
 	shareOpenId:""
 	
   }
