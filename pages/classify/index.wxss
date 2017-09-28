@@ -204,17 +204,16 @@
 }
 .weui-flex-item {
   background: #fff;
-  width:150rpx;
-  height:150rpx;
+  width:147rpx;
   background-color: #fff;
   overflow: hidden;
-  margin-bottom: 24rpx;
+  margin-bottom:30rpx;
   text-align: center;
 }
 
 .bg {
   border: 1rpx solid #999;
-  margin: 5rpx 5rpx;
+  margin: 10rpx 5rpx;
 }
 
 .product-img {

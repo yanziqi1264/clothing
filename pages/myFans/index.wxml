@@ -26,7 +26,8 @@
      -->
      <view class="fans-list">
          <view class="a-fanitem">
-         
+            <view>
+            </view>
          
          </view>
      
