@@ -71,7 +71,9 @@ Page({
 		productlist: [],
 		pifaList:[],
 		linshouList:[],
-		typechildlist2:[]
+		typechildlist2:[],
+		pingtuanList:[],
+		listcount:0
 		
 
 	},
@@ -84,11 +86,12 @@ Page({
 		console.log('onLoad')
 		var that = this
 		common.getTopProductListByType(that, app.globalData.appId, 0)
-		common.getTypeChildList(that, app.globalData.appId, 41, 1, 4,1)
-		common.getTypeChildList(that, app.globalData.appId, 42, 1, 4,2)
+		//common.getTypeChildList(that, app.globalData.appId, 41, 1, 4,1)
+		//common.getTypeChildList(that, app.globalData.appId, 42, 1, 4,2)
 		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,1)
-		this.getProductListByType(that,41,1,'pifa')
-		this.getProductListByType(that,42,1,'linshou')
+		//this.getProductListByType(that,41,1,'pifa')
+		//this.getProductListByType(that,42,1,'linshou')
+		//this.getProductListByType(that,0,3,'tuangou')
 		
 	},
   searchTap: function (e) {
@@ -126,10 +129,15 @@ Page({
 					e.setData({
 					pifaList: productlist,
 				})
-				}else{
+				}else if(flag=='linshou'){
 						e.setData({
 					linshouList: productlist,
 				})
+				}else{
+						e.setData({
+					pingtuanList: productlist,
+				})
+					
 				}
 				
 

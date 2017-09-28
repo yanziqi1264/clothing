@@ -15,7 +15,6 @@ page {
 }
 
 .empty-view {
-  display: none;
 }
 
 .container {

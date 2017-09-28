@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 购物车为空页面 -->
-  <view class="empty-view">
+  <view class="empty-view" hidden="{{list.length >0 ? true : false}}" >
     <view class="title-box">
       购物车空空如也～
     </view>

@@ -12,13 +12,15 @@ Page({
     duration: 1000,
     swiperCurrent: 0,
     productInfo:{},
+    endTime:"",
     endDay:0,
     endHour:0,
     endminute:0,
     endSeconds:0,
     inteverMethod:"",
-    detailPics: [
-    ],
+    detailPics: [],
+    isFinished:false,
+    parentOrderId:null,
     statusType: ["图文详情", "产品参数", "相关推荐"],
     currentTpye: 0,
     tabClass: ["", "", "", ""]
@@ -39,10 +41,22 @@ Page({
    */
   onLoad: function (options) {
   var goodid =options.goodid
-  	console.log('options.shareOpenId:'+options.shareOpenId)
-  	if(app.globalData.shareOpenId != null){
+ 
+ var flag =options.flag
+ 
+ if(flag == 1){
+ 	//团购分享
+ 	var parentOrderId =options.goodid
+ 	if(null !=parentOrderId){
+ 	this.setData({parentOrderId:parentOrderId})
+ }
+ }console.log('onLoad：options.shareOpenId1='+app.globalData.shareOpenId)
+ console.log('onLoad：options.shareOpenId2='+(app.globalData.shareOpenId==null))
+  console.log('onLoad：options.shareOpenId3='+(options.shareOpenId!=null))
+  if(app.globalData.shareOpenId == null &&options.shareOpenId!=null){
+  	console.log('onLoad：options.shareOpenId4='+options.shareOpenId)
   		app.globalData.shareOpenId =options.shareOpenId
-  	}
+  }
   	
   var that = this
   console.log('onLoad：goodid='+goodid)
@@ -74,13 +88,19 @@ Page({
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
 				}
-				
-				var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
+				var nowDate= new Date()
+				if(endDate-nowDate.getTime()>0){
+					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+				}	else{
+					e.setData({isFinished:true})
+				}
 				console.log("method:"+method)
 					e.setData({
 					detailPics: picarrays,
 					productInfo: res.data.data,
-					inteverMethod:method
+					inteverMethod:method,
+					endTime:res.data.data.endTime
 				});
 			}
 
@@ -131,7 +151,7 @@ console.log("onUnload:")
     }
     return {
       title: that.data.productInfo.productName,
-      path: '/pages/limit-goods/index?shareOpenId='+openId+"&goodid="+that.data.productInfo.id,
+      path: '/pages/limit-goods/index?flag=2&shareOpenId='+openId+"&goodid="+that.data.productInfo.id,
       success: function(res) {
         // 转发成功
       },

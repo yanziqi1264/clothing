@@ -1,9 +1,16 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/wholesale/wholesale",
     "pages/myFans/index",
     "pages/limit-goods/index",
     "pages/classify/index",
+=======
+  "pages/wholesale/wholesale",
+    "pages/limit-goods/index",
+    "pages/classify/index",
+    
+>>>>>>> 822fde2beb769b33c1656685aa8dc85478456d6d
     "pages/productList/index",
     "pages/myFans/index",
     "pages/retail/retail",
@@ -16,7 +23,6 @@
     "pages/myhistory/index",
     "pages/myincome/index",
     "pages/aboutBusiness/index",
-    "pages/limit-goods/index",
     "pages/order-list/index",
     "pages/myyouhuiquan/index",
     "pages/shopcart/shopcart",
