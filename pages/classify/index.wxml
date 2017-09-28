@@ -13,7 +13,7 @@
           <view class="product-view">
            <block wx:for="{{typechildlist}}" wx:key="unique" wx:for-index="idx2">
             <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
-              <image src="{{item.realpath}}" mode="scaleToFill" class="product-img"></image>
+              <image src="{{item.realPath}}" mode="scaleToFill" class="product-img"></image>
               <view class="product-title">{{item.name}}</view>
             </view>
  	</block>
