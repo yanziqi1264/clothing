@@ -18,10 +18,12 @@ Page({
     endminute:0,
     endSeconds:0,
     inteverMethod:"",
-    detailPics: [
-    ],
+    detailPics: [],
     isFinished:false,
-    parentOrderId:null
+    parentOrderId:null,
+    statusType: ["图文详情", "产品参数", "相关推荐"],
+    currentTpye: 0,
+    tabClass: ["", "", "", ""]
   },
   swiperchange: function (e) {
     console.log(e.detail.current)

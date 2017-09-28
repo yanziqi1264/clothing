@@ -220,7 +220,8 @@ function getHotProductListByType(e, appId, type, currentPage, pagesize,sellType)
 				}
 				e.setData({
 					productlist: productlist,
-					currentPage:currentPage
+					currentPage:currentPage,
+					
 				})
 
 			}

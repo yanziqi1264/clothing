@@ -1,4 +1,3 @@
-
 <view class="page">
    <!-- 加搜索框-->
     <view class="weui-search-bar" id="searchBar">
@@ -115,6 +114,7 @@
  	<view class="big-Title">
       <text>热品推荐</text>
     </view>
+    <!--
     <view class="goods-container">
       <view class="goods-box" wx:for="{{productlist}}"  wx:key="{{index}}" >
           <view class="goods-img ">
@@ -140,6 +140,28 @@
        </view>
     
     </view>
+-->
+    <!-- 产品列表页调整 -->
+     <view class="product-view">
+       <view class="product-list">{{productlist.length}}{{productlist.length%2 }}{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}
+          
+    <block wx:for="{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}" wx:key="unique" wx:for-index="idx">
+          <view  class="weui-flex" >
+            <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
+            <view wx:if="{{idx2 <(idx+1)*2 && idx2 >=idx*2}}" class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
+              <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title"> {{item.productName}}</view>
+              <view class="product-price">
+              ¥{{item.attributes.commodityoriginalprice}}
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          </block>
+          </view>
+       </block>
+       </view>
+    </view>
+
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
   </scroll-view>
 </view>

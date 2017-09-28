@@ -1,0 +1,69 @@
+<view class="container">
+    <view class="status-box">
+        <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+            {{item}}
+            <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
+        </view>
+    </view>
+    <!-- 数据为空展示的数据-->
+    <view  style="display:none" class="no-order" hidden="{{fanslist.length >0 ? true : false}}">
+        <image src="/images/no-order.png" class="no-order-img"></image>
+        <view class="text">亲~啥都没有呢?</view>
+    </view>
+    <!-- 
+    <view class="order-list" >
+    <block wx:for="{{fanslist}}" wx:key="unique">
+       <view class="a-order">
+          <view class="order-date">
+             <image style="width:100rpx;height:100rpx" src="{{item.avatarUrl}}" mode="scaleToFill"></image>
+          </view>
+          <view class="goods-info">
+           {{item.nickName}}
+          </view>
+      </view>
+    </block>
+    </view>-->
+    <view class="product-view">
+       <view class="product-list">
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          
+          
+          </view>
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          </view>
+       </view>
+    </view>
+</view>

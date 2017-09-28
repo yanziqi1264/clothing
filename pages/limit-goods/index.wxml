@@ -16,60 +16,57 @@
   </view>
   <!-- 限时团购 -->
   <view class="limit-area">
-     <view class="topbanner">
-        <view class="topbanner-container">
-          <view wx:if="{{!isFinished}}" class="topbanner-text">
-            距结束仅剩{{isFinished}}
-          </view>
-          <view wx:if="{{isFinished}}" class="topbanner-text">
-            已结束
-          </view>
-          <!-- 倒计时 -->
-          <view class="" hidden="{{isFinished}}">
-            <!-- 天 -->
-            <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">{{endDay}}</view>
-               <view class="topbannertime-timer-symbol topbannertime-timer-symbol">天</view> 
-            </view>
-            <!-- 时 -->
-            <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">{{endHour}}</view>
-               <view class="topbannertime-timer-symbol topbannertime-timer-symbol">时</view> 
-            </view>
-
-            <!-- 分 -->
-            <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">{{endminute}}</view>
-               <view class="topbannertime-timer-symbol topbannertime-timer-symbol">分</view> 
-            </view>
-
-            <!-- 秒 -->
-           <view class="test">
-               <view class="topbannertime-timer-num topbannertime-timer-num">{{endSeconds}}</view>
-               <view class="topbannertime-timer-symbol topbannertime-timer-symbol">秒</view> 
-            </view>
-          </view>
-
-              
+    <view class="topbanner">
+      <view class="topbanner-container">
+        <view class="topbanner-text">
+          距结束仅剩
         </view>
-     
-     </view>
+        <!-- 倒计时 -->
+        <view class="">
+          <!-- 天 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endDay}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">天</view>
+          </view>
+          <!-- 时 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endHour}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">时</view>
+          </view>
+
+          <!-- 分 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endminute}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">分</view>
+          </view>
+
+          <!-- 秒 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endSeconds}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">秒</view>
+          </view>
+        </view>
+
+
+      </view>
+
+    </view>
 
   </view>
-   
+
 
   <!-- 商品名字价格分享 -->
   <view class="goods-info">
     <view class="row1">
       <view class="goods-name">
         <view class="goods-name-view">
-         {{productInfo.productName}}
+          {{productInfo.productName}}
         </view>
       </view>
       <view class="goods-share">
         <view class="goods-share-relative">
           <image src="../../images/goods_detail_share.png"></image>
-          <button open-type="share"  class="sharelabel"><view>分享</view></button>
+          <button open-type="share" class="sharelabel"><view>分享</view></button>
         </view>
       </view>
     </view>
@@ -88,6 +85,65 @@
     <view class="des-title">
       文字说明
     </view>
+    <!-- 图文详情 产品参数 相关推荐 -->
+    <view>
+       <!-- tab切换 -->
+      <view class="status-box">
+        <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+          {{item}}
+          <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
+        </view>
+      </view>
+      <!-- tab切换内容 -->
+       <view class="product-view">
+       <view class="product-list">
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          
+          
+          </view>
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          </view>
+       </view>
+    </view>
+
+
+    </view>
+
+
+
   </view>
 
   <!-- 底部操作选项 -->
@@ -95,10 +151,10 @@
   <view class="footer-box">
     <view class="block1" bindtap="toAddShopCar">小店</view>
     <view class="block2 colo-fee5e8" bindtap="toAddShopCar">
-    <view class="test2">
-      <view>¥19.99</view>
-      <view>单独购买</view>
-    </view>
+      <view class="test2">
+        <view>¥19.99</view>
+        <view>单独购买</view>
+      </view>
     </view>
     <view class="block3 colo-fe4c88" bindtap="tobuy">2人拼团</view>
   </view>
@@ -107,7 +163,7 @@
   <view class="left-navigation-container">
     <view class="icon-plus-nav menu-btn">
       <view class="paddingTop-20">快捷</view>
-         <view class="paddingTop-10">导航</view>
+      <view class="paddingTop-10">导航</view>
     </view>
   </view>
 </view>

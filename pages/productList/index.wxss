@@ -1,0 +1,120 @@
+.container {
+  width: 100%;
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.status-box {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.status-box .status-label {
+  width: 350rpx;
+  height: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #353535;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.status-box .status-label.active {
+  color: #e64340;
+  border-bottom: 6rpx solid #e64340;
+}
+
+.no-order {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  top: 88rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-top: 203rpx;
+  background-color: #f2f2f2;
+}
+
+.no-order-img {
+  width: 81rpx;
+  height: 96rpx;
+  margin-bottom: 31rpx;
+}
+
+.no-order .text {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}
+
+
+.product-view{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+}
+
+.product-list {
+  width: 750rpx;
+  margin: 20rpx 24rpx;
+  text-align: center;
+}
+
+.weui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.weui-flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  background: #fff;
+}
+
+.bg {
+  border: 1rpx solid #999;
+  margin: 5rpx 5rpx;
+}
+
+.product-img {
+  width: 345rpx;
+  height: 345rpx;
+}
+
+.product-title {
+  padding: 0 0;
+  margin: 0 5rpx;
+  font-size: 24rpx;
+  color: #202020;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product-price {
+  display: flex;
+  font-size: 30rpx;
+  color: #ff3d4b;
+  text-align: left;
+  margin: 0 5rpx;
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.product-num {
+  font-size: 20rpx;
+  color: #b6b6b6;
+  text-align: right;
+  flex: 1;
+}
+
+/* pages/productList/index.wxss */

@@ -365,3 +365,66 @@ swiper-item image {
 	font-size: 24rpx;
   margin-top: 10rpx;
 }
+
+.product-view{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+}
+
+.product-list {
+  width: 750rpx;
+  margin: 20rpx 24rpx;
+  text-align: center;
+}
+
+.weui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.weui-flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  background: #fff;
+}
+
+.bg {
+  border: 1rpx solid #999;
+  margin: 5rpx 5rpx;
+}
+
+.product-img {
+  width: 345rpx;
+  height: 345rpx;
+}
+
+.product-title {
+  padding: 0 0;
+  margin: 0 5rpx;
+  font-size: 24rpx;
+  color: #202020;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product-price {
+  display: flex;
+  font-size: 30rpx;
+  color: #ff3d4b;
+  text-align: left;
+  margin: 0 5rpx;
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.product-num {
+  font-size: 20rpx;
+  color: #b6b6b6;
+  text-align: right;
+  flex: 1;
+}
