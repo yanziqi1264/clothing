@@ -71,7 +71,8 @@ Page({
 		productlist: [],
 		pifaList:[],
 		linshouList:[],
-		typechildlist2:[]
+		typechildlist2:[],
+		pingtuanList:[]
 		
 
 	},
@@ -89,6 +90,7 @@ Page({
 		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,1)
 		this.getProductListByType(that,41,1,'pifa')
 		this.getProductListByType(that,42,1,'linshou')
+		this.getProductListByType(that,0,3,'tuangou')
 		
 	},
   searchTap: function (e) {
@@ -126,10 +128,15 @@ Page({
 					e.setData({
 					pifaList: productlist,
 				})
-				}else{
+				}else if(flag=='linshou'){
 						e.setData({
 					linshouList: productlist,
 				})
+				}else{
+						e.setData({
+					pingtuanList: productlist,
+				})
+					
 				}
 				
 

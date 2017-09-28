@@ -61,9 +61,9 @@
     <view class="wholesale-block">
         <block wx:for="{{pingtuanList}}" wx:key=" {{index}}" >
         
-      <view class="wholesale-item">
+      <view class="wholesale-item"  bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
          <view >
-          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commodityshowpics}}" mode="aspectFit"></image>
+          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
          </view>
       </view>
       </block>

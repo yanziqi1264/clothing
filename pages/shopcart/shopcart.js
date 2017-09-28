@@ -59,5 +59,10 @@ Page({
     })
 		}
 
+	},
+	toIndexPage:function(e){
+		wx.navigateTo({
+				url: "/pages/wholesale/wholesale"
+			})
 	}
 })

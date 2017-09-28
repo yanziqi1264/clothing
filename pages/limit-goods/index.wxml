@@ -18,11 +18,14 @@
   <view class="limit-area">
      <view class="topbanner">
         <view class="topbanner-container">
-          <view class="topbanner-text">
-            距结束仅剩
+          <view wx:if="{{!isFinished}}" class="topbanner-text">
+            距结束仅剩{{isFinished}}
+          </view>
+          <view wx:if="{{isFinished}}" class="topbanner-text">
+            已结束
           </view>
           <!-- 倒计时 -->
-          <view class="">
+          <view class="" hidden="{{isFinished}}">
             <!-- 天 -->
             <view class="test">
                <view class="topbannertime-timer-num topbannertime-timer-num">{{endDay}}</view>

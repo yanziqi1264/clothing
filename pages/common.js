@@ -752,12 +752,19 @@ var hour=Math.floor((leftsecond-day1*24*60*60)/3600);
 var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
 var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
 console.log(day1+":"+hour)
-e.setData({
+if(day1<=0&&hour<=0&&minute<=0&&second<=0){
+	e.setData({
+	isFinished:true
+})
+}else{
+	e.setData({
 	endDay:day1,
 	endHour:hour,
 	endminute:minute,
 	endSeconds:second
 })
+}
+
 
 
 } 

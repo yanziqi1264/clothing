@@ -39,17 +39,25 @@ App({
   },
  
   userLogin:function(code,encryptedData,iv){
+  	var sharedOpenId=null
+  		console.log("this.globalData.shareOpenId:"+this.globalData.shareOpenId);
+  	if(this.globalData.shareOpenId){
+  		console.log("this.globalData.shareOpenId:"+this.globalData.shareOpenId);
+  		sharedOpenId=this.globalData.shareOpenId
+  	}
   	try{
   		var that =this
           //发起网络请求
           wx.request({
-            url: this.globalData.serverAddr+this.globalData.loginUrl,
-            data: {
+          //  url: this.globalData.serverAddr+this.globalData.loginUrl,
+         url: 'http://localhost:8081/tinyapp'+this.globalData.loginUrl,
+          
+          data: {
               code: code,
               appId:this.globalData.appId,
               encryptedData:encryptedData,
               iv:iv,
-              shareOpenId:this.globalData.shareOpenId,
+              sharedOpenId:sharedOpenId
             },
             success: function(res) {
  			wx.setStorageSync("sessionKey",res.data.data);   
@@ -84,8 +92,7 @@ App({
 	orderinfoUrl:"/weixin/pay/order/clothing/getOrderById",
 	cancelorderUrl:"/weixin/pay/order/clothing/cancelOrder",
 	getListByName:"/weixin/commodityType/clothing/getList",
-	shareOpenId:""
-	
+	shareOpenId:null
   }
 
 })
