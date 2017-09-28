@@ -108,7 +108,7 @@ Page({
         productlist: [],
         typechildlist:[]
     })
-    common.getProductListByType(that,id,1,this.data.pageSize,1)
+  common.getTypeChildList(that,app.globalData.appId,that.data.curNav,1,10)
   
   },
   bindDownload:function(e){
@@ -160,16 +160,6 @@ Page({
 		})
   	
  },
- 	addToShoppingCart: function(e) {
-		var that = this
-		common.saveShoppingCartInfo(that, e.currentTarget.dataset.goodid, e.currentTarget.dataset.goodname,e.currentTarget.dataset.pic,e.currentTarget.dataset.goodprice, 1,1);
-
-	},
-	reduceToShoppingCart: function(e) {
-		
-		var that = this
-		common.saveShoppingCartInfo(that, e.currentTarget.dataset.goodid, e.currentTarget.dataset.goodname,e.currentTarget.dataset.pic,e.currentTarget.dataset.goodprice,  -1,1);
-	},
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
 console.log("onReachBottom")
