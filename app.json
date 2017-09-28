@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/wholesale/wholesale",
+    "pages/myFans/index",
     "pages/limit-goods/index",
     "pages/classify/index",
-    "pages/wholesale/wholesale",
     "pages/productList/index",
     "pages/myFans/index",
     "pages/retail/retail",
