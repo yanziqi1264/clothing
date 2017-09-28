@@ -254,7 +254,7 @@ function getProductInfo(e, id) {
 					var coverPic= res.data.data.attributes.commoditycoverpic;
 					coverPic=coverPic.split(",")[0]
 					console.log("coverPic:"+coverPic)
-					var pic ={image:pic}
+					var pic ={image:coverPic}
 					picarrays.push(pic);
 				}
 				
