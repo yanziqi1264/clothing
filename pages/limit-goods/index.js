@@ -88,12 +88,16 @@ Page({
 				}
 				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
 				var nowDate= new Date()
+				
+				console.log("endDate:"+endDate)
+				console.log("nowDate:"+nowDate.getTime())
 				if(endDate-nowDate.getTime()>0){
 					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+					
 				}	else{
 					e.setData({isFinished:true})
 				}
-				console.log("method:"+method)
+				
 					e.setData({
 					detailPics: picarrays,
 					productInfo: res.data.data,
