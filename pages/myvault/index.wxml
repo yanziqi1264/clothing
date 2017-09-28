@@ -45,7 +45,7 @@
       <view class="weui-cell-primary">
         我的粉丝
       </view>
-      <view class="weui-num">  {{maindata.totalFans==null ?0:maindata.totalFans}}</view>
+      <view class="weui-num">{{maindata.totalFans==null ?0:maindata.totalFans}}</view>
       <view class="weui-cell-ft"></view>
     </view>
 
@@ -53,7 +53,7 @@
       <view class="weui-cell-primary">
         历史总收益
       </view>
-      <view class="weui-num">  {{maindata.totalMoney==null ?0:maindata.totalMoney}}</view>
+      <view class="weui-num">  {{maindata.distributionCount==null ?0:maindata.distributionCount}}</view>
       <view class="weui-cell-ft"></view>
     </view>
 
@@ -63,14 +63,14 @@
       <view class="weui-cell-primary">
       资金明细
       </view>
-      <view class="weui-num">20</view>
+      <view class="weui-num">{{maindata.moneyDetailCount==null ?0:maindata.moneyDetailCount}}</view>
       <view class="weui-cell-ft"></view>
     </view>
      <view class="weui-cell" bindtap="toapplyrecord">
       <view class="weui-cell-primary">
       提现记录
       </view>
-      <view class="weui-num">20</view>
+      <view class="weui-num"> {{maindata.applyForCount==null ?0:maindata.applyForCount}}</view>
       <view class="weui-cell-ft"></view>
     </view>
     <view  bindtap="daiyantips">

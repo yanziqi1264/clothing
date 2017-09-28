@@ -241,13 +241,23 @@ function getProductInfo(e, id) {
 			if(res.data.success) {
 
 				var detailPicsStr = res.data.data.attributes.commodityshowpics;
-				var detailPicsArr = detailPicsStr.split(";");
 				var picarrays = new Array();
+				if(detailPicsStr){
+					var detailPicsArr = detailPicsStr.split(";");
+				
 				for(var i = 0; i < detailPicsArr.length; i++) {
 					var pic = {};
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
 				}
+				}else{
+					var coverPic= res.data.data.attributes.commoditycoverpic;
+					coverPic=coverPic.split(",")[0]
+					console.log("coverPic:"+coverPic)
+					var pic ={image:coverPic}
+					picarrays.push(pic);
+				}
+				
 				e.setData({
 					detailPics: picarrays,
 					productInfo: res.data.data

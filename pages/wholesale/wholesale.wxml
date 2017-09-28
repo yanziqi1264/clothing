@@ -69,31 +69,11 @@
     </view>
     </view>
   </view>
-  <!-- 批发 -->
-  <view class="paddingBottom-20">
-    <view class="weui-cell">
-     <view class="weui-cell-primary">限时抢购</view>
-     <view class="weui-cell-ft">查看更多</view>
-    </view>
-    <view style="width:100%;background:#fff">
-    <view class="wholesale-block">
-    
-     <block wx:for="{{pifaList}}" wx:key=" {{index}}" >
-        
-      <view class="wholesale-item" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}" >
-         <view >
-          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
-         </view>
-      </view>
-      </block>
-    </view>
-    </view>
-  </view>
   <!-- 零售 -->
 
 <view class="paddingBottom-20">
     <view class="weui-cell">
-     <view class="weui-cell-primary">零售</view>
+     <view class="weui-cell-primary">限时抢购</view>
      <view class="weui-cell-ft">查看更多</view>
     </view>
     <view style="width:100%;background:#fff">
