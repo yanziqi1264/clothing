@@ -49,8 +49,8 @@ App({
   		var that =this
           //发起网络请求
           wx.request({
-          //  url: this.globalData.serverAddr+this.globalData.loginUrl,
-         url: 'http://localhost:8081/tinyapp'+this.globalData.loginUrl,
+            url: this.globalData.serverAddr+this.globalData.loginUrl,
+        // url: 'http://localhost:8081/tinyapp'+this.globalData.loginUrl,
           
           data: {
               code: code,

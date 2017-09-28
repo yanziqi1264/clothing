@@ -105,7 +105,8 @@ Page({
     this.setData({
       curNav: id,
       curIndex: index,
-        productlist: []
+        productlist: [],
+        typechildlist:[]
     })
     common.getProductListByType(that,id,1,this.data.pageSize,1)
   
