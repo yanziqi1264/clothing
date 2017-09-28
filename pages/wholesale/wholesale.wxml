@@ -114,79 +114,18 @@
  	<view class="big-Title">
       <text>热品推荐</text>
     </view>
-    <!--
-    <view class="goods-container">
-      <view class="goods-box" wx:for="{{productlist}}"  wx:key="{{index}}" >
-          <view class="goods-img ">
-            <image src="{{item.attributes.commoditycoverpic}} " class="goods-img" mode="aspectFill"bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}" />
-          </view>
-          <view class="goods-info">
-            <view class="goods-info-brand" bindtap="toDetailsTap" data-goodid="{{item.id}}">
-                  {{item.productName}}
-            </view>
-            <view class="goods-info-view">
-              <view class="goods-info-price">
-                <text>{{item.attributes.commodityoriginalprice}}</text>
-               </view>
-                 <view class="goods-info-reduceView" bindtap="reduceToShoppingCart"  data-goodid="{{item.id}}" data-goodname="{{item.productName}}" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">
-                </view>
-                <view class="count" style=""><text>  {{item.count}}</text></view> 
-               <view class="goods-info-addview" data-goodid="{{item.id}}" data-goodname="{{item.productName}}"  bindtap="addToShoppingCart" data-pic="{{item.attributes.commoditycoverpic}}" data-goodprice="{{item.attributes.commodityoriginalprice}}">
-               </view>
-            </view>
-          
-  
-          </view>
-       </view>
-    
-    </view>
--->
     <!-- 产品列表页调整 -->
      <view class="product-view">
-<<<<<<< HEAD
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>
-
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>
-             <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>          
-=======
-       <view class="product-list">
-    <block wx:for="{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}" wx:key="unique" wx:for-index="idx">
-          <view  class="weui-flex" >
-            <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
-            <view wx:if="{{idx2 <(idx+1)*2 && idx2 >=idx*2}}" class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
+       <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
+            <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
               <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title"> {{item.productName}}</view>
+              <view class="product-title">{{item.productName}}</view>
               <view class="product-price">
-              ¥{{item.attributes.commodityoriginalprice}}
+              ¥{{item.attributes.commoditycurrentprice}}
               <view class="product-num">销量:360</view>
               </view>
             </view>
-          </block>
-          </view>
-       </block>
-       </view>
->>>>>>> 822fde2beb769b33c1656685aa8dc85478456d6d
+ 	</block>
     </view>
 
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
