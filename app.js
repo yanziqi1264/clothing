@@ -1,7 +1,9 @@
 //app.js
 App({
   onLaunch: function(options) {
-  	 
+  	console.log("onLaunch")
+  	 this.getUserInfo(function(userInfo){
+		})
   },
 
   getUserInfo: function(cb) {

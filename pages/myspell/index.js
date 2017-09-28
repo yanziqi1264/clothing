@@ -3,7 +3,10 @@ Page({
   data: {
     statusType: ["全部拼团", "进行中", "拼团成功", "拼团失败"],
     currentTpye: 0,
-    tabClass: ["", "", "", "", ""]
+    tabClass: ["", "", "", "", ""],
+     currentPage:1,
+    pageSize:10,
+    orderlist:[],
   },
   statusTap: function (e) {
     var curType = e.currentTarget.dataset.index;
@@ -21,7 +24,7 @@ Page({
   },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
-
+ common.getOrderListByType(this,1,1,this.data.currentPage,this.data.pageSize)
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成

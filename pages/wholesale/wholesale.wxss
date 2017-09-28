@@ -395,7 +395,6 @@ swiper-item image {
 }
 
 .bg {
-  border: 1rpx solid #999;
   margin: 5rpx 5rpx;
 }
 

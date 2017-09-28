@@ -19,7 +19,7 @@ Page({
     this.setData({
       currentTpye: curType
     });
-    common.getOrderListByType(this,curType,1,this.data.pageSize)
+    common.getOrderListByType(this,curType,1,1,this.data.pageSize)
     this.onShow();
   },
   orderDetail: function (e) {
@@ -83,7 +83,7 @@ Page({
       currentTpye: typeId
     });
     	common.getShopInfo(this,app.globalData.appId)
-    common.getOrderListByType(this,typeId,this.data.currentPage,this.data.pageSize)
+    common.getOrderListByType(this,typeId,1,this.data.currentPage,this.data.pageSize)
 
   },
   onReady: function () {

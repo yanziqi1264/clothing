@@ -41,18 +41,16 @@ Page({
    */
   onLoad: function (options) {
   var goodid =options.goodid
- 
+ var shareOpenId=options.shareOpenId
  var flag =options.flag
- 
+ console.log("goodid:"+goodid+",shareOpenId:"+shareOpenId+",flag"+flag)
  if(flag == 1){
  	//团购分享
  	var parentOrderId =options.goodid
  	if(null !=parentOrderId){
  	this.setData({parentOrderId:parentOrderId})
  }
- }console.log('onLoad：options.shareOpenId1='+app.globalData.shareOpenId)
- console.log('onLoad：options.shareOpenId2='+(app.globalData.shareOpenId==null))
-  console.log('onLoad：options.shareOpenId3='+(options.shareOpenId!=null))
+ }
   if(app.globalData.shareOpenId == null &&options.shareOpenId!=null){
   	console.log('onLoad：options.shareOpenId4='+options.shareOpenId)
   		app.globalData.shareOpenId =options.shareOpenId
@@ -144,6 +142,7 @@ console.log("onUnload:")
    */
   onShareAppMessage: function (res) {
   	  var openId =wx.getStorageSync("sessionKey")
+  	  console.log("openId:"+openId)
   	  var that =this
  if (res.from === 'button') {
       // 来自页面内转发按钮

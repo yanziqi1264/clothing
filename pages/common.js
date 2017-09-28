@@ -331,15 +331,32 @@ function removeProduct(){
 }
 
 function calculateTotalPrice(productInfo){
-	if(productInfo.typeId == 28){
-		//批发类
+	 var pricesArray =wx.getStorageSync('productInfo'+productInfo.id)
+	 if(pricesArray ==null){
+	 	pricesArray = [];
+	 	var salesAmountpriceArray =productInfo.salesAmountprice.split(',')
+	 	for(var i=0;i<salesAmountpriceArray.length;i++){
+		var prices=salesAmountpriceArray[i].split('-')[1]
+		pricesArray=pricesArray.split('~')
 		
 		
-	}else{
-		//零售类
+		var priceO={start:pricesArrayp[0],end:pricesArrayp[1],price:prices}
 		
-		productInfo.totalprice=parseFloat(productInfo.price)*productInfo.count
+		pricesArray.push(priceO)
 	}
+	 	wx.setStorage({key:'productInfo'+productInfo.id,value:pricesArray})
+	 }
+	 
+	for(var j=0;j<pricesArray.length;j++){
+		if(productInfo.count>=pricesArray[j].start &&productInfo.count<pricesArray[j].end){
+			productInfo.totalprice=parseFloat(pricesArray[j].price)*productInfo.count
+			break;
+		}
+		
+		
+	}
+	
+	
 		
 	
 	
@@ -617,7 +634,7 @@ function getShopInfo(e, appId,type) {
 
 }
 
-function getOrderListByType(e,type,currentPage,pageSize){
+function getOrderListByType(e,type,orderType,currentPage,pageSize){
 	var openId =wx.getStorageSync("sessionKey")
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.orderlistUrl,
@@ -626,7 +643,8 @@ function getOrderListByType(e,type,currentPage,pageSize){
 			status:type,
 			openId:openId,
 			currentPage:currentPage,
-			pageSize:pageSize
+			pageSize:pageSize,
+			type:orderType
 
 		},
 		success: function(res) {
