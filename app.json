@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/classify/index",
     "pages/myFans/index",
+    "pages/classify/index",
     "pages/wholesale/wholesale",
     "pages/limit-goods/index",
     "pages/productList/index",
