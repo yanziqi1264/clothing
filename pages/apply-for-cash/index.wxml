@@ -3,7 +3,7 @@
     <view class="myvault-panel-padding">
       <view class="weui-flex-item weui-flex-item-block">
         <view class="font-50">
-          0
+          {{advisableMoney}}
         </view>
         <view class="font-28 padding-top-30">
           可提现金额(元)

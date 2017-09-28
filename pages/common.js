@@ -42,7 +42,7 @@ function getTypeList(e, appId, typeId, currentPage, pageSize, type,callback) {
 }
 
 //获取模块列表
-function getTypeChildList(e, appId, typeId, currentPage, pageSize) {
+function getTypeChildList(e, appId, typeId, currentPage, pageSize,flag) {
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.typelistUrl,
 		data: {
@@ -54,10 +54,16 @@ function getTypeChildList(e, appId, typeId, currentPage, pageSize) {
 		success: function(res) {
 			console.log(res.data)
 			if(res.data.success) {
-
-				e.setData({
+				if(flag ==2){
+					e.setData({
+					typechildlist2: res.data.data
+				});
+				}else{
+					e.setData({
 					typechildlist: res.data.data
 				});
+				}
+				
 				
 
 			}

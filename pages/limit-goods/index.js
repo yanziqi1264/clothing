@@ -37,7 +37,10 @@ Page({
   onLoad: function (options) {
   var goodid =options.goodid
   	console.log('options.shareOpenId:'+options.shareOpenId)
-  	app.globalData.shareOpenId =options.shareOpenId
+  	if(app.globalData.shareOpenId != null){
+  		app.globalData.shareOpenId =options.shareOpenId
+  	}
+  	
   var that = this
   console.log('onLoad：goodid='+goodid)
   this.getProductInfo(that,goodid)

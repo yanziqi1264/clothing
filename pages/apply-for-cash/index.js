@@ -6,14 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+  advisableMoney:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  	var that =this
+  	var openId =wx.getStorageSync("sessionKey")
+  	wx.request({
+		url: app.globalData.serverAddr + "/weixin/clothing/cashwithdrawal/advisableMoney",
+		data: {
+			appId: app.globalData.appId,
+			openId:openId
+		},
+		success: function(res) {
+			if(res.data.success) {
+				that.setData({advisableMoney:res.data.data})
+			}
+
+		}
+	})
   },
 
   /**
@@ -80,7 +94,7 @@ Page({
 			openId:openId,
 			money:money,
 			mobile:mobile,
-			weixinid:weixinid
+			wxNo:weixinid
 		},
 		success: function(res) {
 			if(res.data.success) {

@@ -31,40 +31,26 @@
     </view>
 
      <view class="big-logo-new">
-            <block wx:for-items="{{logos}}">
+            <block wx:for-items="{{typechildlist}}">
                 <view class="logoinfo-new">
-                    <image style="width:100rpx; height: 100rpx;" src="{{item.image}}" mode="aspectFit"/>
-                    <text class="logotext-new">{{item.title}}</text>
+                    <image style="width:100rpx; height: 100rpx;" src="{{item.realPath}}" mode="aspectFit"/>
+                    <text class="logotext-new">{{item.name}}</text>
                 </view>
             </block>
+             <block wx:for-items="{{typechildlist2}}">
+                <view class="logoinfo-new">
+                    <image style="width:100rpx; height: 100rpx;" src="{{item.realPath}}" mode="aspectFit"/>
+                    <text class="logotext-new">{{item.name}}</text>
+                </view>
+            </block>
+            <view class="logoinfo-new">
+                    <image style="width:100rpx; height: 100rpx;" src="../../images/logo7.png" mode="aspectFit"/>
+                    <text class="logotext-new">分享赚钱</text>
+             </view>
+           
       </view>
 
-    <view class="big-logo">
-       <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="/images/vault.png" mode="aspectFit" />
-          <text class="season-text">我的金库</text>
-        </view>
-         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="/images/fightgroups.png" mode="aspectFit" />
-          <text class="season-text">我的拼团</text>
-        </view>
-         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
-          <text class="season-text">我的订单</text>
-        </view>
-         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="{{item.realPath}}" mode="aspectFit" />
-          <text class="season-text">分享赚钱</text>
-        </view>
-         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="/images/un_wholesale.png" mode="aspectFit" />
-          <text class="season-text">批发</text>
-        </view>
-         <view class="season-info"  data-typeid="{{item.id}}"  bindtap="gotogoods">
-          <image style="width:94rpx; height:90rpx;" src="/images/un_retail.png" mode="aspectFit" />
-          <text class="season-text">零售</text>
-        </view>
-    </view>
+    
  <!-- 批发 -->
   <view class="paddingBottom-20">
     <view class="weui-cell">

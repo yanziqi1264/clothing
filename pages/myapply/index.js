@@ -12,7 +12,7 @@ Page({
  
   onLoad: function (options) {
   
- 	this.getRecord(this.data.current1Page,10)
+ 	this.getRecord(this.data.currentPage,10)
 
   },
   getRecord:function(currentPage,pageSize){

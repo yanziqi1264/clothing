@@ -1,0 +1,90 @@
+<view class="bodyview">
+
+  <view class="myvault-panel">
+    <view class="myvault-panel-padding">
+      <!-- 总财富 -->
+      <view class="weui-flex">
+        <view class="weui-flex-item weui-flex-item-block">
+          <view class="font-50">
+            {{maindata.money==null ?0:maindata.money}}
+          </view>
+          <view class="font-28 padding-top-30">
+            总财富(元)
+          </view>
+        </view>
+      </view>
+      <!-- 申请提现 -->
+      <view bindtap="applyCrash" class="apply-for-cash">
+        申请提现>
+      </view>
+      <!-- 预估与新增 -->
+      <view class="weui-flex" style="margin-top:50rpx">
+        <view class="weui-flex-item weui-flex-item-block">
+          <view class="font-28">
+           {{maindata.monthMoney==null ?0:maindata.monthMoney}}
+          </view>
+          <view class="font-28 padding-top-15">
+            本月预估收益(元)
+          </view>
+        </view>
+
+        <view class="weui-flex-item weui-flex-item-block" bindtap="tomyfans">
+          <view class="font-28">
+              {{maindata.totalFans==null ?0:maindata.totalFans}}
+          </view>
+          <view class="font-28 padding-top-15">
+            本月新增粉丝(个)
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells">
+    <view class="weui-cell"  bindtap="tomyfans">
+      <view class="weui-cell-primary">
+        我的粉丝
+      </view>
+      <view class="weui-num">  {{maindata.totalFans==null ?0:maindata.totalFans}}</view>
+      <view class="weui-cell-ft"></view>
+    </view>
+
+     <view class="weui-cell">
+      <view class="weui-cell-primary">
+        历史总收益
+      </view>
+      <view class="weui-num">  {{maindata.totalMoney==null ?0:maindata.totalMoney}}</view>
+      <view class="weui-cell-ft"></view>
+    </view>
+
+
+
+     <view class="weui-cell">
+      <view class="weui-cell-primary">
+      资金明细
+      </view>
+      <view class="weui-num">20</view>
+      <view class="weui-cell-ft"></view>
+    </view>
+     <view class="weui-cell" bindtap="toapplyrecord">
+      <view class="weui-cell-primary">
+      提现记录
+      </view>
+      <view class="weui-num">20</view>
+      <view class="weui-cell-ft"></view>
+    </view>
+    <view  bindtap="daiyantips">
+       <view class="weui-icon-info-circle" >
+       </view>
+       <view class="rule"  >代言规则</view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+  <view class="weui-btn">
+     我要代言
+  </view>
+  
+  
+  
+  </view>
+</view>
