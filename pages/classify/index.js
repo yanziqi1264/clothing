@@ -74,6 +74,11 @@ Page({
       }
     ]
   },
+  productTap:function(){
+    wx.navigateTo({
+      url: "../productList/index"
+    })
+  },
   onLoad: function (e) {
  	console.log('onLoad'+e.typeid)
  	 var that = this

@@ -140,6 +140,53 @@
        </view>
     
     </view>
+ 
+
+    <!-- 产品列表页调整 -->
+     <view class="product-view">
+       <view class="product-list">
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          
+          
+          </view>
+          <view class="weui-flex">
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+            <view class="weui-flex-item bg">
+              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+              <view class="product-price">
+              ¥750
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+          </view>
+       </view>
+    </view>
+
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
   </scroll-view>
 </view>
