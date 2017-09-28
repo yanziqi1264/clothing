@@ -72,7 +72,7 @@
   <!-- 批发 -->
   <view class="paddingBottom-20">
     <view class="weui-cell">
-     <view class="weui-cell-primary">批发</view>
+     <view class="weui-cell-primary">限时抢购</view>
      <view class="weui-cell-ft">查看更多</view>
     </view>
     <view style="width:100%;background:#fff">
@@ -143,8 +143,7 @@
 -->
     <!-- 产品列表页调整 -->
      <view class="product-view">
-       <view class="product-list">{{productlist.length}}{{productlist.length%2 }}{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}
-          
+       <view class="product-list">
     <block wx:for="{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}" wx:key="unique" wx:for-index="idx">
           <view  class="weui-flex" >
             <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
