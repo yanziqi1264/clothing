@@ -143,7 +143,6 @@
 -->
     <!-- 产品列表页调整 -->
      <view class="product-view">
-<<<<<<< HEAD
             <view class="weui-flex-item bg">
               <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
               <view class="product-title">17秋冬新款女宽松大码休闲</view>
@@ -168,25 +167,7 @@
               ¥750
               <view class="product-num">销量:360</view>
               </view>
-            </view>          
-=======
-       <view class="product-list">
-    <block wx:for="{{productlist.length%2 >0?productlist.length/2+1:productlist.length/2}}" wx:key="unique" wx:for-index="idx">
-          <view  class="weui-flex" >
-            <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
-            <view wx:if="{{idx2 <(idx+1)*2 && idx2 >=idx*2}}" class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
-              <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title"> {{item.productName}}</view>
-              <view class="product-price">
-              ¥{{item.attributes.commodityoriginalprice}}
-              <view class="product-num">销量:360</view>
-              </view>
             </view>
-          </block>
-          </view>
-       </block>
-       </view>
->>>>>>> 822fde2beb769b33c1656685aa8dc85478456d6d
     </view>
 
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
