@@ -185,14 +185,12 @@
   border-bottom-right-radius: 30rpx;
   border-top-right-radius: 30rpx;
 }
-
 .product-view{
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
   display: flex;
+  flex-wrap:wrap;
+  box-sizing: content-box;
+  padding: 24rpx;
 }
-
 .product-list {
   width: 750rpx;
   margin: 20rpx 24rpx;
@@ -204,12 +202,14 @@
   display: -webkit-flex;
   display: flex;
 }
-
 .weui-flex-item {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
   background: #fff;
+  width:150rpx;
+  height:150rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  text-align: center;
 }
 
 .bg {
@@ -218,8 +218,8 @@
 }
 
 .product-img {
-  width:200rpx;
-  height:200rpx;
+  width:120rpx;
+  height:120rpx;
 }
 
 .product-title {
@@ -227,7 +227,7 @@
   margin: 0 5rpx;
   font-size: 24rpx;
   color: #202020;
-  text-align: left;
+  text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
