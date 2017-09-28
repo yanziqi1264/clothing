@@ -187,7 +187,6 @@
 }
 .product-view{
   display: flex;
-  justify-content: space-between;  
   flex-wrap:wrap;
   box-sizing: content-box;
   padding: 24rpx;
@@ -205,22 +204,21 @@
 }
 .weui-flex-item {
   background: #fff;
-  width: 339rpx;
-  height: 472rpx;
+  width:147rpx;
   background-color: #fff;
   overflow: hidden;
-  margin-bottom: 24rpx;
-
+  margin-bottom:30rpx;
+  text-align: center;
 }
 
 .bg {
   border: 1rpx solid #999;
-  margin: 5rpx 5rpx;
+  margin: 10rpx 5rpx;
 }
 
 .product-img {
-  width:200rpx;
-  height:200rpx;
+  width:120rpx;
+  height:120rpx;
 }
 
 .product-title {
@@ -228,7 +226,7 @@
   margin: 0 5rpx;
   font-size: 24rpx;
   color: #202020;
-  text-align: left;
+  text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }

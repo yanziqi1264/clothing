@@ -96,6 +96,7 @@
     </view>
     <!-- 产品列表页调整 -->
      <view class="product-view">
+
        <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
             <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
               <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>

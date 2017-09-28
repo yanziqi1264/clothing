@@ -5,12 +5,12 @@
             <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
         </view>
     </view>
-    <!-- -->
+    <!-- 暂无数据的页面 
     <view class="no-order" hidden="{{fanslist.length >0 ? true : false}}">
         <image src="/images/no-order.png" class="no-order-img"></image>
         <view class="text">亲~什么都没有,赶紧去圈粉吧!</view>
-    </view>
-    
+    </view>-->
+    <!-- 数据列表 
     <view class="order-list">
     <block wx:for="{{fanslist}}" wx:key="unique">
        <view class="a-order">
@@ -23,4 +23,16 @@
       </view>
     </block>
     </view>
+     -->
+     <view class="fans-list">
+         <view class="a-fanitem">
+            <view>
+            </view>
+         
+         </view>
+     
+     
+     
+     </view>
+
 </view>

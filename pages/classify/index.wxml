@@ -6,17 +6,15 @@
   </view>
   <view class="nav_right">
     <view>
-
       <view class="nav_right_items">
         <view class="goods-container">
-
           <view class="product-view">
            <block wx:for="{{typechildlist}}" wx:key="unique" wx:for-index="idx2">
             <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
               <image src="{{item.realPath}}" mode="scaleToFill" class="product-img"></image>
               <view class="product-title">{{item.name}}</view>
             </view>
- 	</block>
+ 	         </block>
            
           </view>
         </view>

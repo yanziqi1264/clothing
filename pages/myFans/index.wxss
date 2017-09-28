@@ -53,30 +53,19 @@
   text-align: center;
 }
 
-.order-list {
+.fans-list {
   width: 100%;
 }
 
-.order-list .a-order {
+.fans-list .a-fanitem{
   width: 100%;
-  background-color: #fff;
+  height: 300rpx;
+  background-color: orange;
   margin-top: 20rpx;
   display: flex;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
 }
 
-.order-list .a-order .order-date {
-  width: 200rpx;
-  padding: 0 24rpx;
-  justify-content: space-between;
-  font-size: 26rpx;
-  color: #000;
-  align-items: center;
-}
-
-.a-order .goods-info {
-  align-items: center;
-  flex: 1;
-  line-height: 85rpx;
-}
 
 /* pages/myFans/index.wxss */
