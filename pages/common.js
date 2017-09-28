@@ -257,10 +257,20 @@ function getProductInfo(e, id) {
 					var pic ={image:coverPic}
 					picarrays.push(pic);
 				}
-				
+				var graphiclist =res.data.data.attributes.graphicinstruction
+				var graphiclistArray = []
+				if(graphiclist){
+					graphiclist =graphiclist.split(",")
+					for(var i = 0; i < graphiclist.length; i++) {
+					var pic = graphiclist[i].split(",")[0];
+					graphiclistArray.push(pic);
+				}
+					
+				}
 				e.setData({
 					detailPics: picarrays,
 					productInfo: res.data.data
+					graphiclist:graphiclistArray
 				});
 			}
 

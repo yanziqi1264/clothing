@@ -85,9 +85,8 @@
 
   <!-- 详情介绍 -->
   <view class="goods-des-info">
-    <view class="des-title">
-      文字说明
-    </view>
+  
+  
     <!-- 图文详情 产品参数 相关推荐 -->
     <view>
       <!-- tab切换 -->
@@ -99,7 +98,7 @@
       </view>
       <!-- tab切换内容 -->
 	 <!-- 产品列表页调整 -->
-     <view class="product-view">
+     <view class="product-view" hidden="{{!(currentTpye==2)}}">
        <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
             <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
               <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
@@ -111,7 +110,10 @@
             </view>
  	</block>
     </view>
-
+     <view class="product-view" hidden="{{!(currentTpye==1)}}">
+    </view>
+ <view class="product-view" hidden="{{!(currentTpye==0)}}">
+    </view>
     </view>
 
 

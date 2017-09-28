@@ -23,13 +23,23 @@ Page({
     parentOrderId:null,
     statusType: ["图文详情", "产品参数", "相关推荐"],
     currentTpye: 0,
-    tabClass: ["", "", "", ""]
+    tabClass: ["", "", "", ""],
+    productlist: [],
+    graphiclist:[]
   },
   swiperchange: function (e) {
     console.log(e.detail.current)
     this.setData({
       swiperCurrent: e.detail.current
     })
+  },
+   statusTap: function (e) {
+    var curType = e.currentTarget.dataset.index;
+    this.data.currentTpye = curType
+    this.setData({
+      currentTpye: curType
+    });
+    this.onShow();
   },
   goShopCar: function () {
   },
@@ -59,6 +69,7 @@ Page({
   var that = this
   console.log('onLoad：goodid='+goodid)
   this.getProductInfo(that,goodid)
+   common.getHotProductListByType(that, app.globalData.appId, 0,1, 4,1);
   },
   onHide:function(){
   	console.log('onHide')
