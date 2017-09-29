@@ -32,7 +32,7 @@
       </view>
     </view>
     <view class="row2">
-      <view class="goods-price">{{productInfo.attributes.commodityoriginalprice}}</view>
+      <view class="goods-price">{{productInfo.attributes.commoditycurrentprice}}</view>
     </view>
   </view>
   <!-- 月销售量 -->
@@ -113,7 +113,7 @@
       <view class="shop-num">10</view>
       购物车
     </view>
-    <view class="join-shop-cart" bindtap="tobuy">加入购物车</view>
+    <view class="join-shop-cart" bindtap="goShopCar">加入购物车</view>
     <view class="now-buy" bindtap="tobuy">立即购买</view>
   </view>
   <view class="show-popup" hidden="{{hideShopPopup}}">
@@ -125,8 +125,8 @@
           <image src="../../images/pop-list.png" class="goods-thumbnail" />
         </view>
         <view class="pop-goods-des">
-          <view class="pop-goods-title">17款秋冬大码宽松休闲羽绒服</view>
-          <view class="pop-goods-price">¥ 699</view>
+          <view class="pop-goods-title">{{productInfo.productName}}</view>
+          <view class="pop-goods-price">¥ {{productInfo.attributes.commoditycurrentprice}}</view>
         </view>
         <view class="pop-goods-close" bindtap="closePopupTap">
           <image src="../../images/popup-close.png" mode="scaleToFill" style="width:36rpx;height:36rpx"></image>
@@ -147,7 +147,7 @@
           <view class="buy-num-box">
             <view class="num-label">
               <view style="text-align:left">{{size}}</view>
-              <view style="text-align:left;color:#999">￥699</view>
+              <view style="text-align:left;color:#999">￥{{productInfo.attributes.commoditycurrentprice}}</view>
             </view>
             <view class="num-box">
             <!--  <view class="test2"> 库存:10000</view>-->

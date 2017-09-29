@@ -38,9 +38,9 @@ Page({
     buyNumMax: 999999999,
     sizelist:[],
     colorlist:[],
-    currentShopcalist:[],
     numberArray:[],
-    priceArray:[]
+    priceArray:[],
+    currentPrice:0
     
   },
   swiperchange: function (e) {
@@ -63,10 +63,6 @@ Page({
       currentTab: curType
     });
     this.onShow();
-  },
-  goShopCar: function () {
-  },
-  toAddShopCar: function () {
   },
 
   /**
@@ -92,6 +88,7 @@ Page({
    common.getHotProductListByType(that, app.globalData.appId, 0,1, 4,1);
   },
   onHide:function(){
+  	clearInterval(this.data.inteverMethod)
   	
   },
   onShow:function(){
@@ -106,7 +103,11 @@ Page({
 		},
 		success: function(res) {
 			if(res.data.success) {
-
+			var commoditycoverpic = res.data.data.attributes.commoditycoverpic;
+					if(commoditycoverpic) {
+						commoditycoverpic = commoditycoverpic.split(",")[0]
+						res.data.data.attributes.commoditycoverpic = commoditycoverpic
+					}
 				var detailPicsStr = res.data.data.attributes.commodityshowpics;
 				var detailPicsArr = detailPicsStr.split(";");
 				var picarrays = new Array();
@@ -114,6 +115,17 @@ Page({
 					var pic = {};
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
+				}
+				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
+				var nowDate= new Date()
+				
+				console.log("endDate:"+endDate)
+				console.log("nowDate:"+nowDate.getTime())
+				if(endDate-nowDate.getTime()>0){
+					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
+					
+				}	else{
+					e.setData({isFinished:true})
 				}
 				var colos = res.data.data.attributes.commoditycolor
 				var colosArray
@@ -146,6 +158,7 @@ Page({
 					e.setData({
 					detailPics: picarrays,
 					productInfo: res.data.data,
+					inteverMethod:method,
 					endTime:res.data.data.endTime,
 					colorlist:colosArray,
 					sizelist:sizeArray,
@@ -171,6 +184,7 @@ Page({
    */
   onUnload: function () {
 console.log("onUnload:")
+  	clearInterval(this.data.inteverMethod)
   },
 
   /**
@@ -210,10 +224,10 @@ console.log("onUnload:")
     }
   },
   goShopCar: function () {
- 
-  },
-  toAddShopCar: function () {
-  ;
+ this.setData({
+      shopType: "addShopCar"
+    });
+    this.bindGuiGeTap();
   },
   tobuy: function () {
     this.setData({
@@ -302,14 +316,15 @@ console.log("onUnload:")
 		for( var m=0;m<priceArray.length;m++){
 			if(buyNumber>=priceArray[m].start &&buyNumber <= priceArray[m].end){
 				buyMoney=priceArray[m].price*buyNumber
+				this.setData({currentPrice:priceArray[m].price})
 				break
 			}
 			
 		}
   	}else{
   		buyMoney=this.data.productInfo.attributes.commoditycurrentprice*buyNumber
+  		this.setData({currentPrice:this.data.productInfo.attributes.commoditycurrentprice})
   	}
-  	console.log("buyNumber:"+buyNumber+",buyMoney:"+buyMoney)
   	this.setData({buyNumber:buyNumber,buyMoney:buyMoney})
   },
   /**
@@ -337,6 +352,58 @@ console.log("onUnload:")
       })
       return;
     }
+    var orderinfo={}
+    var shoplist=[]
+    var numberArray =this.data.numberArray
+    for(var i=0;i<numberArray.length;i++){
+    var 	obj={}
+    obj.id=i
+    obj.counts=numberArray[i]
+    obj.colors=this.data.colorlist
+    obj.sizes=this.data.sizelist
+    shoplist.push(obj)
+    }
+    orderinfo.productInfo=this.data.productInfo
+    orderinfo.shoplist=shoplist
+    orderinfo.buyNum=this.data.buyNumber
+    orderinfo.buyMoney=this.data.buyMoney
+    orderinfo.currentPrice=this.data.currentPrice
+  wx.setStorageSync("immediatelyorderinfo",orderinfo)
+	wx.navigateTo({
+		url: "/pages/order-details/index?ordertype=1&handleFlag=2",
+	})
+  },
+  addShopCar: function () {
+    if (this.data.buyNumber < 1) {
+      wx.showModal({
+        title: '提示',
+        content: '购买数量不能为0！',
+        showCancel: false
+      })
+      return;
+    }
+    var shopCart =common.getShoppingCartInfo(this,app.globalData.appId)
 
+	var colorlist=this.data.colorlist
+	var sizelist=this.data.sizelist
+	var numberArray=this.data.numberArray
+	var productInfo=this.data.productInfo
+	productInfo.priceArray=priceArray
+	var shopInfo ={};
+	shopInfo.productInfo=productInfo
+	shopInfo.itemlist=[]
+  	for(var i=0;i<colorlist.length;i++){
+  		for(var j=0;j<sizelist.length;j++){
+  			var ob ={}
+  			ob.id=productInfo.id+"_"+i+"_"+j
+  			ob.name=productInfo.name+",颜色："+productInfo.color+"，尺寸："+productInfo.size
+  			ob.count=numberArray[i][j]
+  			shopInfo.allcount=shopInfo.allcount+ob.count
+  			ob.totalprice=this.data.currentPrice*numberArray[i][j]
+  			shopInfo.itemlist.push(ob)
+  		}
+  		
+  	}
   }
+  
 })

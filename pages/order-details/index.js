@@ -7,18 +7,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-  orderInfo:null,
+  orderInfo:{},
   currentId:null,
   proudctlist:[],
-  isSubmit:false
+  isSubmit:false,
+  ordertype:1,
+  parentOrderId:null,
+  endTimeStr:null,
+  minimumNum:0,
+  handleFlag:1,
+  contact:"",
+  address:"",
+  payUserName:""
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  console.log("onLoad:"+options.id)
-  this.setData({currentId:options.id})
+  console.log("onLoad:"+options.id+";"+options.ordertype)
+  var ordertype=options.ordertype
+  this.setData({currentId:options.id,ordertype:ordertype,parentOrderId:options.parentOrderId,handleFlag:options.handleFlag})
   },
 
   /**
@@ -33,7 +43,9 @@ Page({
    */
   onShow: function (options) {
   	console.log("onShow:"+this.data.currentId)
+  	var orderType=this.data.ordertype
   	var orderid =this.data.currentId
+  	var handleFlag =this.data.handleFlag
   	if(orderid){
   			common.getOrderInfo(this,orderid);
   	}else{
@@ -42,15 +54,33 @@ Page({
   		this.setData({proudctlist:[]})
   		var proudctlist=[]
   		var that =this
-   		 var shoppingcart = common.getShoppingCartInfo(this,app.globalData.appId);
-    		for(var i =0;i<shoppingcart.length;i++){
+   		 if(handleFlag ==1){
+   		 	 var shoppingcart= common.getShoppingCartInfo(this,app.globalData.appId)
+   		 	for(var i =0;i<shoppingcart.length;i++){
     			totalPrice=parseFloat(totalPrice)+parseFloat(shoppingcart[i].totalprice)
     			
     			proudctlist.push(shoppingcart[i])
     			}
    		 totalPrice=parseFloat(totalPrice).toFixed(2)
   		orderInfo.money=totalPrice*100
-  		this.setData({proudctlist:proudctlist,orderInfo:orderInfo})
+   		 }else{
+   		 	var orderinfo1=wx.getStorageSync("immediatelyorderinfo")
+   		 	var shoplist =orderinfo1.shoplist
+   		 	console.log("shoplist："+shoplist.length)
+   		 	for(var i=0;i<shoplist.length;i++){
+   		 		for(var j=0;j<shoplist[i].counts.length;j++){
+   		 			var pro ={}
+   		 			console.log(orderinfo1.productInfo.attributes.commoditycoverpic)
+   		 		pro.pic=orderinfo1.productInfo.attributes.commoditycoverpic
+   		 		pro.name=orderinfo1.productInfo.productName+",颜色："+shoplist[i].colors[i]+",尺寸："+shoplist[i].sizes[j]
+   		 		pro.count=shoplist[i].counts[j]
+   		 		pro.totalprice=orderinfo1.currentPrice*shoplist[i].counts[j]
+   		 		proudctlist.push(pro)
+   		 		}
+   		 	}
+   		 	orderInfo.money=orderinfo1.buyMoney*100
+   		 }
+  		this.setData({proudctlist:proudctlist,orderInfo:orderInfo,endTimeStr:orderinfo1.productInfo.endTime,minimumNum:orderinfo1.productInfo.minimumNum})
   	}
    
   },
@@ -121,13 +151,13 @@ Page({
   	console.log('f13')
       
       var openId =wx.getStorageSync("sessionKey"); 
+      console.log("openId:"+openId)
       if(openId){
-      	
-      	common.saveOrder(this, app.globalData.appId, openId, (this.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name)
+      	common.saveOrder(this, app.globalData.appId, openId, (this.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,this.data.proudctlist,this.data.parentOrderId,this.data.ordertype,this.data.endTimeStr,this.data.minimumNum)
       }else{
       		app.getUserInfo(function(userInfo){
       		openId =wx.getStorageSync("sessionKey"); 
-      		common.saveOrder(this, app.globalData.appId, openId,(this.data.orderInfo.money)/100, e.detail.value.address,  e.detail.value.remark,e.detail.value.contact,  e.detail.value.name)
+      		common.saveOrder(this, app.globalData.appId, openId,(this.data.orderInfo.money)/100, e.detail.value.address,  e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,this.data.ordertype)
 		})
       }
   		
@@ -155,7 +185,15 @@ Page({
   },
   
   chooseAddress:function(res){
-  	
-  	
+  	var that =this
+  	wx.chooseAddress({
+  success: function (res) {
+  	var orderInfo=that.data.orderInfo
+  	var contact=res.telNumber
+  	var address=res.provinceName+res.cityName+res.countyName+res.detailInfo
+  	var payUserName=res.userName
+  	that.setData({contact:contact,address:address,payUserName:payUserName})
+  }
+})
   }
 })

@@ -38,9 +38,9 @@ Page({
     buyNumMax: 999999999,
     sizelist:[],
     colorlist:[],
-    currentShopcalist:[],
     numberArray:[],
-    priceArray:[]
+    priceArray:[],
+    currentPrice:0
     
   },
   swiperchange: function (e) {
@@ -107,7 +107,11 @@ Page({
 		},
 		success: function(res) {
 			if(res.data.success) {
-
+			var commoditycoverpic = res.data.data.attributes.commoditycoverpic;
+					if(commoditycoverpic) {
+						commoditycoverpic = commoditycoverpic.split(",")[0]
+						res.data.data.attributes.commoditycoverpic = commoditycoverpic
+					}
 				var detailPicsStr = res.data.data.attributes.commodityshowpics;
 				var detailPicsArr = detailPicsStr.split(";");
 				var picarrays = new Array();
@@ -316,14 +320,15 @@ console.log("onUnload:")
 		for( var m=0;m<priceArray.length;m++){
 			if(buyNumber>=priceArray[m].start &&buyNumber <= priceArray[m].end){
 				buyMoney=priceArray[m].price*buyNumber
+				this.setData({currentPrice:priceArray[m].price})
 				break
 			}
 			
 		}
   	}else{
   		buyMoney=this.data.productInfo.attributes.commoditycurrentprice*buyNumber
+  		this.setData({currentPrice:this.data.productInfo.attributes.commoditycurrentprice})
   	}
-  	console.log("buyNumber:"+buyNumber+",buyMoney:"+buyMoney)
   	this.setData({buyNumber:buyNumber,buyMoney:buyMoney})
   },
   /**
@@ -351,6 +356,25 @@ console.log("onUnload:")
       })
       return;
     }
-
+    var orderinfo={}
+    var shoplist=[]
+    var numberArray =this.data.numberArray
+    for(var i=0;i<numberArray.length;i++){
+    var 	obj={}
+    obj.id=i
+    obj.counts=numberArray[i]
+    obj.colors=this.data.colorlist
+    obj.sizes=this.data.sizelist
+    shoplist.push(obj)
+    }
+    orderinfo.productInfo=this.data.productInfo
+    orderinfo.shoplist=shoplist
+    orderinfo.buyNum=this.data.buyNumber
+    orderinfo.buyMoney=this.data.buyMoney
+    orderinfo.currentPrice=this.data.currentPrice
+  wx.setStorageSync("immediatelyorderinfo",orderinfo)
+	wx.navigateTo({
+		url: "/pages/order-details/index?ordertype=3&handleFlag",
+	})
   }
 })

@@ -302,93 +302,27 @@ console.log("getProductInfo")
 //获取购物车详情
 function getShoppingCartInfo(e, appId) {
 	
-	return wx.getStorageSync(appId + '_productList')
+	return wx.getStorageSync(appId + '_shopInfo')
 
 }
-function saveShoppingCartInfoNew(e, productInfo,color,size, count, type) {
-	
-	var shopList = {}
-	if(type==1){
-		shopList = wx.getStorageSync(appId + '_shoplist')
-	}
-	
+function saveShoppingCartInfoNew(e,appId,addshopInfo) {
+	//获取添加商品的
+	var shopInfo =	wx.getStorageSync(appId+ '_shopInfo'+addshopInfo.productInfo.id )
+	if(shopInfo==null){
 		
-	var productList =shopList.productList
-	if(productList == null){
-		productList=[]
-	}
-	var isContains = false
-	var delArray=[]
-	for(var i=0;i<productList.length;i++){
-		var existPro = productList[i]
-		//判断产品ID，规格，型号一致
-		if(existPro.id == productInfo.id &&existPro.color ==color &&existPro.size ==size){
-			existPro.count =existPro.count+count
-			if(existPro.count <=0 ){
-				delArray.push(i)
-			}else{
-				calculateTotalPrice(existPro)
-				shopList.totalPrice =shopList.totalPrice+existPro.totalPrice
-				shopList.totalCount=shopList.totalCount+existPro.count
-			}
-			isContains=true
-			break
-		}
+		wx.setStorageSync(appId+ '_shopInfo'+addshopInfo.productInfo.id ,addshopInfo)
+	}else{
+		
+		var exitemlist =shopInfo.itemlist
+		var itemlist =addshopInfo.itemlist
 		
 	}
-	
-		//如果不存在，加入购物车
-		if(!isContains) {
-			count = count > 0 ? count : 0
-			var totalprice = productInfo.price * count
-			totalprice = parseFloat(totalprice).toFixed(2)
-			productInfo.count=count
-			productInfo.totalprice=totalprice
-			productList.push(pObj);
-			shopList.totalPrice =shopList.totalPrice+productInfo.totalPrice
-			shopList.totalCount=shopList.totalCount+productInfo.count
-		}
-	
-	if(type==1){
-		shopList = wx.getStorageSync(appId + '_shoplist')
-	}
-	return shopList
+		
+		
 }
 
-function removeProduct(){
-	
-	
-}
 
-function calculateTotalPrice(productInfo){
-	 var pricesArray =wx.getStorageSync('productInfo'+productInfo.id)
-	 if(pricesArray ==null){
-	 	pricesArray = [];
-	 	var salesAmountpriceArray =productInfo.salesAmountprice.split(',')
-	 	for(var i=0;i<salesAmountpriceArray.length;i++){
-		var prices=salesAmountpriceArray[i].split('-')[1]
-		pricesArray=pricesArray.split('~')
-		
-		
-		var priceO={start:pricesArrayp[0],end:pricesArrayp[1],price:prices}
-		
-		pricesArray.push(priceO)
-	}
-	 	wx.setStorage({key:'productInfo'+productInfo.id,value:pricesArray})
-	 }
-	 
-	for(var j=0;j<pricesArray.length;j++){
-		if(productInfo.count>=pricesArray[j].start &&productInfo.count<pricesArray[j].end){
-			productInfo.totalprice=parseFloat(pricesArray[j].price)*productInfo.count
-			break;
-		}
-		
-		
-	}
-	
-	
-		
-	
+function calculateTotalPrice(){
 	
 }
 //保存购物车
@@ -490,12 +424,17 @@ function getProductCount(productId) {
 
 
 //生成订单
-function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickName,shoppingList,parentOrderId,orderType) {
+function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickName,shoppingList,parentOrderId,orderType,endTimeStr,minimumNum) {
 	var that = this
+	if(minimumNum==null){
+		minimumNum=0
+	}
+	
 	totalMoney = parseInt(totalMoney * 100)
 	if(shoppingList == null){
 		shoppingList = getShoppingCartInfo(e, appId)
 	}
+	shoppingList=removeProduct(shoppingList)
 	if(shoppingList.length <1){
 		
 		return
@@ -517,7 +456,10 @@ function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickNa
 			contact: contact,
 			nickName: nickName,
 			parentOrderId:parentOrderId,
-			orderType:orderType
+			type:orderType,
+			parentOrderId:parentOrderId,
+			endTimeStr:endTimeStr,
+			minimumNum:minimumNum
 			
 		},
 		success: function(res) {

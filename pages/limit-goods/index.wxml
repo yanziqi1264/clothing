@@ -183,8 +183,8 @@
        <block wx:for="{{sizelist}}" wx:key="unique"  wx:for-item="size" wx:for-index="index2">
           <view class="buy-num-box">
             <view class="num-label">
-              <view style="text-align:left">{{size}}</view>
-              <view style="text-align:left;color:#999">￥699</view>
+              <view style="text-align:left">尺寸:{{size}}</view>
+              <view style="text-align:left;color:#999">￥{{productInfo.attributes.commoditycurrentprice}}</view>
             </view>
             <view class="num-box">
             <!--  <view class="test2"> 库存:10000</view>-->

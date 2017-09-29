@@ -115,31 +115,31 @@
       <!-- 收货人 -->
       <view class="row-wrap">
         <view class="label">收货人:</view>
-        <view wx:if="{{orderInfo.payUserName !=null}}" class="label-right">
+        <view hidden="{{orderInfo.payUserName ==null}}" class="label-right" >
           <input class="input" name="name" type="text" disabled="true" placeholder="请收入收货人姓名" value="{{orderInfo.payUserName}}"/>
         </view>
-        <view wx:if="{{orderInfo.payUserName ==null}}" class="label-right">
-          <input class="input" name="name"  type="text" placeholder="请收入收货人姓名" />
+        <view hidden="{{orderInfo.payUserName !=null}}" class="label-right" bindtap="chooseAddress"> 
+          <input class="input" name="name"  type="text" placeholder="请收入收货人姓名" value="{{payUserName}}" />
         </view>
       </view>
       <!-- 电话 -->
       <view class="row-wrap">
         <view class="label">电话:</view>
-        <view wx:if="{{orderInfo.contact !=null}}" class="label-right">
-          <input class="input" name="contact"  disabled="true" maxlength="11" type="number"  placeholder="请收入收货人手机" value="{{orderInfo.contact	}}" />
+        <view hidden="{{orderInfo.contact ==null}}" class="label-right">
+          <input class="input" name="contact"  disabled="true" maxlength="11" type="number"  placeholder="请收入收货人手机" value="{{orderInfo.contact}}" />
         </view>
-        <view  wx:if="{{orderInfo.contact ==null}}"  class="label-right">
-          <input class="input" name="contact"  maxlength="11" type="number" placeholder="请收入收货人手机" 	 />
+        <view  hidden="{{orderInfo.contact !=null}}"  class="label-right" bindtap="chooseAddress">
+          <input class="input" name="contact"  maxlength="11" type="number" placeholder="请收入收货人手机" 	value="{{contact}}"  />
         </view>
       </view>
       <!--地址 -->
       <view class="row-wrap">
         <view class="label" >地址:</view>
-        <view class="label-right" wx:if="{{orderInfo.address !=null}}">
+        <view class="label-right" hidden="{{orderInfo.address ==null}}">1
           <input class="input" name="address"  type="text" disabled="true"  placeholder="请收入收货地址" value="{{orderInfo.address}}" />
         </view>
-          <view class="label-right" wx:if="{{orderInfo.address ==null}}">
-          <input class="input" name="address"  type="text" placeholder="请收入收货地址" value=""/>
+          <view class="label-right" hidden="{{orderInfo.address !=null}}" bindtap="chooseAddress">
+          <input class="input" name="address"  type="text" placeholder="请收入收货地址"  value="{{address}}" />
         </view>
       </view>
       <view>

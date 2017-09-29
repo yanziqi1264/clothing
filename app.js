@@ -79,7 +79,7 @@ App({
     //serverAddr: "http://localhost:8081/tinyapp",
     loginUrl:"/user/login",
     updateUserUrl:"/user/login", 
-    payUrl:"/weixin/pay/order/wechatpay",
+    payUrl:"/weixin/pay/order/clothing/wechatpay",
     itemdetailUlr:"/weixin/commodity/clothing/getCommodityById",
     typelistUrl:"/weixin/commodityType/clothing/selectList",
     topproductlistUrl:"/weixin/commodity/clothing/homePagePics",
