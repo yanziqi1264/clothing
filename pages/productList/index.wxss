@@ -117,4 +117,106 @@
   flex: 1;
 }
 
+.weui-search-bar {
+  position: relative;
+  padding: 8rpx 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #efefef;
+}
+
+.weui-search-bar:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1rpx;
+  border-top: 1rpx solid #d7d6dc;
+  color: #d7d6dc;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.weui-search-bar-form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  background-color: #efeff4;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.weui-search-bar-form:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  border-radius: 10rpx;
+  border: 1rpx solid #e6e6ea;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.weui-search-bar-box {
+  position: relative;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar-box .weui-search-bar-input {
+  padding: 12rpx 30rpx;
+  height: 60rpx;
+  border: 0;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  box-sizing: content-box;
+  background: transparent;
+}
+
+.weui-search-bar-box .weui-icon-search {
+  position: absolute;
+  left: 10rpx;
+  top: 30rpx;
+  line-height: 28rpx;
+}
+
+.weui-icon-search {
+  color: #b2b2b2;
+  font-size: 14rpx;
+}
+
+[class^="weui-icon-"], [class*=" weui-icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  font: normal normal normal 14rpx/1 "weui";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.weui-icon-search:before {
+  content: "\EA0E";
+}
+
+[class^="weui-icon-"]:before, [class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: 2rpx;
+  margin-right:2rpx;
+}
+
 /* pages/productList/index.wxss */

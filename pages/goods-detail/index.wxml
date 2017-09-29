@@ -26,8 +26,8 @@
       </view>
       <view class="goods-share">
         <view class="goods-share-relative">
-          <image src="../../images/goods_detail_share.png"></image>
-          <button open-type="share" class="sharelabel"><view>分享</view></button>
+          <button open-type="share" plain="true" size="mini" type="primary" class="sharelabel"> <image src="../../images/goods_detail_share.png"></image></button>
+         <view>分享</view>
         </view>
       </view>
     </view>
@@ -69,8 +69,14 @@
  	</block>
     </view>
      <view class="product-view" hidden="{{!(currentTpye==1)}}">
+     <block wx:for="{{commodityparameters}}" wx:key="unique" wx:for-index="idx2">
+     <view>{{item.key}}:{{item.value}}</view>
+ </block>
     </view>
- <view class="product-view" hidden="{{!(currentTpye==2)}}">
+ <view class="product-view" hidden="{{!(currentTpye==0)}}">
+ <block wx:for="{{graphicinstructionarray}}" wx:key="unique" wx:for-index="idx2">
+ <image src="{{item}}" mode="scaleToFill" class="product-img"></image>
+ </block>
     </view>
     </view>
 
@@ -106,11 +112,14 @@
   
   <view class="footer-box">
     <view class="contact">
-      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+    
+      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27">
+       <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
+      </contact-button>
       客服
     </view>
     <view class="shop-cart-btn" bindtap="goShopCar">
-      <view class="shop-num">10</view>
+      <view class="shop-num">{{shopNum}}</view>
       购物车
     </view>
     <view class="join-shop-cart" bindtap="goShopCar">加入购物车</view>

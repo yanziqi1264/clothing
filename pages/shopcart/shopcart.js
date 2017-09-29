@@ -3,7 +3,7 @@ var common = require('../common.js')
 Page({
 	data: {
 		list: [],
-		totalPrice: ""
+		totalPrice:0
 
 	},
 	//事件处理函数
@@ -22,32 +22,86 @@ Page({
 	},
 	addToShoppingCart: function(e) {
 		var that = this
-		common.saveShoppingCartInfo(that, e.currentTarget.dataset.goodid, e.currentTarget.dataset.goodname, e.currentTarget.dataset.pic, e.currentTarget.dataset.goodprice, 1, 1);
+		var goodid =e.currentTarget.dataset.goodid
+		var id =e.currentTarget.dataset.id
+		console.log("reduceToShoppingCart："+goodid+"；"+id)
+		var key1 =app.globalData.appId+ '_item'+id
+		var exitem =wx.getStorageSync(key1)
+		exitem.count =exitem.count+1
+		if(exitem.count<=0){
+			wx.removeStorageSync(key1)
+		}else{
+		wx.setStorageSync(key1 ,exitem)
+		}
 		this.handledata()
 	},
 	reduceToShoppingCart: function(e) {
 		var that = this
-		common.saveShoppingCartInfo(that, e.currentTarget.dataset.goodid, e.currentTarget.dataset.goodname, e.currentTarget.dataset.pic, e.currentTarget.dataset.goodprice, -1, 1);
+		var goodid =e.currentTarget.dataset.goodid
+		var id =e.currentTarget.dataset.id
+		console.log("reduceToShoppingCart："+goodid+"；"+id)
+		var key1 =app.globalData.appId+ '_item'+id
+		var exitem =wx.getStorageSync(key1)
+		exitem.count =exitem.count-1
+		if(exitem.count<=0){
+			wx.removeStorageSync(key1)
+		}else{
+		wx.setStorageSync(key1 ,exitem)
+		}
 		this.handledata()
 	},
 	handledata: function(e) {
-		var totalPrice = 0
-		var that = this
-		var shoppingcart = common.getShoppingCartInfo(that, app.globalData.appId);
-		for(var i = 0; i < shoppingcart.length; i++) {
-			totalPrice = parseFloat(totalPrice) + parseFloat(shoppingcart[i].totalprice)
+		var pplist = common.getShoppingCartInfo(this, app.globalData.appId)
+		
+		var productidList= wx.getStorageSync(app.globalData.appId+ '_productidList' )
+		pplist =common.removeProduct(pplist)
+		var totolprice =0
+		for(var i=0;i<pplist.length;i++){
+			var key1=app.globalData.appId+ '_productinfo'+ pplist[i].productid
+			var productInfo = wx.getStorageSync(key1)
+			if(!productInfo.count){
+				productInfo.count=0
+			}
+			productInfo.count =productInfo.count+pplist[i].count
+			totolprice=totolprice+this.countprice(productInfo)
+			console.log("totalprice:"+totolprice)
 		}
-		totalPrice = parseFloat(totalPrice).toFixed(2)
+		
 		this.setData({
-			list: shoppingcart,
-			totalPrice: totalPrice
+			list: pplist,
+			totalPrice:totolprice.toFixed(2)
 		});
 	},
+	countprice:function(productInfo){
+		var totalprice =0;
+		var priceArray=productInfo.priceArray
+		if(priceArray &&priceArray.length>0){
+			for(var m=0;m<priceArray.length;m++){
+			if(productInfo.count>=priceArray[m].start &&productInfo.count <= priceArray[m].end){
+				totalprice=priceArray[m].price*productInfo.count
+				break
+			}
+		}
+		}else{
+				totalprice=productInfo.attributes.commoditycurrentprice*productInfo.count
+		}
+		
+		return totalprice
+	
+		
+	},
 	toPayOrder: function() {
-		console.log("toPayOrder" + this.data.list.length)
+		
 		if(this.data.list.length > 0) {
+			
+			 var orderinfo={}
+    var shoplist=this.data.list
+ 
+    orderinfo.shoplist=shoplist
+    orderinfo.money=this.data.totalPrice
+  	wx.setStorageSync("orderinfo",orderinfo)
 			wx.navigateTo({
-				url: "/pages/order-details/index"
+				url: "/pages/order-details/index?ordertype=1&handleFlag=1",
 			})
 		} else {
   wx.showModal({
@@ -61,8 +115,10 @@ Page({
 
 	},
 	toIndexPage:function(e){
-		wx.navigateTo({
-				url: "/pages/wholesale/wholesale"
-			})
+		console.log("toIndexPage")
+		
+		wx.switchTab({
+  	url: "/pages/wholesale/wholesale"
+})
 	}
 })

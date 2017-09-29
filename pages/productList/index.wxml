@@ -1,4 +1,16 @@
 <view class="container">
+<!-- 加搜索框-->
+    <view class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar-form">
+                <view class="weui-search-bar-box">
+                    <view class="weui-icon-search"></view>
+                    <input bindtap="searchTap" type="search" class="weui-search-bar-input" id="searchInput" placeholder="搜索" required=""/>
+                </view>
+            </form>
+            <view  style="width:80rpx;margin-top:15rpx;text-align:center" id="searchCancel">
+            <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
+            </view>
+    </view>
     <view class="status-box">
         <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
             {{item}}
@@ -26,43 +38,16 @@
     <view class="product-view">
        <view class="product-list">
           <view class="weui-flex">
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
+          <block wx:for="{{productlist}}" wx:key="unique">
+            <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
+              <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">{{item.productName}}</view>
               <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
+              ¥{{item.attributes.commoditycurrentprice}}
+              <view class="product-num">销量:60</view>
               </view>
             </view>
-
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>
-          
-          
-          </view>
-          <view class="weui-flex">
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>
-            <view class="weui-flex-item bg">
-              <image src="../../images/productList.png" mode="scaleToFill" class="product-img"></image>
-              <view class="product-title">17秋冬新款女宽松大码休闲</view>
-              <view class="product-price">
-              ¥750
-              <view class="product-num">销量:360</view>
-              </view>
-            </view>
+ 		</block>
           </view>
        </view>
     </view>

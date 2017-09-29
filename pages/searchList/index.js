@@ -8,7 +8,8 @@ Page({
    */
   data: {
   currentPage:1,
-  pageSize:10
+  pageSize:10,
+  wxSearchData:""
   },
 
   /**
@@ -24,20 +25,35 @@ Page({
   wxSearchFn: function (e) {
     var that = this
     WxSearch.wxSearchAddHisKey(that);
-     
-  common.getListByName(that,that.data.wxSearchData.value,that.data.currentPage+1,that.data.pageSize)
+     console.log('wxSearchFn:'+JSON.stringify(e))
+    
+    	wx.navigateTo({
+			url: "/pages/productList/index"
+		})
+  },
+  formSubmit:function(e){
+  	  var that = this
+    WxSearch.wxSearchAddHisKey(that);
+     console.log('formSubmit:'+e.detail.value.searchdata)
+    
+    	wx.navigateTo({
+			url: "/pages/productList/index?flag=1&name="+e.detail.value.searchdata
+		})
   },
   wxSearchInput: function (e) {
     var that = this
     WxSearch.wxSearchInput(e, that);
+    console.log('wxSearchInput:'+JSON.stringify(e))
   },
   wxSerchFocus: function (e) {
     var that = this
     WxSearch.wxSearchFocus(e, that);
+    console.log('wxSerchFocus:'+JSON.stringify(e))
   },
   wxSearchBlur: function (e) {
     var that = this
     WxSearch.wxSearchBlur(e, that);
+    console.log('wxSearchBlur:'+JSON.stringify(this.data.wxSearchData))
   },
   wxSearchKeyTap: function (e) {
     var that = this

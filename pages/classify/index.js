@@ -154,9 +154,9 @@ Page({
     });
   },
  toDetailsTap:function(e){
-  	var goodid = e.currentTarget.dataset.id
+  	var typeId = e.currentTarget.dataset.goodid
 		wx.navigateTo({
-			url: "../goods-detail/index?goodid=" + goodid
+			url: "/pages/productList/index?flag=2&typeId=" + typeId
 		})
   	
  },

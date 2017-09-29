@@ -55,14 +55,9 @@ Page({
   		var proudctlist=[]
   		var that =this
    		 if(handleFlag ==1){
-   		 	 var shoppingcart= common.getShoppingCartInfo(this,app.globalData.appId)
-   		 	for(var i =0;i<shoppingcart.length;i++){
-    			totalPrice=parseFloat(totalPrice)+parseFloat(shoppingcart[i].totalprice)
-    			
-    			proudctlist.push(shoppingcart[i])
-    			}
-   		 totalPrice=parseFloat(totalPrice).toFixed(2)
-  		orderInfo.money=totalPrice*100
+   		 var orderinfo2=wx.getStorageSync("orderinfo")
+   		 orderInfo.money=orderinfo2.money*100
+   		 this.setData({proudctlist:orderinfo2.shoplist,orderInfo:orderInfo,endTimeStr:'2017-09-28 00:00:00'})
    		 }else{
    		 	var orderinfo1=wx.getStorageSync("immediatelyorderinfo")
    		 	var shoplist =orderinfo1.shoplist
@@ -79,8 +74,9 @@ Page({
    		 		}
    		 	}
    		 	orderInfo.money=orderinfo1.buyMoney*100
+   		 	this.setData({proudctlist:proudctlist,orderInfo:orderInfo,endTimeStr:orderinfo1.productInfo.endTime,minimumNum:orderinfo1.productInfo.minimumNum})
    		 }
-  		this.setData({proudctlist:proudctlist,orderInfo:orderInfo,endTimeStr:orderinfo1.productInfo.endTime,minimumNum:orderinfo1.productInfo.minimumNum})
+  		
   	}
    
   },
@@ -148,11 +144,18 @@ Page({
     	wx.showModal({title:"请填写收货地址",content:"",showCancel:false})
     	return
     }
-  	console.log('f13')
+     	var handleFlag =this.data.handleFlag
       
+      if(handleFlag==1){
+      	console.log(11)
+      	wx.removeStorageSync("orderinfo")
+      	common.emptyShoppingCart(app.globalData.appId)
+      }else{
+      	wx.removeStorageSync("immediatelyorderinfo")
+      }
       var openId =wx.getStorageSync("sessionKey"); 
-      console.log("openId:"+openId)
       if(openId){
+      	
       	common.saveOrder(this, app.globalData.appId, openId, (this.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,this.data.proudctlist,this.data.parentOrderId,this.data.ordertype,this.data.endTimeStr,this.data.minimumNum)
       }else{
       		app.getUserInfo(function(userInfo){

@@ -302,29 +302,99 @@ console.log("getProductInfo")
 //获取购物车详情
 function getShoppingCartInfo(e, appId) {
 	
-	return wx.getStorageSync(appId + '_shopInfo')
-
-}
-function saveShoppingCartInfoNew(e,appId,addshopInfo) {
-	//获取添加商品的
-	var shopInfo =	wx.getStorageSync(appId+ '_shopInfo'+addshopInfo.productInfo.id )
-	if(shopInfo==null){
-		
-		wx.setStorageSync(appId+ '_shopInfo'+addshopInfo.productInfo.id ,addshopInfo)
-	}else{
-		
-		var exitemlist =shopInfo.itemlist
-		var itemlist =addshopInfo.itemlist
+	var prolist = wx.getStorageSync(appId + '_shopidList')
+	if(prolist==null ||prolist==''){
+		prolist=[]
+	}
+	var pplist=[]
+	console.log("prolist.length:"+prolist.length)
+	for(var i =0;i<prolist.length;i++){
+		var key1 =prolist[i]
+		var item =	wx.getStorageSync(key1)
+		if(item!=null &&item!=''){
+			pplist.push(item)
+		}
 		
 	}
-		
-		
+	return pplist
+
 }
 
 
-function calculateTotalPrice(){
+function emptyShoppingCart(appId){
+	var prolist = wx.getStorageSync(appId + '_shopidList')
 	
+	for(var i =0;i<prolist.length;i++){
+		var key1 =prolist[i]
+		console.log("emptyShoppingCart1:"+key1)
+		var item =	wx.getStorageSync(key1)
+		console.log("i:"+i)
+		if(item!=null && item!=''){
+		console.log("emptyShoppingCart2:"+JSON.stringify(item) )
+		wx.removeStorage(
+			{key:appId+'_produnct'+item.productid,
+			  success: function(res) {
+    					console.log(res.data)
+ 				} 
+			}
+			
+		)
+		console.log("emptyShoppingCart3")
+		wx.removeStorage({key:key1,
+			  success: function(res) {
+    					console.log(res.data)
+ 				} 
+			})
+		}
+		
+		console.log("emptyShoppingCart4")
+	}
+	wx.removeStorage(
+		{key:appId + '_shopidList',
+			  success: function(res) {
+    					console.log(res.data)
+ 				} 
+			}
+		
+		)
 }
+
+function saveShoppingCartInfoNew(e,appId,addshopInfo) {
+	//获取添加商品的
+	var shopidList= wx.getStorageSync(appId+ '_shopidList' )
+	if(shopidList==null ||shopidList==''){
+		shopidList=[]
+	}
+	var productidList= wx.getStorageSync(appId+ '_productidList' )
+	if(productidList==null ||productidList==''){
+		productidList=[]
+	}
+	var productInfo = wx.getStorageSync(appId+ '_produnct'+ addshopInfo.productInfo.id)
+	if(productInfo==null ||productInfo==''){
+		productInfo=addshopInfo.productInfo
+		productidList.push(productInfo.id)
+		wx.setStorageSync(appId+ '_productinfo'+productInfo.id ,productInfo)
+		wx.setStorageSync(appId+ '_productidList' ,productidList)
+	}
+	
+	var itemlist =addshopInfo.itemlist
+	for(var i=0;i<itemlist.length;i++){
+			var key1 =appId+ '_item'+itemlist[i].id
+		var exitem =wx.getStorageSync(key1)
+		if(exitem==null ||exitem==''){
+				shopidList.push(key1)
+				exitem=itemlist[i]
+		}else{
+				exitem.count=exitem.count+itemlist[i].count
+				productInfo.totalcount=productInfo.totalcount+exitem.count
+		}
+		wx.setStorageSync(key1 ,exitem)
+	}
+		wx.setStorageSync(appId+ '_shopidList' ,shopidList)
+		
+}
+
+
 //保存购物车
 function saveShoppingCartInfo(e, productId, productName, pic, price, count, type) {
 	price = parseFloat(price)
@@ -837,5 +907,8 @@ module.exports = {
 	getTypeChildList:getTypeChildList,
 	getProductCount:getProductCount,
 	ShowCountDown:ShowCountDown,
-	setIntervalTims:setIntervalTims
+	setIntervalTims:setIntervalTims,
+	saveShoppingCartInfoNew:saveShoppingCartInfoNew,
+	removeProduct:removeProduct,
+	emptyShoppingCart:emptyShoppingCart
 }

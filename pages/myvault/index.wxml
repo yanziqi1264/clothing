@@ -6,7 +6,7 @@
       <view class="weui-flex">
         <view class="weui-flex-item weui-flex-item-block">
           <view class="font-50">
-            {{maindata.money==null ?0:maindata.money}}
+            {{maindata.currentMoney==null ?0:maindata.currentMoney}}
           </view>
           <view class="font-28 padding-top-30">
             总财富(元)

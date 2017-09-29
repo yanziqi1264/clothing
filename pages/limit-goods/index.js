@@ -40,7 +40,8 @@ Page({
     colorlist:[],
     numberArray:[],
     priceArray:[],
-    currentPrice:0
+    currentPrice:0,
+    endDate:null
     
   },
   swiperchange: function (e) {
@@ -113,19 +114,21 @@ Page({
 						res.data.data.attributes.commoditycoverpic = commoditycoverpic
 					}
 				var detailPicsStr = res.data.data.attributes.commodityshowpics;
-				var detailPicsArr = detailPicsStr.split(";");
+				if(detailPicsStr){
+					var detailPicsArr = detailPicsStr.split(";");
 				var picarrays = new Array();
 				for(var i = 0; i < detailPicsArr.length; i++) {
 					var pic = {};
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
 				}
+					
+				}
+				
 				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
 				var nowDate= new Date()
-				
-				console.log("endDate:"+endDate)
-				console.log("nowDate:"+nowDate.getTime())
 				if(endDate-nowDate.getTime()>0){
+					e.setData({endDate:endDate.getTime()})
 					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
 					
 				}	else{
@@ -166,7 +169,7 @@ Page({
 					endTime:res.data.data.endTime,
 					colorlist:colosArray,
 					sizelist:sizeArray,
-					priceArray:priceArray
+					priceArray:priceArray,
 				});
 			}
 
@@ -348,6 +351,15 @@ console.log("onUnload:")
 	  * 立即购买
 	  */
   buyNow: function () {
+  	  var nowdate = new Date()
+      if (this.data.endDate < nowdate.getTime()) {
+      wx.showModal({
+        title: '提示',
+        content: '团够活动已经结束！',
+        showCancel: false
+      })
+      return;
+    }
     if (this.data.buyNumber < 1) {
       wx.showModal({
         title: '提示',
@@ -356,6 +368,7 @@ console.log("onUnload:")
       })
       return;
     }
+  
     var orderinfo={}
     var shoplist=[]
     var numberArray =this.data.numberArray
@@ -374,7 +387,7 @@ console.log("onUnload:")
     orderinfo.currentPrice=this.data.currentPrice
   wx.setStorageSync("immediatelyorderinfo",orderinfo)
 	wx.navigateTo({
-		url: "/pages/order-details/index?ordertype=3&handleFlag",
+		url: "/pages/order-details/index?ordertype=3&handleFlag=3",
 	})
   }
 })

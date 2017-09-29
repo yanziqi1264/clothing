@@ -90,6 +90,7 @@ App({
     shopUrl:"/weixin/storeMessage/getMessage",
     saveOrder:"/weixin/pay/order/clothing/placeOrder",
 	productlistUrl:"/weixin/commodityType/clothing/getCommodityList",
+	productlistnameUrl:"/weixin/commodity/clothing/getCommodityList",
 	orderlistUrl:"/weixin/pay/order/clothing/getOrderList",
 	orderinfoUrl:"/weixin/pay/order/clothing/getOrderById",
 	cancelorderUrl:"/weixin/pay/order/clothing/cancelOrder",

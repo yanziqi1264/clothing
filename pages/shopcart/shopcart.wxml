@@ -20,9 +20,9 @@
                         <view class="goods-title">{{item.name}}</view>
                         <view class="goods-price">{{item.totalprice}}</view>
                         <view class="buy-num">
-                            <view class="jian-btn {{item.count==1? 'disabled' : ''}}" data-index="{{index}}" catchtap="reduceToShoppingCart"  data-goodid="{{item.id}}" data-goodname="{{item.name}}" data-pic="{{item.pic}}" data-goodprice="{{item.price}}">-</view>
+                            <view class="jian-btn " data-index="{{index}}" catchtap="reduceToShoppingCart"  data-id="{{item.id}}"  data-goodid="{{item.productid}}" data-goodname="{{item.name}}" data-pic="{{item.pic}}" data-goodprice="{{item.price}}">-</view>
                             <input  type="number" value="{{item.count}}" disabled/>
-                            <view class="jia-btn " data-index="{{index}}" catchtap="addToShoppingCart"  data-goodid="{{item.id}}" data-goodname="{{item.name}}" data-pic="{{item.pic}}" data-goodprice="{{item.price}}">+</view>
+                            <view class="jia-btn " data-index="{{index}}" catchtap="addToShoppingCart"  data-id="{{item.id}}"  data-goodid="{{item.productid}}" data-goodname="{{item.name}}" data-pic="{{item.pic}}" data-goodprice="{{item.price}}">+</view>
                         </view>
                     </view>
                 </view>

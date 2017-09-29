@@ -1,12 +1,14 @@
-var app = getApp()
+var app = getApp() // 获取入口文件app的应用实例
+var common = require('../common.js')
 Page({
   data: {
-    statusType: ["热卖套装", "裙子套装","运动套装","裤子套装"],
+    statusType: ["销量", "最新","价格"],
     currentTpye: 0,
-    tabClass: ["", "","","",""],
+    tabClass: ["", "","",""],
     fanslist: [],
     currentPage: 1,
     pageSize: 10,
+    productlist:[]
 
   },
   statusTap: function (e) {
@@ -14,46 +16,19 @@ Page({
     this.data.currentTpye = curType
     this.setData({
       currentTpye: curType,
-      currentPage: 1,
-      fanslist: [],
+      currentPage: 1
     });
-    if (curType == 0) {
-      this.getFans(1, this.data.currentPage, 10)
-    } else {
-      this.getFans(2, this.data.currentPage, 10)
-    }
     this.onShow();
   },
   onLoad: function (options) {
-
-    this.getFans(1, this.data.currentPage, 10)
-
-  },
-  getFans: function (type, currentPage, pageSize) {
-    console.log("fans")
-    var that = this
-    var openId = wx.getStorageSync("sessionKey")
-    wx.request({
-      url: app.globalData.serverAddr + "/weixin/clothing/distribution/fans",
-      data: {
-        appId: app.globalData.appId,
-        openId: openId,
-        currentPage: currentPage,
-        pageSize: pageSize,
-        levelFlag: type
-
-      },
-      success: function (res) {
-
-        var fanslist = that.data.fanslist
-        for (var i = 0; i < res.data.data.length; i++) {
-          fanslist.push(res.data.data[i])
-        }
-        that.setData({ fanslist: res.data.data, currentPage: currentPage + 1 })
-
-
-      }
-    })
+  	var typeId =options.typeId
+  	var flag =options.flag
+  	var name =options.name
+  	if(!typeId){
+  		
+  		typeId=0
+  	}
+	this.getProductListByType(this,typeId,1,this.data.currentPage,this.data.pageSize,flag,name)
 
   },
   onReady: function () {
@@ -81,5 +56,70 @@ Page({
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
 
-  }
+  },
+  getProductListByType:function(e, type,sellType,currentPage,pageSize,flag,name) {
+	var requsturl=app.globalData.serverAddr + app.globalData.productlistUrl
+	if(flag ==1){
+		requsturl=app.globalData.serverAddr + app.globalData.productlistnameUrl
+	}
+	wx.request({
+		url: requsturl,
+		data: {
+			appId:  app.globalData.appId,
+			typeId: type,
+			currentPage: currentPage,
+			pageSize: pageSize,
+			sellType:sellType,
+			name:name
+		},
+		method:"POST",
+		success: function(res) {
+			console.log(res.data)
+			if(res.data.success) {
+				var productlist=[]
+				var dataArray = res.data.data
+				for(var i = 0; i < dataArray.length; i++) {
+					dataArray[i].count = common.getProductCount(dataArray[i].id)
+					var commoditycoverpic = dataArray[i].attributes.commoditycoverpic;
+					if(commoditycoverpic) {
+						commoditycoverpic = commoditycoverpic.split(",")[0]
+						dataArray[i].attributes.commoditycoverpic = commoditycoverpic
+					}
+					productlist.push(dataArray[i])
+				}
+					e.setData({
+					productlist: productlist,
+				})
+				
+
+			}
+
+		}
+	})
+},
+toDetailsTap: function(e) {
+	
+		var sellType = e.currentTarget.dataset.selltype
+		var goodid = e.currentTarget.dataset.goodid
+		if(sellType==1){
+			wx.navigateTo({
+				url: "../goods-detail/index?goodid=" + goodid
+			})
+		}else if(sellType==2){
+				wx.navigateTo({
+				url: "../goods-detail/index?goodid=" + goodid
+			})
+		}else if(sellType==3){
+				wx.navigateTo({
+				url: "../limit-goods/index?goodid=" + goodid
+			})
+		}
+		
+	
+	},
+	 searchTap: function (e) {
+      wx.navigateTo({
+        url: "/pages/searchList/index"
+      })
+  },
 })

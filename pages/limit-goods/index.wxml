@@ -19,7 +19,7 @@
     <view class="topbanner">
       <view class="topbanner-container">
         <view class="topbanner-text"  hidden="{{isFinished}}">
-          距结束仅剩{{isFinished}}
+          距结束仅剩
         </view>
          <view class="topbanner-text" hidden="{{!isFinished}}">
           拼团已经结束
