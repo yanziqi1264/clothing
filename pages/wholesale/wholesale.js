@@ -153,7 +153,6 @@ Page({
 	
 		var sellType = e.currentTarget.dataset.selltype
 		var goodid = e.currentTarget.dataset.goodid
-			console.log("tapBanner###########打印当前的商品详情" + sellType);
 		if(sellType==1){
 			wx.navigateTo({
 				url: "../goods-detail/index?goodid=" + goodid

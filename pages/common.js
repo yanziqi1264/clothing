@@ -231,7 +231,7 @@ function getHotProductListByType(e, appId, type, currentPage, pagesize,sellType)
 }
 //根据模块获取产品详情
 function getProductInfo(e, id) {
-
+console.log("getProductInfo")
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.productUrl,
 		data: {
@@ -265,12 +265,32 @@ function getProductInfo(e, id) {
 					var pic = graphiclist[i].split(",")[0];
 					graphiclistArray.push(pic);
 				}
+				}
+				var sizes=res.data.data.attributes.commoditysize
+				var sizeList =sizes.split(",")
+				if(sizes){
+					for(var i = 0; i < sizeList.length; i++) {
 					
+					sizeList.push(sizeList[i]);
+					
+				}
+				}
+				var colors=res.data.data.attributes.commoditycolor
+				console.log("颜色1"+colors)
+				var colorlist =colors.split(",")
+				if(colorlist){
+					for(var i = 0; i < colorlist.length; i++) {
+						console.log("颜色2"+colorlist[i])
+					colorlist.push(colorlist[i]);
+					
+				}
 				}
 				e.setData({
 					detailPics: picarrays,
-					productInfo: res.data.data
-					graphiclist:graphiclistArray
+					productInfo: res.data.data,
+					graphiclist:graphiclistArray,
+					colorlist:colorlist,
+					sizeList:sizeList
 				});
 			}
 

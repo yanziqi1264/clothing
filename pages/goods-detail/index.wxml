@@ -14,6 +14,8 @@
       </block>
     </view>
   </view>
+
+
   <!-- 商品名字价格分享 -->
   <view class="goods-info">
     <view class="row1">
@@ -21,43 +23,157 @@
         <view class="goods-name-view">
           {{productInfo.productName}}
         </view>
-
       </view>
-      	<!--
       <view class="goods-share">
         <view class="goods-share-relative">
-          <image src="/images/goods_detail_share.png"></image>
-          <view class="sharelabel">分享</view>
+          <image src="../../images/goods_detail_share.png"></image>
+          <button open-type="share" class="sharelabel"><view>分享</view></button>
         </view>
       </view>
-      -->
     </view>
     <view class="row2">
-      <view class="goods-price"> {{productInfo.attributes.commodityoriginalprice}}</view>
+      <view class="goods-price">{{productInfo.attributes.commodityoriginalprice}}</view>
     </view>
   </view>
-  <!-- 月销售量 
+  <!-- 月销售量 -->
   <view class="month-sales">
     <view class="month-num">月销售量296</view>
-    <view class="goods-place"></view>
+    <view class="goods-place">上海</view>
   </view>
--->
+
   <!-- 详情介绍 -->
   <view class="goods-des-info">
-    <view class="des-title" >
-      文字说明
+  
+  
+    <!-- 图文详情 产品参数 相关推荐 -->
+    <view>
+      <!-- tab切换 -->
+      <view class="status-box">
+        <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+          {{item}}
+          <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
+        </view>
+      </view>
+      <!-- tab切换内容 -->
+	 <!-- 产品列表页调整 -->
+     <view class="product-view" hidden="{{!(currentTpye==2)}}">
+       <block wx:for="{{productlist}}" wx:key="unique" wx:for-index="idx2">
+            <view class="weui-flex-item bg" bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
+              <image src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill" class="product-img"></image>
+              <view class="product-title">{{item.productName}}</view>
+              <view class="product-price">
+              ¥{{item.attributes.commoditycurrentprice}}
+              <view class="product-num">销量:360</view>
+              </view>
+            </view>
+ 	</block>
+    </view>
+     <view class="product-view" hidden="{{!(currentTpye==1)}}">
+    </view>
+ <view class="product-view" hidden="{{!(currentTpye==2)}}">
+    </view>
     </view>
 
-    <view class="goods-text">
-     {{productInfo.attributes.commoditydesc}}
-    </view>
+
+
   </view>
 
-  <!-- 底部操作选项 -->
+  <!-- 底部操作选项
 
   <view class="footer-box">
- 	<view class="join-shop-cart"  bindtap="toAddShopCar" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">联系客服</view>
-    <view class="join-shop-cart"  bindtap="toAddShopCar" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">加入购物车</view>
-    <view class="now-buy" bindtap="gotoshoppingcart" data-goodprice="{{productInfo.attributes.commodityoriginalprice}}" data-goodid="{{productInfo.id}}" data-goodname="{{productInfo.productName}}"  data-pic="{{productInfo.attributes.commoditycoverpic}}">立即购买</view>
+    <view class="block1" bindtap="toAddShopCar">小店</view>
+    <view class="block2 colo-fee5e8" bindtap="toAddShopCar">
+      <view class="test2">
+        <view>¥19.99</view>
+        <view>单独购买</view>
+      </view>
+    </view>
+    <view class="block3 colo-fe4c88" bindtap="tobuy">2人拼团</view>
+  </view>
+ -->
+  <!-- 快速导航 找客服
+  <view class="left-navigation-container">
+    <view class="icon-plus-nav menu-btn">
+      <view class="paddingTop-20">快捷</view>
+      <view class="paddingTop-10">导航</view>
+    </view>
+  </view>
+   -->
+  
+  
+  
+  
+  
+  <view class="footer-box">
+    <view class="contact">
+      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+      客服
+    </view>
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <view class="shop-num">10</view>
+      购物车
+    </view>
+    <view class="join-shop-cart" bindtap="tobuy">加入购物车</view>
+    <view class="now-buy" bindtap="tobuy">立即购买</view>
+  </view>
+  <view class="show-popup" hidden="{{hideShopPopup}}">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+
+      <view class="pop-goods-info">
+        <view class="pop-img-box">
+          <image src="../../images/pop-list.png" class="goods-thumbnail" />
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">17款秋冬大码宽松休闲羽绒服</view>
+          <view class="pop-goods-price">¥ 699</view>
+        </view>
+        <view class="pop-goods-close" bindtap="closePopupTap">
+          <image src="../../images/popup-close.png" mode="scaleToFill" style="width:36rpx;height:36rpx"></image>
+        </view>
+      </view>
+      <!-- tab选项-->
+
+      <view class="swiper-tab">
+      <block wx:for="{{colorlist}}" wx:key="unique" wx:for-index="index">
+        <view class="swiper-tab-list {{currentTab== index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view>
+      </block> 
+      </view>
+      <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:300px" bindchange="bindChange">
+      
+       <block wx:for="{{colorlist}}" wx:key="unique" wx:for-index="index">
+       <swiper-item>
+       <block wx:for="{{sizelist}}" wx:key="unique"  wx:for-item="size" wx:for-index="index2">
+          <view class="buy-num-box">
+            <view class="num-label">
+              <view style="text-align:left">{{size}}</view>
+              <view style="text-align:left;color:#999">￥699</view>
+            </view>
+            <view class="num-box">
+            <!--  <view class="test2"> 库存:10000</view>-->
+              <view class="num-jian {{(numberArray[index][index2]== buyNumMin||numberArray[index][index2]==null )? 'hui': ''}}" bindtap="numJianTap" data-colorindex="{{index}}" data-sizeindex="{{index2}}">-</view>
+              <view class="num-input">
+                <input style="display:inline-block;" type="number" value="{{numberArray[index][index2] ==null ?0:numberArray[index][index2] }}" disabled/>
+              </view>
+              <view class="num-jia {{numberArray[index][index2] == buyNumMax ? 'hui': ''}}" bindtap="numJiaTap" data-colorindex="{{index}}" data-sizeindex="{{index2}}">+</view>
+            </view>
+          </view>
+
+           </block> 
+        </swiper-item>
+       
+       </block> 
+        
+      </swiper>
+
+      <view style="text-align:right"> 总计:{{buyMoney}}</view>
+
+      <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">
+        加入购物车
+      </view>
+      <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow">
+        立即购买
+      </view>
+    </view>
   </view>
 </view>
