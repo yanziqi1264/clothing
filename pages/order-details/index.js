@@ -71,6 +71,8 @@ Page({
    		 		pro.count=shoplist[i].counts[j]
    		 		pro.price=orderinfo1.productInfo.attributes.commoditycurrentprice
    		 		pro.totalprice=orderinfo1.currentPrice*shoplist[i].counts[j]
+   		 		pro.productId=orderinfo1.productInfo.id
+   		 		pro.productName=orderinfo1.productInfo.productName
    		 		proudctlist.push(pro)
    		 		}
    		 	}
@@ -170,15 +172,30 @@ Page({
     
     
   },
-  onShareAppMessage: function (res) {
-  	 var openId =wx.getStorageSync("sessionKey"); 
-    if (res.from === 'button') {
+ onShareAppMessage: function (res) {
+  	  var openId =wx.getStorageSync("sessionKey")
+  	  var that =this
+ if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
-    return {
-      title: '自定义转发标题',
-       path: 'pages/retail/retail?type=1&shareOpenId='+openId,
+ 	var goodid =0
+ var goodName =""
+ var goodpic=""
+ var proudctlist=this.data.proudctlist
+ for(var i =0;i<proudctlist.length;i++){
+ 	goodid=proudctlist[i].productId
+ 	goodName=proudctlist[i].productName
+ 	goodpic=proudctlist[i].pic
+ 	break
+ }
+ if(this.data.ordertype==3){
+ 	
+ 
+ 	return {
+      title: goodName,
+      path: '/pages/limit-goods/index?flag=2&shareOpenId='+openId+"&goodid="+goodid+"&parentOrderId="+this.data.orderInfo.orderId,
+      imageUrl:goodpic,
       success: function(res) {
         // 转发成功
       },
@@ -186,6 +203,22 @@ Page({
         // 转发失败
       }
     }
+ }else{
+ 	return {
+      title: "时尚大衣",
+      path: 'pages/wholesale/wholesale?flag=1&shareOpenId='+openId,
+       imageUrl:goodpic,
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
+
+ 	
+ }
+    
   },
   
   chooseAddress:function(res){

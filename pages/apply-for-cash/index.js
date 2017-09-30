@@ -82,6 +82,19 @@ Page({
   	console.log( e.detail.value)
   	var money= e.detail.value.money
   	if(money%100 !=0){
+  		 wx.showModal({
+        title: '提示',
+        content: '提现金额必须是100的整数！',
+        showCancel: false
+      })
+  		return
+  	}
+  	if(this.data.advisableMoney < money){
+  		 wx.showModal({
+        title: '提示',
+        content: '提现金额必须超过可提现金额！',
+        showCancel: false
+      })
   		return
   	}
   	var weixinid= e.detail.value.weixinid	

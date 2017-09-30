@@ -50,6 +50,16 @@ tomyfans:function(e){
       url: "/pages/myFans/index"
     })
 },
+tohistoryrecord:function(e){
+	   wx.navigateTo({
+      url: "/pages/myhistory/index"
+    })
+},
+tomoneyrecord:function(e){
+	   wx.navigateTo({
+      url: "/pages/myincome/index"
+    })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -108,6 +118,16 @@ tomyfans:function(e){
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+     var openId =wx.getStorageSync("sessionKey")
+    return {
+      title: '时尚大衣',
+      path: 'pages/wholesale/wholesale?shareOpenId='+openId,
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
   }
 })

@@ -5,8 +5,91 @@
             <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
         </view>
     </view>
-    <view class="no-order" hidden="{{orderList ? true : false}}">
+    <view class="no-order" hidden="{{orderlist.length >0? true : false}}">
         <image src="/images/no-order.png" class="no-order-img"></image>
-        <view class="text">亲~您还没有商品哦,快去看看吧</view>
+        <view class="text">亲~您还没有商品哦,快去看看吧!</view>
     </view>
+    
+     <view class="list-container"  wx:if="{{orderlist.length >0}}">
+     
+  <block wx:for="{{orderlist}}"   wx:for-item="item" wx:key="index1" >
+    <view class="list-item-div" >
+    
+      <view class="list-item">
+        <view class="order-title">
+          <view class="order-title-left">
+            <view class="order-title-txt">
+             {{shopInfo.name}}
+            </view>
+            <view class="order-title-arrow">
+            </view>
+          </view>
+          <view class="order-title-right">
+          <view wx:if="{{item.status ==0 }}"> 未支付 </view>
+<view wx:elif="{{item.status ==1}}"> 未支付 </view>
+<view wx:elif="{{item.status ==2}}"> 支付中</view>
+<view wx:elif="{{item.status ==3}}"> 支付成功 </view>
+<view wx:elif="{{item.status ==4 }}"> 支付失败 </view>
+<view wx:elif="{{item.status ==5}}"> 已关闭</view>
+<view wx:elif="{{item.status ==6 }}"> 已撤销 </view>
+<view wx:elif="{{item.status ==7 }}"> 退款中 </view>
+<view wx:elif="{{item.status ==8 }}"> 发货中 </view>
+<view wx:else> 已完成 </view>
+          
+          </view>
+        </view>
+		<block  wx:for="{{item.shoppingList}}"  wx:key="index2" wx:for-index="idx1" wx:for-item="product" >
+        <!-- 主要内容-->
+        <view wx:if="{{idx1 == 0}}" class="goods-box" bindtap="orderDetail" data-id="{{item.orderId}}">
+          <view class="goods-box-div">
+            <!-- 图片展示 -->
+            <view class="goods-img">
+              <image src="{{product.pic}}" class="goods-img " mode="aspectFill" />
+            </view>
+            <!-- 具体内容 -->
+            <view class="goods-info">
+              <view class="goods-info-brand">
+             {{product.name}}
+              </view>
+              <view class="goods-info-view">
+
+                <view class="goods-info-price">
+                  <text>{{product.price}}</text>
+                </view>
+                <view class="goods-info-addview">
+                  X{{product.count}}
+                </view>
+              </view>
+
+            </view>
+
+          </view>
+
+
+        </view>
+		</block>
+        <!--共计多少商品 -->
+        <view class="goods-total">
+          <view class="goods-total-div">
+            <view>共{{item.totalcout}}件商品</view>
+            <view>合计:{{item.money/100}}元</view>
+            <view>(含运费￥:0.00)</view>
+          </view>
+        </view>
+        <!-- toAction -->
+        <view class="goods-action">
+          <view class="goods-action-div">
+            
+            <view wx:if="{{ item.status ==8 || item.status ==3}}" class="btn-view-red" bindtap="finishOrderTap" >确认收货</view>
+             
+  			<!--<view class="btn-view-red" bindtap="cancelOrderTap" data-id="1">评价</view>-->
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+
+    </block>
+  </view>
 </view>

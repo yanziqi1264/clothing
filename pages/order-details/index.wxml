@@ -29,6 +29,7 @@
       <view class="order-buyer">
         <view class="order-buyer-lable">买家:</view>
         <view class="order-number">{{orderInfo.payUserName}}</view>
+       <button wx:if="{{orderInfo.type ==3}}"size="mini" type="primary" open-type="share" class="btn-view-red">分享团购 </button>
       </view>
       <!-- 备注 -->
       <view class="order-buyer" style="margin-top:10rpx;">

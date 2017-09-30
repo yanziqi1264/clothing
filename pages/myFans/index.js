@@ -8,6 +8,7 @@ Page({
     currentPage:1,
     pageSize:10,
     
+    
   },
   statusTap: function (e) {
     var curType = e.currentTarget.dataset.index;

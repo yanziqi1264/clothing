@@ -232,9 +232,10 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target)
     }
+     var openId =wx.getStorageSync("sessionKey")
     return {
       title: '时尚大衣',
-      path: 'pages/wholesale/wholesale',
+      path: 'pages/wholesale/wholesale?shareOpenId='+openId,
       success: function(res) {
         // 转发成功
       },

@@ -727,7 +727,6 @@ function getOrderListByType(e,status,type,ptStatus,currentPage,pageSize){
 					}
 					oldorderlist.push(orderlist[i])
 				}
-					
 				e.setData({orderlist:oldorderlist,currentPage:currentPage})
 				
 			}

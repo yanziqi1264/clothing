@@ -59,5 +59,6 @@ Page({
     // 页面上拉触底事件的处理函数
     var  curType= this.data.currentTpye 
     common.getOrderListByType(this,3,3,curType,this.data.currentPage,this.data.pageSize)
-  }
+  },
+  
 })

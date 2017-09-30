@@ -79,7 +79,7 @@ Page({
  var flag =options.flag
  if(flag == 1){
  	//团购分享
- 	var parentOrderId =options.goodid
+ 	var parentOrderId =options.parentOrderId
  	if(null !=parentOrderId){
  	this.setData({parentOrderId:parentOrderId})
  }

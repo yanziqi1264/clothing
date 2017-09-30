@@ -49,7 +49,7 @@
       <view class="weui-cell-ft"></view>
     </view>
 
-     <view class="weui-cell">
+     <view class="weui-cell"  bindtap="tohistoryrecord">
       <view class="weui-cell-primary">
         历史总收益
       </view>
@@ -59,7 +59,7 @@
 
 
 
-     <view class="weui-cell">
+     <view class="weui-cell" bindtap="tomoneyrecord">
       <view class="weui-cell-primary">
       资金明细
       </view>
