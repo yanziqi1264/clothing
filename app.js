@@ -1,7 +1,12 @@
 //app.js
 App({
   onLaunch: function(options) {
-  	console.log("onLaunch")
+  	
+  	
+  	if(options.query.shareOpenId){
+  		console.log("onLaunch："+options.query.shareOpenId)
+  		this.globalData.shareOpenId=options.query.shareOpenId
+  	}
   	 this.getUserInfo(function(userInfo){
 		})
   },

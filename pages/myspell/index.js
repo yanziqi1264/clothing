@@ -13,7 +13,9 @@ Page({
     var curType = e.currentTarget.dataset.index;
     this.data.currentTpye = curType
     this.setData({
-      currentTpye: curType
+      currentTpye: curType,
+      currentPage:1,
+      orderlist:[]
     });
     this.onShow();
   },
@@ -58,6 +60,7 @@ Page({
   	 wx.showLoading();
     // 页面上拉触底事件的处理函数
     var  curType= this.data.currentTpye 
+    this.setData({currentPage:this.data.currentPage+1})
     common.getOrderListByType(this,3,3,curType,this.data.currentPage,this.data.pageSize)
   },
   

@@ -28,7 +28,7 @@ Page({
   onLoad: function (options) {
   console.log("onLoad:"+options.id+";"+options.ordertype)
   var ordertype=options.ordertype
-  this.setData({currentId:options.id,ordertype:ordertype,parentOrderId:options.parentOrderId,handleFlag:options.handleFlag})
+  this.setData({currentId:options.id,ordertype:ordertype,handleFlag:options.handleFlag})
   },
 
   /**
@@ -77,7 +77,7 @@ Page({
    		 		}
    		 	}
    		 	orderInfo.money=orderinfo1.buyMoney*100
-   		 	this.setData({proudctlist:proudctlist,orderInfo:orderInfo,endTimeStr:orderinfo1.productInfo.endTime,minimumNum:orderinfo1.productInfo.minimumNum})
+   		 	this.setData({proudctlist:proudctlist,parentOrderId:orderinfo1.parentOrderId,orderInfo:orderInfo,endTimeStr:orderinfo1.productInfo.endTime,minimumNum:orderinfo1.productInfo.minimumNum})
    		 }
   		
   	}
@@ -150,7 +150,7 @@ Page({
      	var handleFlag =this.data.handleFlag
       
       if(handleFlag==1){
-      	console.log(11)
+      	
       	wx.removeStorageSync("orderinfo")
       	common.emptyShoppingCart(app.globalData.appId)
       }else{
@@ -189,12 +189,12 @@ Page({
  	goodpic=proudctlist[i].pic
  	break
  }
- if(this.data.ordertype==3){
- 	
+ if(this.data.orderInfo.type==3){
+ 	console.log("parentOrderId"+this.data.orderInfo.orderId)
  
  	return {
       title: goodName,
-      path: '/pages/limit-goods/index?flag=2&shareOpenId='+openId+"&goodid="+goodid+"&parentOrderId="+this.data.orderInfo.orderId,
+      path: '/pages/limit-goods/index?flag=1&shareOpenId='+openId+"&goodid="+goodid+"&parentOrderId="+this.data.orderInfo.orderId,
       imageUrl:goodpic,
       success: function(res) {
         // 转发成功

@@ -79,6 +79,7 @@ Page({
  var flag =options.flag
  if(flag == 1){
  	//团购分享
+ 	 console.log("parentOrderId:"+options.parentOrderId)
  	var parentOrderId =options.parentOrderId
  	if(null !=parentOrderId){
  	this.setData({parentOrderId:parentOrderId})
@@ -386,6 +387,7 @@ console.log("onUnload:")
     orderinfo.buyNum=this.data.buyNumber
     orderinfo.buyMoney=this.data.buyMoney
     orderinfo.currentPrice=this.data.currentPrice
+   orderinfo.parentOrderId=this.data.parentOrderId
   wx.setStorageSync("immediatelyorderinfo",orderinfo)
 	wx.navigateTo({
 		url: "/pages/order-details/index?ordertype=3&handleFlag=3",

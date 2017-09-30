@@ -537,14 +537,14 @@ function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickNa
 			wx.removeStorageSync(appId + '_productList')
 			if(res.data.success) {
 				e.setData({isSubmit:false})
-				submitPayOrder(e, appId, res.data.data)
+				submitPayOrder(e, appId, res.data.data,orderType)
 			}
 
 		}
 	})
 }
 //支付订单
-function submitPayOrder(e, appId, orderId) {
+function submitPayOrder(e, appId, orderId,orderType) {
 
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.payUrl,
@@ -559,7 +559,7 @@ function submitPayOrder(e, appId, orderId) {
 		success: function(res) {
 			console.log(res.data)
 			if(res.data.success) {
-				payOrder(res.data.data)
+				payOrder(res.data.data,orderType)
 			}else{
 				wx.showToast({
 					title:"服务器异常，请稍后再试"
@@ -573,7 +573,7 @@ function submitPayOrder(e, appId, orderId) {
 
 }
 
-function payOrder(payMap) {
+function payOrder(payMap,orderType) {
 
 	wx.requestPayment({
 		'timeStamp': payMap.timeStamp,
@@ -586,9 +586,16 @@ function payOrder(payMap) {
 				title:"支付成功",
 				title:"success",
 				complete:function(){
-					wx.redirectTo({
+					if(orderType==3){
+							wx.redirectTo({
+				url: 'pages/myspell/index',
+			})
+					}else{
+							wx.redirectTo({
 				url: '../order-list/index?typeid=2',
 			})
+					}
+				
 				}
 			}
 			)
