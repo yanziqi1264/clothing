@@ -27,7 +27,6 @@
       <view class="goods-share">
         <view class="goods-share-relative">
           <button open-type="share" plain="true" size="mini" type="primary" class="sharelabel"> <image src="../../images/goods_detail_share.png"></image></button>
-         <view>分享</view>
         </view>
       </view>
     </view>
@@ -65,7 +64,7 @@
               ¥{{item.attributes.commoditycurrentprice}}
               <view class="product-num">销量:360</view>
               </view>
-            </view>
+        </view>
  	</block>
     </view>
      <view class="product-view" hidden="{{!(currentTpye==1)}}">
@@ -73,9 +72,9 @@
      <view>{{item.key}}:{{item.value}}</view>
  </block>
     </view>
- <view class="product-view" hidden="{{!(currentTpye==0)}}">
+ <view class="product-view twimg" hidden="{{!(currentTpye==0)}}">
  <block wx:for="{{graphicinstructionarray}}" wx:key="unique" wx:for-index="idx2">
- <image src="{{item}}" mode="scaleToFill" class="product-img"></image>
+ <image src="{{item}}"  style="text-align:center"></image>
  </block>
     </view>
     </view>
@@ -113,8 +112,7 @@
   <view class="footer-box">
     <view class="contact">
     
-      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27">
-       <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
+      <contact-button style="opacity:0.2;position:absolute;" type="default-dark" session-from="weapp" size="15">
       </contact-button>
       客服
     </view>

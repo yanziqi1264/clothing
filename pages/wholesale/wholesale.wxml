@@ -7,7 +7,7 @@
                     <input bindtap="searchTap" type="search" class="weui-search-bar-input" id="searchInput" placeholder="搜索" required=""/>
                 </view>
             </form>
-            <button open-type ="contact" style="width:80rpx;margin-top:15rpx;text-align:center" id="searchCancel">
+            <button open-type ="contact" style="width:80rpx;text-align:center" id="searchCancel">
             <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
             </button>
     </view>
@@ -62,7 +62,7 @@
         
       <view class="wholesale-item"  bindtap="toDetailsTap" data-goodid="{{item.id}}" data-selltype="{{item.sellType}}">
          <view >
-          <image style="height:182rpx;width:182rpx" src="{{item.attributes.commoditycoverpic}}" mode="aspectFit"></image>
+          <image style="height:315rpx;width:250rpx" src="{{item.attributes.commoditycoverpic}}" mode="scaleToFill"></image>
          </view>
       </view>
       </block>
@@ -76,7 +76,7 @@
      <view class="weui-cell-primary">限时抢购</view>
      <view class="weui-cell-ft">查看更多</view>
     </view>
-    <view style="width:100%;background:#fff">
+    <view style="width:100%;background:#fff;">
     <view class="wholesale-block">
        <block wx:for="{{linshouList}}" wx:key=" {{index}}" >
         
@@ -90,7 +90,7 @@
     </view>
   </view>
 
-
+  <view style="background:#efefef;height:20rpx;"></view>
  	<view class="big-Title">
       <text>热品推荐</text>
     </view>

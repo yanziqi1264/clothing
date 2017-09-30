@@ -37,14 +37,14 @@
       {
         "pagePath": "pages/wholesale/wholesale",
         "text": "首页",
-        "iconPath": "images/un_wholesale.png",
-        "selectedIconPath": "images/on_wholesale.png"
+        "iconPath": "images/un_home.png",
+        "selectedIconPath": "images/on_home.png"
       },
       {
         "pagePath": "pages/classify/index",
         "text": "分类",
-        "iconPath": "images/un_retail.png",
-        "selectedIconPath": "images/on_retail.png"
+        "iconPath": "images/un_classify.png",
+        "selectedIconPath": "images/on_classify.png"
       },
       {
         "pagePath": "pages/shopcart/shopcart",

@@ -52,14 +52,11 @@
   color: #999;
   text-align: center;
 }
-
-
-.product-view{
+.product-view {
   display: flex;
-  justify-content: space-between;  
-  flex-wrap:wrap;
-  box-sizing: content-box;
   padding: 24rpx;
+  flex-wrap: wrap;
+  box-sizing: content-box;
 }
 
 .weui-search-bar {
@@ -161,7 +158,7 @@
 [class^="weui-icon-"]:before, [class*=" weui-icon-"]:before {
   display: inline-block;
   margin-left: 2rpx;
-  margin-right:2rpx;
+  margin-right: 2rpx;
 }
 
 .weui-flex-item {
@@ -171,7 +168,6 @@
   background-color: #fff;
   overflow: hidden;
   margin-bottom: 24rpx;
-
 }
 
 .bg {

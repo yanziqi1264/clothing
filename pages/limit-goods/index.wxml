@@ -66,8 +66,7 @@
       </view>
       <view class="goods-share">
         <view class="goods-share-relative">
-          <image src="../../images/goods_detail_share.png"></image>
-          <button open-type="share" class="sharelabel"><view>分享</view></button>
+          <button open-type="share" class="sharelabel"> <image src="../../images/goods_detail_share.png"></image></button>
         </view>
       </view>
     </view>

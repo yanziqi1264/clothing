@@ -60,6 +60,7 @@ swiper-item image {
   line-height: 88rpx;
   background: url(https://xcx.jacars.com/media/tinyapp/images/icon-down.png) no-repeat 65% center;
   font-size: 34rpx;
+  margin-top: 10rpx;
 }
 
 .season-info {
@@ -172,12 +173,14 @@ swiper-item image {
 
 .weui-search-bar {
   position: relative;
-  padding: 8rpx 24rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   box-sizing: border-box;
   background-color: #efefef;
+  padding-left: 24rpx;
+  padding-bottom:10rpx;
+  padding-top:10rpx;
 }
 
 .weui-search-bar:before {
@@ -232,11 +235,11 @@ swiper-item image {
 }
 
 .weui-search-bar-box .weui-search-bar-input {
-  padding: 12rpx 30rpx;
-  height: 60rpx;
+  padding: 20rpx 30rpx;
+  height:55rpx;
   border: 0;
   font-size: 28rpx;
-  line-height: 60rpx;
+  line-height:55rpx;
   box-sizing: content-box;
   background: transparent;
 }
@@ -244,7 +247,7 @@ swiper-item image {
 .weui-search-bar-box .weui-icon-search {
   position: absolute;
   left: 10rpx;
-  top: 30rpx;
+  top: 35rpx;
   line-height: 28rpx;
 }
 
@@ -280,7 +283,7 @@ swiper-item image {
 }
 
 .wholesale-block {
-  padding: 0 24rpx;
+  padding: 10rpx 24rpx;
   display: flex;
   display: -webkit-flex;
 
@@ -307,8 +310,8 @@ swiper-item image {
   padding: 0rpx 24rpx;
   font-size: 28rpx;
   color: #666;
-  line-height: 55rpx;
-  background: #fff;
+  line-height:80rpx;
+  background:#fff;
 }
 .weui-cell-primary {
   -webkit-box-flex: 1;
@@ -338,8 +341,8 @@ swiper-item image {
   margin-left: 3rpx;
 }
 .paddingBottom-20{
-  padding-bottom: 20rpx;
   background: #efefef;
+  padding-top: 20rpx;
 }
 
 
@@ -428,4 +431,39 @@ swiper-item image {
   color: #b6b6b6;
   text-align: right;
   flex: 1;
+}
+
+
+button {
+position:relative;
+display:block;
+margin-left:auto;
+margin-right:auto;
+padding-left:10px;
+padding-right:14px;
+box-sizing:border-box;
+font-size:18px;
+text-align:center;
+text-decoration:none;
+border-radius:0;
+-webkit-tap-highlight-color:transparent;
+overflow:hidden;
+color:#000000;
+background-color:#efefef;
+}
+button::after {
+content:" ";
+width:200%;
+height:200%;
+position:absolute;
+top:0;
+left:0;
+border:0rpx solid rgba(0, 0, 0, 0);
+-webkit-transform:scale(0.5);
+transform:scale(0.5);
+-webkit-transform-origin:0 0;
+transform-origin:0 0;
+box-sizing:border-box;
+border-radius:0rpx;
+
 }
