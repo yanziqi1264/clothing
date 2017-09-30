@@ -80,7 +80,7 @@
         <view class="goods-action">
           <view class="goods-action-div">
             
-            <view wx:if="{{ item.status ==8 || item.status ==3}}" class="btn-view-red" bindtap="finishOrderTap" >确认收货</view>
+            <view wx:if="{{ item.ptstatus ==2}}" class="btn-view-red" bindtap="finishOrderTap" >确认收货</view>
              
   			<!--<view class="btn-view-red" bindtap="cancelOrderTap" data-id="1">评价</view>-->
           </view>

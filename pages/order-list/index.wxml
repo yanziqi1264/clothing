@@ -1,8 +1,8 @@
 <view class="order-container">
   <view class="status-box">
-    <view bindtap="statusTap" class="status-label {{index+1 == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+    <view bindtap="statusTap" class="status-label {{index+1 == currentStatusType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
       {{item}}
-      <view class="{{tabClass[index]}}" wx:if="{{index+1 != currentTpye }}"></view>
+      <view class="{{tabClass[index]}}" wx:if="{{index+1 != currentStatusType }}"></view>
     </view>
   </view>
 

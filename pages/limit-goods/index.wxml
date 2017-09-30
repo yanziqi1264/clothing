@@ -145,7 +145,9 @@
   
   <view class="footer-box">
     <view class="contact">
-      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+    
+      <contact-button style="opacity:0.2;position:absolute;" type="default-dark" session-from="weapp" size="15">
+      </contact-button>
       客服
     </view>
     <view class="block3 colo-fe4c88" bindtap="tobuy">{{productInfo.minimumNum}}人拼团</view>

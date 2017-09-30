@@ -126,6 +126,7 @@ Page({
   	console.log('form发生了submit事件，携带数据为：', e.detail.value)
   	var orderid =e.currentTarget.dataset.orderid
   	console.log('f'+orderid)
+  	var that =this
   	//订单已经生成
   	if(this.data.isSubmit){
   		
@@ -159,11 +160,12 @@ Page({
       var openId =wx.getStorageSync("sessionKey"); 
       if(openId){
       	
-      	common.saveOrder(this, app.globalData.appId, openId, (this.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,this.data.proudctlist,this.data.parentOrderId,this.data.ordertype,this.data.endTimeStr,this.data.minimumNum)
+      	common.saveOrder(that, app.globalData.appId, openId, (that.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,that.data.proudctlist,that.data.parentOrderId,that.data.ordertype,that.data.endTimeStr,that.data.minimumNum)
       }else{
       		app.getUserInfo(function(userInfo){
+      				 	console.log("getUserInfo2")
       		openId =wx.getStorageSync("sessionKey"); 
-      		common.saveOrder(this, app.globalData.appId, openId,(this.data.orderInfo.money)/100, e.detail.value.address,  e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,this.data.ordertype)
+      		common.saveOrder(that, app.globalData.appId, openId, (that.data.orderInfo.money)/100, e.detail.value.address,   e.detail.value.remark,e.detail.value.contact,  e.detail.value.name,that.data.proudctlist,that.data.parentOrderId,that.data.ordertype,that.data.endTimeStr,that.data.minimumNum)
 		})
       }
   		

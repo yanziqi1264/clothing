@@ -11,15 +11,14 @@ Page({
     orderlist:[],
     point: [],
 	includepoints: [],
-	shopInfo:{}
+	shopInfo:{},
+	currentStatusType:1
   },
   statusTap: function (e) {
-    var curType = e.currentTarget.dataset.index+1;
-    this.data.currentTpye = curType
+    var curStatusType = e.currentTarget.dataset.index+1;
     this.setData({
-      currentTpye: curType
+      currentStatusType: curStatusType
     });
-    common.getOrderListByType(this,curType,1,0,1,this.data.pageSize)
     this.onShow();
   },
   orderDetail: function (e) {
@@ -82,8 +81,7 @@ Page({
     this.setData({
       currentTpye: typeId
     });
-    	common.getShopInfo(this,app.globalData.appId)
-    common.getOrderListByType(this,typeId,1,this.data.currentPage,this.data.pageSize)
+  
 
   },
   onReady: function () {
@@ -91,7 +89,7 @@ Page({
 
   },
   onShow: function () {
-  	this.setData({currentPage:1})
+  	 common.getOrderListByType(this,this.data.currentStatusType,this.data.currentTpye,null,this.data.currentPage,this.data.pageSize)
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏
@@ -108,22 +106,7 @@ console.log("onPullDownRefresh")
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
 console.log("onReachBottom")
-common.getOrderListByType(this,this.data.currentTpye,this.data.currentPage+1,this.data.pageSize)
-  },
-  onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    return {
-      title: '自定义转发标题',
-      path: '/page/user?id=123',
-      success: function(res) {
-        // 转发成功
-      },
-      fail: function(res) {
-        // 转发失败
-      }
-    }
+this.setData({currentPage:this.data.currentPage+1})
+this.show()
   }
 })

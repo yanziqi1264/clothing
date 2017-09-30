@@ -86,12 +86,9 @@ Page({
 		console.log('onLoad')
 		var that = this
 		common.getTopProductListByType(that, app.globalData.appId, 0)
-		//common.getTypeChildList(that, app.globalData.appId, 41, 1, 4,1)
-		//common.getTypeChildList(that, app.globalData.appId, 42, 1, 4,2)
 		common.getHotProductListByType(that, app.globalData.appId,0, currentpage, pagesize,1)
-		//this.getProductListByType(that,41,1,'pifa')
-		//this.getProductListByType(that,42,1,'linshou')
 		this.getProductListByType(that,0,3,'tuangou')
+		this.getProductListByType(that,0,2,'xianshi')
 		
 	},
   searchTap: function (e) {
@@ -148,6 +145,19 @@ Page({
 			url: "../classify/index?typeid=" + typeid
 		})
 	},
+	
+	viewMoretuangou:function(e){
+		wx.navigateTo({
+			url: "/pages/productList/index?flag=3"
+		})
+		
+	},
+	viewMorexianshi:function(e){
+		wx.navigateTo({
+			url: "/pages/productList/index?flag=4"
+		})
+		
+	},
 
 	toDetailsTap: function(e) {
 	
@@ -159,7 +169,7 @@ Page({
 			})
 		}else if(sellType==2){
 				wx.navigateTo({
-				url: "../goods-detail/index?goodid=" + goodid
+				url: "../now-goods/index?goodid=" + goodid
 			})
 		}else if(sellType==3){
 				wx.navigateTo({

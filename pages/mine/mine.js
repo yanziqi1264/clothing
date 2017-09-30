@@ -57,6 +57,12 @@ Page({
     })
   },
   mypoints:function(e){
+  	  wx.showModal({
+        title: '提示',
+        content: '暂未开放，敬请关注！',
+        showCancel: false
+      })
+  	  return
   	 wx.navigateTo({
       url: "/pages/mypoint/index"
     })

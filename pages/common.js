@@ -473,7 +473,9 @@ function saveShoppingCartInfo(e, productId, productName, pic, price, count, type
 function removeProduct(array){
 	var  arraylist =[]
 	for(var i =0;i<array.length;i++){
+		
 		if(array[i].count > 0){
+			console.log(JSON.stringify(array[i]))
 			arraylist.push(array[i])
 		}
 	}
@@ -496,7 +498,8 @@ function getProductCount(productId) {
 
 //生成订单
 function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickName,shoppingList,parentOrderId,orderType,endTimeStr,minimumNum) {
-	var that = this
+	
+	console.log("saveOrder1"+shoppingList.length)
 	if(minimumNum==null){
 		minimumNum=0
 	}
@@ -506,10 +509,12 @@ function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickNa
 		shoppingList = getShoppingCartInfo(e, appId)
 	}
 	shoppingList=removeProduct(shoppingList)
+	console.log("saveOrder2"+shoppingList.length)
 	if(shoppingList.length <1){
 		
 		return
 	}
+	console.log("saveOrder2")
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.saveOrder,
 		header: {
@@ -534,6 +539,7 @@ function saveOrder(e, appId, openId, totalMoney, address, remark, contact,nickNa
 			
 		},
 		success: function(res) {
+			console.log("saveOrder3")
 			wx.removeStorageSync(appId + '_productList')
 			if(res.data.success) {
 				e.setData({isSubmit:false})
@@ -605,9 +611,15 @@ function payOrder(payMap,orderType) {
 		'fail': function(res) {
 
 			if(res.errMsg == 'requestPayment:fail cancel') {
-			wx.redirectTo({
-				url: '../order-list/index?typeid=1',
-				})
+				if(orderType==3){
+							wx.redirectTo({
+				url: 'pages/myspell/index',
+			})
+					}else{
+							wx.redirectTo({
+				url: '../order-list/index?typeid=2',
+			})
+					}
 			} else {
 				wx.showToast({
 				title:"支付失败",

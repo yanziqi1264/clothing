@@ -41,8 +41,7 @@ Page({
     numberArray:[],
     priceArray:[],
     currentPrice:0,
-    graphicinstructionarray:[],
-    commodityparameters:[]
+    endDate:null
     
   },
   swiperchange: function (e) {
@@ -66,6 +65,10 @@ Page({
     });
     this.onShow();
   },
+  goShopCar: function () {
+  },
+  toAddShopCar: function () {
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -76,7 +79,8 @@ Page({
  var flag =options.flag
  if(flag == 1){
  	//团购分享
- 	var parentOrderId =options.goodid
+ 	 console.log("parentOrderId:"+options.parentOrderId)
+ 	var parentOrderId =options.parentOrderId
  	if(null !=parentOrderId){
  	this.setData({parentOrderId:parentOrderId})
  }
@@ -88,8 +92,6 @@ Page({
   var that = this
   this.getProductInfo(that,goodid)
    common.getHotProductListByType(that, app.globalData.appId, 0,1, 4,1);
-   var shop =common.getShoppingCartInfo(that,app.globalData.appId)
-   this.setData({shopNum:shop.length})
   },
   onHide:function(){
   	clearInterval(this.data.inteverMethod)
@@ -113,17 +115,21 @@ Page({
 						res.data.data.attributes.commoditycoverpic = commoditycoverpic
 					}
 				var detailPicsStr = res.data.data.attributes.commodityshowpics;
-				var detailPicsArr = detailPicsStr.split(";");
+				if(detailPicsStr){
+					var detailPicsArr = detailPicsStr.split(";");
 				var picarrays = new Array();
 				for(var i = 0; i < detailPicsArr.length; i++) {
 					var pic = {};
 					pic.image = detailPicsArr[i].split(",")[0];
 					picarrays.push(pic);
 				}
+					
+				}
+				
 				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
 				var nowDate= new Date()
-				
 				if(endDate-nowDate.getTime()>0){
+					e.setData({endDate:endDate})
 					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
 					
 				}	else{
@@ -156,16 +162,6 @@ Page({
 					}
 					
 				}
-				var graphicinstructionstr=res.data.data.attributes.graphicinstruction
-				var graphicinstructionarray=[]
-					if(graphicinstructionstr){
-					var graphicinstruction=graphicinstructionstr.split(";")
-					for(var n=0;n<graphicinstruction.length;n++){
-						var grap=graphicinstruction[n].split(",")[0]
-						graphicinstructionarray.push(grap)
-					}
-					
-				}
 					
 					e.setData({
 					detailPics: picarrays,
@@ -175,8 +171,6 @@ Page({
 					colorlist:colosArray,
 					sizelist:sizeArray,
 					priceArray:priceArray,
-					graphicinstructionarray:graphicinstructionarray,
-					commodityparameters:JSON.parse(res.data.data.attributes.commodityparameters)
 				});
 			}
 
@@ -238,10 +232,10 @@ console.log("onUnload:")
     }
   },
   goShopCar: function () {
- this.setData({
-      shopType: "addShopCar"
-    });
-    this.bindGuiGeTap();
+ 
+  },
+  toAddShopCar: function () {
+  ;
   },
   tobuy: function () {
     this.setData({
@@ -314,19 +308,18 @@ console.log("onUnload:")
   	var numberArray =this.data.numberArray
   	var buyNumber =0
   	for(var i=0;i<numberArray.length;i++){
-  		if(numberArray[i]){
-  			for(var j=0;j<numberArray[i].length;j++){
+  		console.log("numberArray[i]:"+numberArray[i])
+  		for(var j=0;j<numberArray[i].length;j++){
+  			console.log("numberArray[i][j]:"+numberArray[i][j])
   			if(!numberArray[i][j]){
   				numberArray[i][j]=0
   			}
   			buyNumber=buyNumber+numberArray[i][j]
   		}
-  			
-  		}
-  		
   	}
   	var priceArray=this.data.priceArray
   	var buyMoney=this.data.buyMoney
+  	console.log("priceArray"+priceArray.length)
   	if(priceArray.length>0){
 		for( var m=0;m<priceArray.length;m++){
 			if(buyNumber>=priceArray[m].start &&buyNumber <= priceArray[m].end){
@@ -342,11 +335,10 @@ console.log("onUnload:")
   	}
   	this.setData({buyNumber:buyNumber,buyMoney:buyMoney})
   },
-
-	/**
-	  * 立即购买
-	  */
-  buyNow: function () {
+  /**
+  * 加入购物车
+  */
+  addShopCar: function () {
     if (this.data.buyNumber < 1) {
       wx.showModal({
         title: '提示',
@@ -355,6 +347,29 @@ console.log("onUnload:")
       })
       return;
     }
+  },
+	/**
+	  * 立即购买
+	  */
+  buyNow: function () {
+  	  var nowdate = new Date()
+      if (this.data.endDate < nowdate.getTime()) {
+      wx.showModal({
+        title: '提示',
+        content: '团够活动已经结束！',
+        showCancel: false
+      })
+      return;
+    }
+    if (this.data.buyNumber < 1) {
+      wx.showModal({
+        title: '提示',
+        content: '购买数量不能为0！',
+        showCancel: false
+      })
+      return;
+    }
+  
     var orderinfo={}
     var shoplist=[]
     var numberArray =this.data.numberArray
@@ -364,6 +379,7 @@ console.log("onUnload:")
     obj.counts=numberArray[i]
     obj.colors=this.data.colorlist
     obj.sizes=this.data.sizelist
+    console.log("obj:"+JSON.stringify(obj))
     shoplist.push(obj)
     }
     orderinfo.productInfo=this.data.productInfo
@@ -371,68 +387,10 @@ console.log("onUnload:")
     orderinfo.buyNum=this.data.buyNumber
     orderinfo.buyMoney=this.data.buyMoney
     orderinfo.currentPrice=this.data.currentPrice
+   orderinfo.parentOrderId=this.data.parentOrderId
   wx.setStorageSync("immediatelyorderinfo",orderinfo)
 	wx.navigateTo({
-		url: "/pages/order-details/index?ordertype=1&handleFlag=2",
+		url: "/pages/order-details/index?ordertype=3&handleFlag=3",
 	})
-  },
-  addShopCar: function () {
-  	console.log("addShopCar")
-    if (this.data.buyNumber < 1) {
-      wx.showModal({
-        title: '提示',
-        content: '购买数量不能为0！',
-        showCancel: false
-      })
-      return;
-    }
-
-	var colorlist=this.data.colorlist
-	var sizelist=this.data.sizelist
-	var numberArray=this.data.numberArray
-	var productInfo=this.data.productInfo
-	productInfo.priceArray=this.data.priceArray
-	
-	var shopInfo ={};
-	
-	shopInfo.itemlist=[]
-  	for(var i=0;i<colorlist.length;i++){
-  		for(var j=0;j<sizelist.length;j++){
-  			var ab={}
-  			ab.id=productInfo.id+"_"+i+"_"+j
-  			ab.productid=productInfo.id
-  			console.log("addShopCar4")
-  			ab.name=productInfo.productName+",颜色："+colorlist[i]+"，尺寸："+sizelist[j]
-  			if(numberArray[i]){
-  				console.log("numberArray[i]:"+i+"-"+j+":"+numberArray[i].length)
-  				if(numberArray[i][j]){
-  					console.log("numberArray[i][j]:"+i+"-"+j+":"+numberArray[i][j])
-  					ab.count=numberArray[i][j]
-  				}else{
-  					ab.count=0
-  				}
-  			}else{
-  				ab.count=0
-  			}
-  			ab.totalprice=this.data.currentPrice*ab.count
-  			ab.pic =productInfo.attributes.commoditycoverpic
-  			if(ab.count>0){
-  				shopInfo.itemlist.push(ab)
-  			}
-  		}
-  	}
-  	shopInfo.productInfo=productInfo
-  	this.closePopupTap()
-  	common.saveShoppingCartInfoNew(this,app.globalData.appId,shopInfo)
-  	var shop =common.getShoppingCartInfo(this,app.globalData.appId)
-   this.setData({shopNum:shop.length})
-  },
-  goShopCarlist:function(){
-  	
-  	
-  	wx.switchTab({
-  url:  "/pages/shopcart/shopcart",
-})
   }
-  
 })

@@ -14,6 +14,46 @@
       </block>
     </view>
   </view>
+  <!-- 限时团购 -->
+  <view class="limit-area">
+    <view class="topbanner">
+      <view class="topbanner-container">
+        <view class="topbanner-text"  hidden="{{isFinished}}">
+          距结束仅剩
+        </view>
+         <view class="topbanner-text" hidden="{{!isFinished}}">
+          拼团已经结束
+        </view>
+        <!-- 倒计时 -->
+        <view class=""  hidden="{{isFinished}}">
+          <!-- 天 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endDay}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">天</view>
+          </view>
+          <!-- 时 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endHour}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">时</view>
+          </view>
+
+          <!-- 分 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endminute}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">分</view>
+          </view>
+
+          <!-- 秒 -->
+          <view class="test">
+            <view class="topbannertime-timer-num topbannertime-timer-num">{{endSeconds}}</view>
+            <view class="topbannertime-timer-symbol topbannertime-timer-symbol">秒</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
 
 
   <!-- 商品名字价格分享 -->
@@ -26,7 +66,7 @@
       </view>
       <view class="goods-share">
         <view class="goods-share-relative">
-          <button open-type="share" plain="true" size="mini" type="primary" class="sharelabel"> <image src="../../images/goods_detail_share.png"></image></button>
+          <button open-type="share" class="sharelabel"> <image src="../../images/goods_detail_share.png"></image></button>
         </view>
       </view>
     </view>
@@ -36,7 +76,7 @@
   </view>
   <!-- 月销售量 -->
   <view class="month-sales">
-    <view class="month-num">月销售量296</view>
+    <view class="month-num">月销售量26</view>
     <view class="goods-place">昆山</view>
   </view>
 
@@ -62,20 +102,14 @@
               <view class="product-title">{{item.productName}}</view>
               <view class="product-price">
               ¥{{item.attributes.commoditycurrentprice}}
-              <view class="product-num">销量:360</view>
+              <view class="product-num">销量:{{30+i}}</view>
               </view>
-        </view>
+            </view>
  	</block>
     </view>
      <view class="product-view" hidden="{{!(currentTpye==1)}}">
-     <block wx:for="{{commodityparameters}}" wx:key="unique" wx:for-index="idx2">
-     <view>{{item.key}}:{{item.value}}</view>
- </block>
     </view>
- <view class="product-view twimg" hidden="{{!(currentTpye==0)}}">
- <block wx:for="{{graphicinstructionarray}}" wx:key="unique" wx:for-index="idx2">
- <image src="{{item}}"  style="text-align:center"></image>
- </block>
+ <view class="product-view" hidden="{{!(currentTpye==2)}}">
     </view>
     </view>
 
@@ -116,12 +150,7 @@
       </contact-button>
       客服
     </view>
-    <view class="shop-cart-btn" bindtap="goShopCarlist">
-      <view class="shop-num">{{shopNum}}</view>
-      购物车
-    </view>
-    <view class="join-shop-cart" bindtap="goShopCar" >加入购物车</view>
-    <view class="now-buy" bindtap="tobuy">立即购买</view>
+    <view class="block3 colo-fe4c88" bindtap="tobuy">立即购买</view>
   </view>
   <view class="show-popup" hidden="{{hideShopPopup}}">
     <view class="popup-mask" bindtap="closePopupTap"></view>
@@ -153,7 +182,7 @@
        <block wx:for="{{sizelist}}" wx:key="unique"  wx:for-item="size" wx:for-index="index2">
           <view class="buy-num-box">
             <view class="num-label">
-              <view style="text-align:left">{{size}}</view>
+              <view style="text-align:left">尺寸:{{size}}</view>
               <view style="text-align:left;color:#999">￥{{productInfo.attributes.commoditycurrentprice}}</view>
             </view>
             <view class="num-box">
@@ -174,7 +203,6 @@
       </swiper>
 
       <view style="text-align:right"> 总计:{{buyMoney}}</view>
-
       <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">
         加入购物车
       </view>
