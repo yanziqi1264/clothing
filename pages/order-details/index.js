@@ -69,6 +69,7 @@ Page({
    		 		pro.pic=orderinfo1.productInfo.attributes.commoditycoverpic
    		 		pro.name=orderinfo1.productInfo.productName+",颜色："+shoplist[i].colors[i]+",尺寸："+shoplist[i].sizes[j]
    		 		pro.count=shoplist[i].counts[j]
+   		 		pro.price=orderinfo1.productInfo.attributes.commoditycurrentprice
    		 		pro.totalprice=orderinfo1.currentPrice*shoplist[i].counts[j]
    		 		proudctlist.push(pro)
    		 		}

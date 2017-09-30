@@ -19,7 +19,7 @@ Page({
     this.setData({
       currentTpye: curType
     });
-    common.getOrderListByType(this,curType,1,1,this.data.pageSize)
+    common.getOrderListByType(this,curType,1,0,1,this.data.pageSize)
     this.onShow();
   },
   orderDetail: function (e) {

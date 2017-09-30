@@ -1,4 +1,5 @@
 var app = getApp()
+var common = require('../common.js')
 Page({
   data: {
     statusType: ["全部拼团", "进行中", "拼团成功", "拼团失败"],
@@ -24,81 +25,21 @@ Page({
   },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
- common.getOrderListByType(this,1,1,this.data.currentPage,this.data.pageSize)
+    
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
 
   },
   getOrderStatistics: function () {
-    var that = this;
-    wx.request({
-      url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/statistics',
-      data: { token: app.globalData.token },
-      success: (res) => {
-        wx.hideLoading();
-        if (res.data.code == 0) {
-          var tabClass = that.data.tabClass;
-          if (res.data.data.count_id_no_pay > 0) {
-            tabClass[1] = "red-dot"
-          }
-          if (res.data.data.count_id_no_transfer > 0) {
-            tabClass[2] = "red-dot"
-          }
-          if (res.data.data.count_id_no_confirm > 0) {
-            tabClass[3] = "red-dot"
-          }
-          if (res.data.data.count_id_success > 0) {
-            tabClass[4] = "red-dot"
-          }
-
-          that.setData({
-            tabClass: tabClass,
-          });
-        }
-      }
-    })
+    
   },
   onShow: function () {
     // 获取订单列表
     wx.showLoading();
-    var that = this;
-    var postData = {
-      token: app.globalData.token
-    };
-    if (that.data.currentTpye == 1) {
-      postData.status = 0
-    }
-    if (that.data.currentTpye == 2) {
-      postData.status = 1
-    }
-    if (that.data.currentTpye == 3) {
-      postData.status = 2
-    }
-    if (that.data.currentTpye == 4) {
-      postData.status = 4
-    }
-    this.getOrderStatistics();
-    wx.request({
-      url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/list',
-      data: postData,
-      success: (res) => {
-        wx.hideLoading();
-        if (res.data.code == 0) {
-          that.setData({
-            orderList: res.data.data.orderList,
-            logisticsMap: res.data.data.logisticsMap,
-            goodsMap: res.data.data.goodsMap
-          });
-        } else {
-          this.setData({
-            orderList: null,
-            logisticsMap: {},
-            goodsMap: {}
-          });
-        }
-      }
-    })
+    console.log("onShow")
+ 	common.getOrderListByType(this,2,3,this.data.currentTpye,this.data.currentPage,this.data.pageSize)
+   
 
   },
   onHide: function () {
@@ -114,7 +55,9 @@ Page({
 
   },
   onReachBottom: function () {
+  	 wx.showLoading();
     // 页面上拉触底事件的处理函数
-
+    var  curType= this.data.currentTpye 
+    common.getOrderListByType(this,3,3,curType,this.data.currentPage,this.data.pageSize)
   }
 })

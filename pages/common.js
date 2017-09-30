@@ -72,7 +72,7 @@ function getTypeChildList(e, appId, typeId, currentPage, pageSize,flag) {
 	})
 }
 //根据模块获取产品列表
-function getProductListByType(e, type, currentPage, pageSize,handtype) {
+function getProductListByType(e, type, currentPage, pageSize,handtype,orderType,orderParam,name) {
 	
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.productlistUrl,
@@ -112,6 +112,7 @@ function getProductListByType(e, type, currentPage, pageSize,handtype) {
 
 	})
 }
+
 
 /**
  * 根据销售类型
@@ -550,7 +551,7 @@ function submitPayOrder(e, appId, orderId) {
 		header: {
 			'content-type': 'application/x-www-form-urlencoded;charset=UTF-8;'
 		},
-		method: "post",
+		method: "POST",
 		data: {
 			appId: appId,
 			payId: orderId
@@ -676,20 +677,31 @@ function getShopInfo(e, appId,type) {
 
 }
 
-function getOrderListByType(e,type,orderType,currentPage,pageSize){
+function getOrderListByType(e,status,type,ptStatus,currentPage,pageSize){
 	var openId =wx.getStorageSync("sessionKey")
+	
+	var data ={	}
+	data.appId=app.globalData.appId
+	data.openId=openId
+	data.status=status
+	data.currentPage=currentPage
+	data.pageSize=pageSize
+	if(ptStatus >0){
+		data.ptStatus=ptStatus
+	}
+	if(type){
+		data.type=type
+	}
 	wx.request({
 		url: app.globalData.serverAddr + app.globalData.orderlistUrl,
-		data: {
-			appId: app.globalData.appId,
-			status:type,
-			openId:openId,
-			currentPage:currentPage,
-			pageSize:pageSize,
-			type:orderType
-
+		data: data
+		,
+		header: {
+			'content-type': 'application/x-www-form-urlencoded;charset=UTF-8;'
 		},
+		method:"GET",
 		success: function(res) {
+			wx.hideLoading()
 			var oldorderlist =e.data.orderlist
 			if(currentPage == 1){
 				

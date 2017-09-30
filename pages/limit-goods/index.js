@@ -128,7 +128,7 @@ Page({
 				var endDate = Date.parse(new Date(res.data.data.endTime.replace(/-/g,"/")))
 				var nowDate= new Date()
 				if(endDate-nowDate.getTime()>0){
-					e.setData({endDate:endDate.getTime()})
+					e.setData({endDate:endDate})
 					var method = common.setIntervalTims(e,res.data.data.endTime,1000)
 					
 				}	else{
@@ -378,6 +378,7 @@ console.log("onUnload:")
     obj.counts=numberArray[i]
     obj.colors=this.data.colorlist
     obj.sizes=this.data.sizelist
+    console.log("obj:"+JSON.stringify(obj))
     shoplist.push(obj)
     }
     orderinfo.productInfo=this.data.productInfo

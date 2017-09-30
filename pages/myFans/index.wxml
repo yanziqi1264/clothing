@@ -25,23 +25,26 @@
     </view>
      -->
   <view class="fans-list">
+  <block wx:for="{{fanslist}}" wx:key="unique">
     <view class="a-fanitem">
       <view class="afan-icon">
-        <image src="../../images/person_icon.png" mode="scaleToFill" style="width:80rpx;height:80rpx;"></image>
+        <image src="{{item.headImg}}" mode="scaleToFill" style="width:80rpx;height:80rpx;"></image>
       </view>
       <view class="afan-detail">
+      
         <view class="weui-flex">
-               <view class="weui-flex-item afan-name">歪歪大人</view>
-                <view class="weui-flex-item afan-profit">收益:<view class="afan-profit-money">¥456</view></view>
+               <view class="weui-flex-item afan-name">{{item.nickName}}</view>
+                <view class="weui-flex-item afan-profit">收益:<view class="afan-profit-money">¥{{item.moneyForContribution ==null ?0:item.moneyForContribution }}</view></view>
         </view>
+     
          <view class="weui-flex">
-               <view class="weui-flex-item afan-time">20170928 15:30</view>
-                <view class="weui-flex-item afan-profit">Lv1</view>
+               <view class="weui-flex-item afan-time">{{item.createTimeStr}}</view>
+                <view class="weui-flex-item afan-profit">Lv{{currentTpye+1}}</view>
         </view>
-      </view>
 
     </view>
-
+     </view>
+ </block>
 
 
   </view>

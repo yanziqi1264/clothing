@@ -49,8 +49,6 @@
             <view class="topbannertime-timer-symbol topbannertime-timer-symbol">秒</view>
           </view>
         </view>
-
-
       </view>
 
     </view>
@@ -74,7 +72,7 @@
       </view>
     </view>
     <view class="row2">
-      <view class="goods-price">{{productInfo.attributes.commodityoriginalprice}}</view>
+      <view class="goods-price">{{productInfo.attributes.commoditycurrentprice}}</view>
     </view>
   </view>
   <!-- 月销售量 -->

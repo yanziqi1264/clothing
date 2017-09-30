@@ -234,7 +234,7 @@ Page({
     }
     return {
       title: '时尚大衣',
-      path: 'pages/retail/retail',
+      path: 'pages/wholesale/wholesale',
       success: function(res) {
         // 转发成功
       },

@@ -7,9 +7,9 @@
                     <input bindtap="searchTap" type="search" class="weui-search-bar-input" id="searchInput" placeholder="搜索" required=""/>
                 </view>
             </form>
-            <view  style="width:80rpx;margin-top:15rpx;text-align:center" id="searchCancel">
+            <button open-type ="contact" style="width:80rpx;margin-top:15rpx;text-align:center" id="searchCancel">
             <image src="../../images/message.png" style="width:42rpx;height:41rpx"></image>
-            </view>
+            </button>
     </view>
     <!-- 搜索框结束 -->
   <scroll-view scroll-y="true" class="scroll-area">
