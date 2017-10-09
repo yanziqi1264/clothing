@@ -61,6 +61,7 @@ swiper-item image {
   background: url(https://xcx.jacars.com/media/tinyapp/images/icon-down.png) no-repeat 65% center;
   font-size: 34rpx;
   margin-top: 10rpx;
+  background-color: #F5F5F5;
 }
 
 .season-info {
@@ -213,7 +214,7 @@ swiper-item image {
   left: 0;
   top: 0;
   width: 200%;
-  height: 200%;
+  height: 150%;
   -webkit-transform: scale(0.5);
   transform: scale(0.5);
   -webkit-transform-origin: 0 0;
@@ -352,6 +353,7 @@ swiper-item image {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	padding-top: 10rpx;
 }
 
 .logoinfo-new{
@@ -375,6 +377,7 @@ swiper-item image {
   flex-wrap:wrap;
   box-sizing: content-box;
   padding: 24rpx;
+  background-color: #F5F5F5;
 }
 .product-list {
   width: 750rpx;
@@ -454,7 +457,7 @@ background-color:#efefef;
 button::after {
 content:" ";
 width:200%;
-height:200%;
+height:150%;
 position:absolute;
 top:0;
 left:0;

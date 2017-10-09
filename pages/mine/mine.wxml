@@ -58,7 +58,7 @@
    <view bindtap="myCoupon" class="column-block">
     <view class="column-block-a">
       <view class="fctlist-icon">
-           <image style="width:33rpx; height:32rpx;" src="/images/vault.png"></image>
+           <image style="width:33rpx; height:32rpx;" src="/images/youhuiquan.png"></image>
       </view>
       <view class="fctlist-title">
         <view class="fctlist-title-p">优惠券</view>
@@ -71,7 +71,7 @@
 <view bindtap="mypoints" class="column-block">
     <view class="column-block-a">
       <view class="fctlist-icon">
-           <image style="width:33rpx; height:32rpx;" src="/images/vault.png"></image>
+           <image style="width:33rpx; height:32rpx;" src="/images/jlb.png"></image>
       </view>
       <view class="fctlist-title">
         <view class="fctlist-title-p">会员俱乐部</view>
@@ -84,7 +84,7 @@
   <view bindtap="myAddress" class="column-block">
     <view class="column-block-a">
       <view class="fctlist-icon">
-           <image style="width:33rpx; height:32rpx;" src="/images/vault.png"></image>
+           <image style="width:33rpx; height:32rpx;" src="/images/dizhi.png"></image>
       </view>
       <view class="fctlist-title">
         <view class="fctlist-title-p">收货地址</view>
@@ -100,7 +100,7 @@
   <view class="column-block" bindtap="toshopdetail">
     <view class="column-block-a">
       <view class="fctlist-icon">
-           <image style="width:36rpx; height:32rpx;" src="/images/business.png"></image>
+           <image style="width:36rpx; height:32rpx;" src="/images/vault.png"></image>
       </view>
       <view class="fctlist-title">
         <view class="fctlist-title-p">关于商家</view>
@@ -110,10 +110,10 @@
       </view>
     </view>
   </view>
- <view class="column-block" bindtap="toshopdetail">
+ <view class="column-block" bindtap="tosuggestion">
     <view class="column-block-a">
       <view class="fctlist-icon">
-           <image style="width:36rpx; height:32rpx;" src="/images/business.png"></image>
+           <image style="width:36rpx; height:32rpx;" src="/images/fankui.png"></image>
       </view>
       <view class="fctlist-title">
         <view class="fctlist-title-p">用户反馈</view>

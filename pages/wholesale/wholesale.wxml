@@ -13,7 +13,7 @@
     </view>
     <!-- 搜索框结束 -->
   <scroll-view scroll-y="true" class="scroll-area">
- 
+ 	
     <view class="swiper-container">
       <swiper bindchange="swiperchange" class="swiper_box" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for-items="{{toplist}}" wx:key="{{index}}">
@@ -42,8 +42,22 @@
                     <text class="logotext-new">{{item.name}}</text>
                 </view>
             </block>
+            
+              <view class="logoinfo-new">
+                    <image style="width:100rpx; height: 100rpx;" src="../../images/youhuicenter.png" mode="aspectFit"/>
+                    <text class="logotext-new">领券中心</text>
+             </view>
+              <view class="logoinfo-new" bindtap="viewnews">
+                    <image style="width:100rpx; height: 100rpx;" src="../../images/news.png" mode="aspectFit"/>
+                    <text class="logotext-new">店铺动态</text>
+             </view>
+             <!--
+              <view class="logoinfo-new" bindtap="choujiang" >
+                    <image style="width:100rpx; height: 100rpx;" src="../../images/choujiang.png" mode="aspectFit"/>
+                    <text class="logotext-new">幸运抽奖</text>
+             </view>-->
             <view class="logoinfo-new">
-                    <image style="width:100rpx; height: 100rpx;" src="../../images/logo7.png" mode="aspectFit"/>
+                    <image style="width:100rpx; height: 100rpx;" src="../../images/share.png" mode="aspectFit"/>
                     <text class="logotext-new">分享赚钱</text>
              </view>
            
@@ -103,7 +117,7 @@
               <view class="product-title">{{item.productName}}</view>
               <view class="product-price">
               ¥{{item.attributes.commoditycurrentprice}}
-              <view class="product-num">销量:360</view>
+              <view class="product-num">吊牌价：¥{{item.attributes.commodityoriginalprice}}</view>
               </view>
             </view>
  	</block>

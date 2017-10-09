@@ -8,6 +8,8 @@
     "pages/now-goods/index",
     "pages/productList/index",
     "pages/myspell/index",
+    "pages/newslist/index",
+     "pages/fruitMachine/fruitMachine",
     "pages/myvault/index",
     "pages/apply-for-cash/index",
     "pages/mine/mine",

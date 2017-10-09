@@ -22,6 +22,7 @@ swiper-item image {
   display: inline-block;
   overflow: hidden;
   height: 750rpx;
+  mode:aspectFill;
 }
 
 .swiper-container .dots {
@@ -1060,4 +1061,37 @@ border-radius:10px;
 }
 .twimg image{
   width: 100%;
+}
+
+.zan-form1 {
+  background-color: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.zan-form {
+  background-color: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.zan-form__item {
+  line-height: 26px;
+}
+
+.zan-form__title {
+  float: left;
+  width: 80px;
+  font-size: 14px;
+}
+
+.zan-form__title--top {
+  align-self: flex-start;
+}
+
+.zan-form__input, .zan-form__textarea {
+  min-height: 26px;
+}
+
+.zan-form__input input {
+  min-height: 26px;
 }

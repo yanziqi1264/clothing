@@ -89,8 +89,10 @@ Page({
 			currentPage: this.data.currentPage + 1
 		})
 		// 页面上拉触底事件的处理函数
-
-	this.show()
+wx.showLoading({
+  title: '加载中',
+})
+	this.onShow()
 	},
 
 	getProductListByName: function(e, name, sellType, currentPage, pageSize, orderType, orderParam) {
@@ -111,7 +113,9 @@ Page({
 			url: app.globalData.serverAddr + "/weixin/commodity/clothing/getCommodityList",
 			data: data,
 			success: function(res) {
-
+ 				setTimeout(function(){
+  wx.hideLoading()
+},2000)
 				var productlist = e.data.productlist
 
 				var dataArray = res.data.data
@@ -151,9 +155,12 @@ Page({
 			},
 			method: "POST",
 			success: function(res) {
+				  setTimeout(function(){
+  wx.hideLoading()
+},2000)
 				console.log(res.data)
 				if(res.data.success) {
-					var productlist = []
+					var productlist = e.data.productlist
 					var dataArray = res.data.data
 					for(var i = 0; i < dataArray.length; i++) {
 						dataArray[i].count = common.getProductCount(dataArray[i].id)

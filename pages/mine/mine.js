@@ -67,6 +67,14 @@ Page({
       url: "/pages/mypoint/index"
     })
   },
+  tosuggestion:function(e){
+  	wx.showModal({
+        title: '提示',
+        content: '暂未开放，敬请关注！',
+        showCancel: false
+      })
+  	  return
+  },
   myAddress:function(e){
   	wx.chooseAddress({
   success: function (res) {

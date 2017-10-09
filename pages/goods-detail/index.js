@@ -414,6 +414,7 @@ console.log("onUnload:")
   			}else{
   				ab.count=0
   			}
+  			ab.price=this.data.currentPrice
   			ab.totalprice=this.data.currentPrice*ab.count
   			ab.pic =productInfo.attributes.commoditycoverpic
   			if(ab.count>0){

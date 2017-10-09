@@ -158,7 +158,18 @@ Page({
 		})
 		
 	},
-
+viewnews:function(e){
+		wx.navigateTo({
+			url: "/pages/newslist/index"
+		})
+		
+	},
+	choujiang:function(e){
+		wx.navigateTo({
+			url: "/pages/fruitMachine/fruitMachine"
+		})
+		
+	},
 	toDetailsTap: function(e) {
 	
 		var sellType = e.currentTarget.dataset.selltype

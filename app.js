@@ -78,8 +78,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    //wx935d61464c3d9259
-    appId: "wx3d49404dd47da924",
+    appId: "wx935d61464c3d9259", //昆山服饰
+    //appId: "wx3d49404dd47da924", //杰咖斯
     serverAddr: "https://xcx.jacars.com/tinyapp",
     //serverAddr: "http://localhost:8081/tinyapp",
     loginUrl:"/user/login",

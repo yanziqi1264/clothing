@@ -4,7 +4,7 @@
     <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
       <view wx:for="{{detailPics}}">
         <swiper-item>
-          <image src="{{item.image}}" mode="aspectFill" />
+          <image src="{{item.image}}" mode="scaleToFill" />
         </swiper-item>
       </view>
     </swiper>
@@ -36,7 +36,7 @@
   </view>
   <!-- 月销售量 -->
   <view class="month-sales">
-    <view class="month-num">月销售量296</view>
+    <view class="month-num">吊牌价：¥{{productInfo.attributes.commodityoriginalprice}}</view>
     <view class="goods-place">昆山</view>
   </view>
 
@@ -62,15 +62,27 @@
               <view class="product-title">{{item.productName}}</view>
               <view class="product-price">
               ¥{{item.attributes.commoditycurrentprice}}
-              <view class="product-num">销量:360</view>
+              <view class="product-num">吊牌价:¥{{item.attributes.commodityoriginalprice}}</view>
               </view>
         </view>
  	</block>
     </view>
-     <view class="product-view" hidden="{{!(currentTpye==1)}}">
+     <view class="product-view" hidden="{{!(currentTpye==1)}}"> 
      <block wx:for="{{commodityparameters}}" wx:key="unique" wx:for-index="idx2">
-     <view>{{item.key}}:{{item.value}}</view>
+    <view class="zan-form1" wx:if="{{ idx2==0}}">
+    <view class="zan-cell zan-form__item" >
+      <text class="zan-form__title">{{item.key}}</text>
+       <text class="zan-form__title">{{item.value}}</text>
+    </view>
+    </view>
+    <view class="zan-form" wx:if="{{ idx2!=0}}">
+    <view class="zan-cell zan-form__item" >
+      <text class="zan-form__title">{{item.key}}</text>
+       <text class="zan-form__title">{{item.value}}</text>
+    </view>
+      </view>
  </block>
+ 
     </view>
  <view class="product-view twimg" hidden="{{!(currentTpye==0)}}">
  <block wx:for="{{graphicinstructionarray}}" wx:key="unique" wx:for-index="idx2">
